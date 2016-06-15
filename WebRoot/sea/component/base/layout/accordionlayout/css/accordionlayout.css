@@ -1,0 +1,40 @@
+@CHARSET "UTF-8";
+.sea_accordionLayout li {
+	width: 100%;
+	list-style-type:none;
+	border-bottom: solid 1px #ddd;
+}
+.sea_accordionLayout_title{
+	margin-bottom: 3px;
+	height: 30px;
+	color: #4C4C4C;
+	text-align: center;
+	line-height: 30px;
+	font-weight: bold;
+	font-size: 16px;
+	background-color: rgba(200, 200, 200, 0.1);
+}
+.sea_formLabel {
+	box-sizing: border-box;
+	padding-left:10px;
+	float: left;
+	line-height: 34px;
+	height: 36px;
+	width: 25%;
+	background-color:#FFFFFF;
+}
+
+.sea_formField {
+	float: left;
+	width: 75%;
+	height: 36px;
+	line-height: 34px;
+}
+
+.sea_formField input {
+	border: none;
+	width: 100%;
+	height:100%;
+	text-align: right;
+	float: left;
+}

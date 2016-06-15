@@ -1,0 +1,36 @@
+@CHARSET "UTF-8";
+
+.sea_button { 
+	text-align: center;
+	height: 36px;
+	line-height: 36px;
+	border-radius: 4px;
+	background-color: #0B74BF;
+	display:inline-block;
+	cursor: pointer;
+}
+.sea_button a{
+	width: 100%;
+	color: #fff;
+	font-size: 15px;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.sea_button:hover {
+	text-decoration: none;
+}
+.sea_button:link {
+	text-decoration: none;
+}
+.sea_button:visited {
+	text-decoration: none;
+}
+
+.sea_button:active {
+	text-decoration: none;
+}
+.sea_button span {
+	margin-right:5px;
+	vertical-align: middle;
+}

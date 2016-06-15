@@ -1,0 +1,279 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+命名规则
+
+不要使用一个字母命名，而应该用单词描述
+[javascript]view plaincopy
+// bad
+function q() {  
+// ...stuff...
+}  
+// good
+function query() {  
+// ..stuff..
+}  
+
+使用驼峰法来给对象、函数、实例命名。
+[javascript]view plaincopy
+// bad
+var OBJEcttsssss = {};  
+var this_is_my_object = {};  
+function c() {}  
+var u = new user({  
+  name: 'Bob Parr'
+});  
+// good
+var thisIsMyObject = {};  
+function thisIsMyFunction() {}  
+var user = new User({  
+  name: 'Bob Parr'
+});  
+
+使用驼峰式大小写给构造函数和类命名。
+[javascript]view plaincopy
+// bad
+function user(options) {  
+this.name = options.name;  
+}  
+var bad = new user({  
+  name: 'nope'
+});  
+// good
+function User(options) {  
+this.name = options.name;  
+}  
+var good = new User({  
+  name: 'yup'
+});  
+
+使用下划线前缀_来命名私有属性。
+[javascript]view plaincopy
+// bad
+this.__firstName__ = 'Panda';  
+this.firstName_ = 'Panda';  
+// good
+this._firstName = 'Panda';  
+
+储存this的引用使用_this
+[javascript]view plaincopy
+// bad
+function() {  
+var self = this;  
+returnfunction() {  
+    console.log(self);  
+  };  
+}  
+// bad
+function() {  
+var that = this;  
+returnfunction() {  
+    console.log(that);  
+  };  
+}  
+// good
+function() {  
+var _this = this;  
+returnfunction() {  
+    console.log(_this);  
+  };  
+}  
+
+给你的函数命名，这有助于堆栈重写
+[javascript]view plaincopy
+// bad
+var log = function(msg) {  
+  console.log(msg);  
+};  
+// good
+var log = function log(msg) {  
+  console.log(msg);  
+};  
+
+注意：IE8以下还有一些关于命名函数表达式的怪癖。详情见http://kangax.github.io/nfe/
+访问器
+
+如果你创建访问函数使用getVal() 和 setVal(‘hello’)
+[javascript]view plaincopy
+// bad
+dragon.age();  
+// good
+dragon.getAge();  
+// bad
+dragon.age(25);  
+// good
+dragon.setAge(25);  
+
+如果这个属性是boolean，使用isVal() 或者 hasVal()
+[javascript]view plaincopy
+// bad
+if (!dragon.age()) {  
+returnfalse;  
+}  
+// good
+if (!dragon.hasAge()) {  
+returnfalse;  
+}  
+
+也可以使用get() 和 set()函数来创建，但是必须一致。
+[javascript]view plaincopy
+function Jedi(options) {  
+  options || (options = {});  
+var lightsaber = options.lightsaber || 'blue';  
+this.set('lightsaber', lightsaber);  
+}  
+Jedi.prototype.set = function(key, val) {  
+this[key] = val;  
+};  
+Jedi.prototype.get = function(key) {  
+returnthis[key];  
+};  
+
+构造器
+
+给原型对象添加方法，相比用新对象重写原型，重写原型会有继承问题。如果你要重写原型方法，请重写基础方法。
+[javascript]view plaincopy
+function Jedi() {  
+  console.log('new jedi');  
+}  
+// bad
+Jedi.prototype = {  
+  fight: function fight() {  
+    console.log('fighting');  
+  },  
+  block: function block() {  
+    console.log('blocking');  
+  }  
+};  
+// good
+Jedi.prototype.fight = function fight() {  
+  console.log('fighting');  
+};  
+Jedi.prototype.block = function block() {  
+  console.log('blocking');  
+};  
+
+方法返回this有助于方法链
+[javascript]view plaincopy
+// bad
+Jedi.prototype.jump = function() {  
+this.jumping = true;  
+returntrue;  
+};  
+Jedi.prototype.setHeight = function(height) {  
+this.height = height;  
+};  
+var luke = new Jedi();  
+luke.jump(); // =< true
+luke.setHeight(20); // =< undefined
+// good
+Jedi.prototype.jump = function() {  
+this.jumping = true;  
+returnthis;  
+};  
+Jedi.prototype.setHeight = function(height) {  
+this.height = height;  
+returnthis;  
+};  
+var luke = new Jedi();  
+luke.jump()  
+  .setHeight(20);  
+
+可以重写常规的toString()方法。但必须保证可以成功运行并没有别的影响
+[javascript]view plaincopy
+function Jedi(options) {  
+  options || (options = {});  
+this.name = options.name || 'no name';  
+}  
+Jedi.prototype.getName = function getName() {  
+returnthis.name;  
+};  
+Jedi.prototype.toString = function toString() {  
+return'Jedi - ' + this.getName();  
+};  
+将为事件加载数据时（不管是DOM事件还是其他专用事件的，比如Backbone事件）用散列表来取代原始值。因为这将允许后续添加更多的数据载入事件而不用更新每个事件的处理程序。例如：
+
+[javascript]view plaincopy
+// bad
+$(this).trigger('listingUpdated', listing.id);  
+...  
+$(this).on('listingUpdated', function(e, listingId) {  
+// do something with listingId
+});  
+
+更好的方式：
+[javascript]view plaincopy
+// good
+$(this).trigger('listingUpdated', { listingId : listing.id });  
+...  
+$(this).on('listingUpdated', function(e, data) {  
+// do something with data.listingId
+});  
+
+模块应该以 “！”开始，以确保当模块忘记包含最后一个分号时，在脚本连接时不会报错。
+文档需要用驼峰法命名，同一文件内要用一样的名字以及要与单个输出相匹配。
+增加一个叫noConflict()的方法，使模块输出早期版本并返回。
+在模块开始的部位声明'use strict'。
+[javascript]view plaincopy
+// fancyInput/fancyInput.js
+!function(global) {  
+'use strict';  
+var previousFancyInput = global.FancyInput;  
+function FancyInput(options) {  
+this.options = options || {};  
+  }  
+  FancyInput.noConflict = function noConflict() {  
+    global.FancyInput = previousFancyInput;  
+return FancyInput;  
+  };  
+  global.FancyInput = FancyInput;  
+}(this);  
+jQuery
+
+JQuery对象变量前缀使用$
+[javascript]view plaincopy
+// bad
+var sidebar = $('.sidebar');  
+// good
+var $sidebar = $('.sidebar');  
+
+jQuery缓存查找
+[javascript]view plaincopy
+// bad
+function setSidebar() {  
+  $('.sidebar').hide();  
+// ...stuff...
+  $('.sidebar').css({  
+'background-color': 'pink'
+  });  
+}  
+// good
+function setSidebar() {  
+var $sidebar = $('.sidebar');  
+  $sidebar.hide();  
+// ...stuff...
+  $sidebar.css({  
+'background-color': 'pink'
+  });  
+}  
+
+在DOM查询中使用层叠样式 $('.sidebar ul')或parent < child $('.sidebar < ul'). jsPerf
+使用find来查找jQuery对象
+[javascript]view plaincopy
+// bad
+$('ul', '.sidebar').hide();  
+// bad
+$('.sidebar').find('ul').hide();  
+// good
+$('.sidebar ul').hide();  
+// good
+$('.sidebar < ul').hide();  
+// good
+$sidebar.find('ul').hide();  
+来源 http://blog.jobbole.com/79484/
+</body>
+</html>

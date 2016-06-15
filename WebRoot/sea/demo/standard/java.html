@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>编码规范对于开发人员来说是非常重要的，有以下几个原因：
+1.一个软件的生命周期中，80%的花费在于维护
+2.几乎没有任何一个软件，在其整个生命周期中，均由最初的开发人员来维护
+3.编码规范可以改善软件的可读性，可以让程序员尽快而彻底地理解新的代码
+4.如果你将源码作为产品发布，就需要确任它是否被很好的打包并且清晰无误，一如你已构建的其它任何产品
+5.为来自不同的项目组或个人提供标准的代码格式。
+6.增加易读性。
+在不用Java两年多后因工作需要我又要转入Java开发，为此我整理出下面的编码规范，以便在以后的工作中遵守。
+一　命名规则
+1）包：命名应该都是名词或名词性词组，全部小写，单词之间用"."分开;一般使用本公司／组织网站域名的逆序后跟具体的软件内部模块名
+包命名举例： package com.sun.java； package com.mycompany.db；
+2）类：名词或名词性词组，每个单词首字母大写；一般不使用缩写，除非其缩写更通用和便于理解，如HTML；当要区别接口和实现类的时候，可以在类的后面加上"Impl"，例如：interface Container与class ContainerImpl；Exception类用"Exception"做为类命名的结尾，例如：DataNotFoundException；抽象类用"Abstract"做为类命名的开头，例如：AbstractBeanDefinition,AbstractBeanFactory；Test类最好能用"Test"做为类命名的结尾。例如：ContainerTest
+类命名举例：class Person； class SpringRain
+3）接口：　同"类"的命名规则
+接口命名举例：interface Runner；
+4）方法：动词或动词性词组，首字母小写，第二个及以后的单词首字母大写；
+方法命名举例：run（）； displayInformation（）；
+5）变量：　名词或名词性词组，首字母小写，第二个及以后的单词首字母大写；
+不提倡使用下画线"_"和美元符"$"作为变量开头；单词间可以使用下画线分隔；变量名不宜过长但也应有意义，除非是临时使用（例如只涉及几行代码）后即丢弃的情况，不建议使用单个字母做变量名，常用的临时使用的变量名包括表示整数的i，j，k，m，n和表示字母的c以及表示异常对象的e等。
+变量命名举例：int age； int student_age； String studentName； Exception e；
+6）常量：每一个单词都要大写，单词之间用"_"分开。
+常量命名举例：final static MIN_WIDTH = 4;final static DEFAULT_CONTAINER_SIZE = 20;
+7）文件的命名：java源程序文件以.java结尾，编译后的文件以.class结尾。例如：Container.java，Container.class。
+总结：类名首字母应该大写。字段、方法以及对象（句柄）的首字母应小写。对于所有标识符，其中包含的所有单词都应紧靠在一起，而且大写中间单词的首字母。若在定义中出现了常数初始化字符，则大写static final基本类型标识符中的所有字母。这样便可标志出它们属于编译期的常数。 Java包（Package）属于一种特殊情况：它们全都是小写字母，即便中间的单词亦是如此。对于域名扩展名称，如com，org，net或者edu等，全部都应小写。
+二　文件组织
+1. 一个文件由被空行分割而成的段落以及标识每个段落的可选注释共同组成。超过2000行的程序难以阅读，所以一个java程序文件中的代码行数不能超过2000行，除非有特殊原因。每个Java源文件都包含一个单一的公共类或接口。若私有类和接口与一个公共类相关联，可以将它们和公共类放入同一个源文件。公共类必须是这个文件中的第一个类或接口。
+Java源文件还遵循以下规则，这个规则规定了java程序段落的顺序：
+- 开头注释
+- 包和引入语句
+- 类和接口声明
+2.在一个Java类中，各部分顺序：
+1）属性声明
+2）构造方法声明
+3）static语句
+4）普通方法声明
+5）main方法声明
+6）内部类的声明
+总结：一般一个完整的java文件内容如下：
+1) 包的定义
+2) impot类（输入包的顺序、避免使用*）输入包应该按照java.*.*，javax.*.*，org.*.* ，com.*.*的顺序import;在import的时候不应该使用* (例如: java.util.*)
+3) 类或接口的定义
+4)静态变量定义，按public，protected，private顺序
+5)实例变量定义，按public，protected，private顺序
+6)构造方法
+7)方法定义顺序按照public方法(类自己的方法)，实现接口的方法，重载的public方法，受保护方法，包作用域方法和私有方法。
+注意：一般类中每个方法的代码行数不要超过100行。
+三　分隔和缩进
+1.使用空行
+在下述情况下使用单行的空白行来分隔：
+1）在方法之间
+2）在方法内部代码的逻辑段落小节之间
+3）在方法中声明局部变量之后，具体的Java语句之前
+4）在注释行之前
+5）在同一个源文件中定义的多个类/接口之间使用双行的空白行来分隔
+2.使用空格符
+除正常的成分之间以空格符分隔名（如数据类型和变量名之间），在下述情况下也应使用一个空格符来分隔：
+1）运算符和运算符之间，如：　c = a + b；
+2）在参数列表中的逗号后面，如： void m1（int year， int month） {}
+3）在if，for，while待语句之后　如： if （a < b） {}
+3.使用换行符
+不建议在一行中写多条语句，一条语句的长度一般超过了80个字符时，应该换行;
+当一行表达式不能在一行内显示，请按下列顺序要求拆行：
+1)在"("或"="符号后拆行
+2)在","拆行
+3)在一个操作符后拆行
+4)把并发的拆行放到同一级别上的缩进
+5)如果在拆行中再次拆分的时候遇到"("，应该新拆出来的行放在更远的一个缩进级别上
+4.使用小括号
+可以使用小括号来强行规定运算顺序
+5.使用花括号
+开始位置可以位于当前内容的尾部，也可以另起一行
+6.使用缩进
+在下述情况下应用缩进
+1）类中的成分
+2）方法体或语句块中的成分
+3）换行时的非起始行
+缩减量一般为在上一级成分的基础上再缩进四个空格，而 Eclipse 默认格式化是采用 1 个制表符的，可以采用下面的方式更改一下：Window ——< Preferences…… ——< Java ——< Code Style ——< Formatter 点右边的"Edit……"按钮，切换到第一个选项卡"Indentation"，在 General settings 组将 Tab policy 由 Table only 改为 Space only，同时把 Indentation size 和 Tab size 改为 4，最后把最上面的 Profile name 取一个名字，名字任意，再点 OK 按钮就可以了。以后按 Tab 键或者 Ctrl + Shift + F 会自动采用 4 个空格作为一个层次的缩进。在eclipse开发工具中，把代码写好之后，可以用快捷键：CTRL + SHIFT + F来自动格式化代码。
+四　声明语句
+1.变量声明：每行声明一个变量，并加注释。例如：
+int count; // number of containers
+int count, size; // AVOID THIS!
+数组声明应该采用前缀方式。例如：
+int[] table;
+String[] args;
+2.类或接口声明
+1) "{"和声明语句在同一行。
+2)如果不能在同一行显示，就将"extends"或"implements"进行拆行，并放在两个缩进级别后。
+3) "}"符号应该独自占一行。
+例如：
+public class ChiefExecutiveOfficer
+extends Manager
+implements Person {
+...
+}
+3.方法声明
+"{"和声明语句在同一行。
+"}"符号应该独自占一行。
+总结：每行声明一个变量，并尽量在声明变量的同时对其进行初始化，除非其初值尚不确定。局部变量应在其所在的方法或语句块的开头集中声明，而不应随用随声明。
+五 注释
+Java有两种注释方法。"/* This is a comment */"或 "// This is a comment"
+第一种应该被用到写JavaDoc上，并且都用"/**"开头。
+第二种适合于在做部分代码的注释，但只适合做非常短内容的注释。
+另外，对于 HTML、XML、CSS、JavaScript 我要遵守的编码规范如下：
+1，HTML、XML 由于层次缩进比较多，建议采用两个空格作为一层缩进；
+2，CSS 和 JavaScript 为了与 HTML 配合，也采用两个空格作为一层缩进；
+3，HTML、XML 的标签名、属性称全部使用小写字母，HTML 尽量能符合 XHTML 的规范，避免使用 XHTML 不推荐使用的标签，比如：font、applet 等等；
+4，HTML 的属性值采用双引号界定；
+5，JavaScript 在尽量使用标准的语法、对象等，变量声明能加上 var.字符串常量统一采用单引号界定
+</body>
+</html>

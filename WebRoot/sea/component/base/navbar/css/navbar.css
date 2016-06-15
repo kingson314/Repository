@@ -1,0 +1,152 @@
+@CHARSET "UTF-8";
+
+/*default*/
+.sea_navbar {
+	margin:0;
+	padding:0;
+	width: 100%;
+	text-align: center;
+	float: left;
+}
+
+.sea_navbar ul {
+	width: 100%;
+	margin:0;
+	padding:0;
+	border-radius: 5px;
+	list-style: none;
+}
+
+.sea_navbar li {
+	float: left;
+	height: 30px;
+	line-height: 30px;
+	color: #999;
+	background-color: #fff;
+}
+
+.sea_navbar a {
+	color: #999;
+	text-decoration: none;
+}
+
+.sea_navbar a:hover {
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.sea_navbar a:link {
+	text-decoration: none;
+}
+
+.sea_navbar a:active {
+	text-decoration: none;
+}
+
+.sea_navbar a:visited {
+	text-decoration: none;
+}
+
+.sea_navbar .active {
+	background-color: #58CAD0;
+	color: #fff;
+}
+
+.sea_navbar .active a {
+	color: #fff;
+}
+
+/*main*/
+.sea_navbar_main {
+	width: 100%;
+	height: 35px;
+	/*box-shadow: 0 0 5px #E8E7E7;*/
+	background-color: #fff;
+	z-index: 9999;
+}
+
+.sea_navbar_main ul {
+	width: 100%;
+	float: left;
+	border-radius: 5px;
+	list-style: none;
+}
+
+.sea_navbar_main li {
+	float: left;
+	text-align: center;
+	line-height: 32px;
+	color: #909090;
+	font-size: 1.2em;
+}
+
+.sea_navbar_main a {
+	color: #909090;
+}
+
+}
+.sea_navbar_main a:hover {
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.sea_navbar_main a:link {
+	text-decoration: none;
+}
+
+.sea_navbar_main a:active {
+	text-decoration: none;
+}
+
+.sea_navbar_main a:visited {
+	text-decoration: none;
+}
+
+.sea_navbar_main .active {
+	border-bottom: solid 3px #92B942;
+}
+
+}
+.sea_navbar_main .active a {
+	color: #000;
+}
+
+/*footer*/
+.sea_navbar_footer {
+	height: 57px;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background-color: #fff;
+	padding-top: 5px;
+	border-top: solid 1px #CCCDCC;
+}
+
+.sea_navbar_footer ul {
+	list-style: none;
+	padding-right:50px;
+}
+
+.sea_navbar_footer li {
+	float: left;
+	color: #6D6E6D;
+	position: relative;
+}
+
+.sea_navbar_footer img {
+	width: 40%;
+	float: left;
+	margin: 0 30%;
+}
+.sea_navbar_footer a {
+	color: #909090;
+}
+
+.sea_navbar_footer span {
+	width: 100%;
+	position:absolute;
+	top:35px;
+	text-align: center;
+	font-size: 0.9em;
+}

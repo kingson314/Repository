@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd" [
+<!ENTITY contextInclude SYSTEM "org/springframework/web/context/WEB-INF/contextInclude.xml">]>
+
+<beans>
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<!--<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl" />
+		<property name="username" value="shj" />
+		<property name="password" value="shj" />
+		-->
+			<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://127.0.0.1:3306/jiaju" />
+		<property name="username" value="jiaju" />
+		<property name="password" value="jiaju" />
+		
+		<!--
+		<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+		<property name="url" value="jdbc:sqlserver://127.0.0.1:1433;databaseName=anxin" />
+		<property name="username" value="sa" />
+		<property name="password" value="anxin" />
+		 -->
+	</bean>
+
+	<!--在WEB-INF.class目录下spy.properties  -->
+	<!--<bean id="p6spyDataSource" class="com.p6spy.engine.spy.P6DataSource">
+		<constructor-arg>
+		<ref local="dataSource" />
+		</constructor-arg>
+		</bean>
+	-->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" /><!-- 为p6spy修改了数据源， -->
+		<property name="hibernateProperties">
+			<props>
+				<!--<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>-->
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">validate</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hiberante.format_sql">true</prop>
+			</props>
+		</property>
+		<property name="configLocations">
+			<list>
+				<value>classpath*:com/*/*/entity/hibernate.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+
+	<!-- 定义事务拦截器bean-->
+	<bean id="transactionInterceptor" class="org.springframework.transaction.interceptor.TransactionInterceptor">
+		<!-- 事务拦截器bean需要依赖注入一个事务管理器-->
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributes">
+			<!-- 下面定义事务传播属性-->
+			<props>
+				<prop key="save*">PROPAGATION_REQUIRED</prop>
+				<prop key="insert*">PROPAGATION_REQUIRED</prop>
+				<prop key="add*">PROPAGATION_REQUIRED</prop>
+				<prop key="delete*">PROPAGATION_REQUIRED</prop>
+				<prop key="update*">PROPAGATION_REQUIRED</prop>
+
+				<prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+				<prop key="list*">PROPAGATION_REQUIRED,readOnly</prop>
+				<prop key="count*">PROPAGATION_REQUIRED,readOnly</prop>
+				<prop key="*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+	<!-- 
+		<bean id="transactionBese"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean"
+		lazy-init="true" abstract="true">
+		<property name="transactionManager" ref="transactionManager"></property>
+		<property name="transactionAttributes">
+		<props>
+		<prop key="add*">PROPAGATION_REQUIRED,-Exception</prop>
+		<prop key="update*">
+		PROPAGATION_REQUIRED,-Exception
+		</prop>
+		<prop key="insert*">
+		PROPAGATION_REQUIRED,-Exception
+		</prop>
+		<prop key="modify*">
+		</prop>
+		<prop key="delete*">
+		PROPAGATION_REQUIRED,-Exception
+		</prop>
+		<prop key="get*">PROPAGATION_NEVER</prop>
+		<prop key="list*">PROPAGATION_NEVER</prop>
+		</props>
+		</property>
+		</bean>
+	-->
+</beans>

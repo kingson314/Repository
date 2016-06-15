@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+数据库命名及设计规范
+1.数据库涉及字符规范
+
+我们约定：采用26个英文字母（区分大小写）和0－9这十个自然数，加上下划线_组成，共63个字符。不能出现其他字符（注释除外）。
+
+2.数据库对象命名规范
+
+我们约定，数据库对象包括表、视图（查询）、存储过程（参数查询）、函数、约束。对象名字由前缀和实际名字组成，长度不超过30。
+
+前缀：使用小写字母
+
+表        tb 
+视图        vi 
+存储过程    sp 
+函数        fn
+
+实际名字：实际名字尽量描述实体的内容，由单词或单词组合，每个单词的首字母大写，其他字母小写，不以数字和_开头。如
+
+表        User_Info 
+视图        User_List 
+存储过程    User_Delete
+
+因此，合法的对象名字类似如下。
+
+表        tbUser_Info    tbMessage_Detail
+
+视图        vi_Message_List
+
+存储过程        sp_Message_Add
+
+3.数据库表命名规范
+
+我们约定，表名由前缀和实际名字组成。
+
+前缀：使用小写字母tb，代表表。实际名字中，一个系统尽量采取同一单词，多个后面加_来连接区分。
+
+因此，合法的表名类似如下。
+
+TbMember
+
+tbMember_Info
+
+tbForum_Board
+
+tbBlog_Comment1
+
+表
+
+表名如Order/UserAccout
+
+符合以下规范：
+
+(1)统一采用单数形式，反对Orders
+
+(2)首字母大写，多个单词的话，单词首字母大写，反对order/Useraccout/ORDER
+
+(3)避免中文拼音，反对AgentBaoCi
+
+(4)避免下划线连接，反对User_Accout（下划线适用Oracle数据库）
+
+(5)避免名称过长，反对WebsiteInfomationModifyRecord
+
+(6)多对多关系表，以Mapping结尾，如UserRoleMapping
+
+(7)避免保留字
+
+4.字段命名规范
+
+我们约定，字段由表的简称,实际名字组组成。如果此字段关联另外的字段，那么加下划线_连接关联表字段的字段名。
+
+因此，合法的字段名类似如下。
+
+UserID_MeID 
+UserName 
+UserRegDate
+
+字段
+
+字段名如userID/userName/userType
+
+符合以下规范：
+
+(1)首个字母小写，多个单词的话，单词首字母大写，反对UserID/Userid
+
+(2)必须有一主键，主键不直接用ID，而是表名+ID，如userID/orderID
+
+(3)常用的字段name，不直接用name，而是表名+Name，如userName/orderName
+
+(4)常用的字段desc，不直接用desc，而是表名+Desc，如userDesc/orderDesc
+
+(5)大写字母前必须包含至少两个小写的字母，反对uID/oID
+
+(6)避免中文拼音
+
+(7)避免下划线连接
+
+(8)避免名称过长
+
+(9)避免保留字 
+
+对象
+
+(1)存储过程以SP_为前缀
+
+(2)触发器以TR_为前缀
+
+(3)函数以FN_为前缀
+
+(4)主键以PK_为前缀
+
+(5)索引以IX_为前缀
+
+(6)前缀后的首字母大写，多个单词的话，单词首字母大写，如SP_CountFee
+
+(7)所有的关键字的所有字母必须大写，如SELECT userID,username FROM User
+
+5.视图命名规范
+
+我们约定，字段由前缀和实际名字组成，中间用下划线连接。
+
+前缀：使用小写字母vi，表示视图。
+
+因此，合法的视图名类似如下。
+
+vi_User 
+vi_UserInfo
+
+6.存储过程命名规范
+
+我们约定，字段由前缀和实际名字加操作名字组成，中间用下划线连接。
+
+前缀：使用小写字母sp，表示存储过程。
+
+操作名字：Insert|Delelte|Update|Caculate|Confirm
+
+例如：
+
+sp_User_Insert
+
+7.数据库设计文档规范
+
+所有数据库设计要写成文档，文档以模块化形式表达。大致格式如下：
+
+'-------------------------------------------
+
+'    表名：    tbUser_Info
+'    作者：    
+'    日期：    2
+'    版本：    1.0 
+'    描述：    保存用户资料
+'    具体内容：
+
+'    UserId        int，自动增量        用户代码 
+'    UserName    char(12)        用户名字
+
+8.sql语句规范
+
+我们约定，所有sql关键词全部大写，比如SELECT,UPDATE,FROM,ORDER,BY等。
+</body>
+</html>

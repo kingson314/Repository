@@ -1,0 +1,505 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+CSS设计规范
+ 
+文档编写更新记录
+开始日期
+终止日期
+内容
+编写者
+审核者
+说明
+2015-01-04
+
+CSS设计规范
+冯国区
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+目录
+CSS设计规范... 1
+文档编写更新记录... 1
+1 基本规范... 2
+1.1 文件命名规范... 2
+1.2 常用类Class规范... 2
+1.3 派生选择器... 3
+1.4 书写规范... 3
+1.5命名规则书写规范... 4
+1.6属性编写顺序... 4
+1.7 辅助图片用背影图处理... 5
+1.8结构与样式分离... 5
+1.9 文档的结构化... 5
+1.10 鼠标手势... 5
+1.11 注释书写规范... 6
+1.12 样式属性代码缩写... 6
+1.13 hack书写规范... 8
+1.14 清除浮动... 9
+2 性能优化... 10
+3 常见兼容问题... 10
+4  其他说明... 11
+1.1检查CSS. 11
+1.2确定错误发生位置... 11
+1.3 float元素务必指定width属性... 11
+1.4 float元素不能指定margin和padding等属性... 11
+1.5 float元素的宽度之和要小于100%.. 11
+1.6 是否重设了默认的样式... 12
+1.7 关于高度的问题... 12
+5 相关经验... 12
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+1 基本规范
+
+1.1 文件命名规范
+
+基本样式：base.css
+全局样式：global.cs
+框架布局：layout.css
+字体样式：font.css
+链接样式：link.css
+打印样式：print.cs
+1.2 常用类Class规范
+
+页眉：header
+内容：content
+容器：container
+页脚：footer
+版权：cpright
+导航：nav
+分页：pages
+标志：logo
+留言：msg
+标语：banner
+标题：title
+边栏：sidebar
+图标：icon
+注释：note
+搜索：search
+按钮：btn
+登录：login
+链接：link
+主导航：main-nav
+子导航：sub-nav
+信息框：manage
+
+说明：常用类的命名应尽量以常见英文单词为准，做到通俗易懂，并在适当的地方注释。
+对于二级类命名，则采用组合书写的模式，两个单词之间使用中横连“-”接，如：
+搜索框：search-input
+搜索图标：search-icon
+搜索按钮：search-btn
+1.3 派生选择器
+
+可以使用派生选择器给一个元素里的子元素定义样式，在简化命名的同时，也使结构更加的清晰化，如：.main-nav ul li {
+  background:url(images/bg.gif;)
+}
+1.4 书写规范
+
+单行形式书写风格的排版约束
+1.      每一条规则的大括号 { 前后加空格
+2.      多个selector共用一个样式集，则多个selector必须写成多行形式
+3.      每一条规则结束的大括号 } 前加空格
+4.      属性名冒号之前不加空格，冒号之后加空格
+5.      每一个属性值后必须添加分号; 并且分号后空格
+例如：
+div.test { width: 100px; height: 200px;}
+a:focus,
+a:hover { position: relative; right:1px; }
+多行形式书写风格的排版约束
+1.      每一条规则的大括号 { 前添加空格
+2.      多个selector共用一个样式集，则多个selector必须写成多行形式
+3.      每一条规则结束的大括号 } 必须与规则选择器的第一个字符对齐
+4.      属性名冒号之前不加空格，冒号之后加空格
+5.      属性值之后添加分号;
+其他规范
+1.      使用单引号，不允许使用双引号
+2.      如果使用CSS3的属性，如果有必要加入浏览器前缀，则按照webkit- / -moz- /-ms- / -o- / std的顺序进行添加，标准属性写在最后，并且属性名称要对齐，例如：
+div.animation-demo {
+   -webkit-animation: mymove 5s infinite;
+  -moz-animation: mymove 5s infinite;
+  -o-animation: mymove 5s infinite
+  animation: mymove 5s infinite;
+} 
+1.5命名规则
+
+1、规则命名中，一律采用小写加中划线的方式，不允许使用大写字母或 _
+2、命名避免使用中文拼音，应该采用更简明有语义的英文单词进行组合
+3、命名注意缩写，但是不能盲目缩写，具体请参见常用的CSS命名规则
+4、不允许通过1、2、3等序号进行命名
+5、避免class与id重名
+6、id用于标识模块或页面的某一个父容器区域，名称必须唯一，不要随意新建id
+7、class用于标识某一个类型的对象，命名必须言简意赅。
+8、尽可能提高代码模块的复用，样式尽量用组合的方式
+9、规则名称中不应该包含颜色（red/blue）、定位（left/right）等与具体显示效果相关的信息。应该用意义命名，而不是样式显示结果命名。
+10、除了重置浏览器默认样式外，禁止直接为html tag添加css样式设置，例如：
+div {
+   width: 200px;
+   font-size: 16px;
+}
+11、每一条规则应该确保选择器唯一，禁止直接为全局.nav/.header/.body等类设置属性
+1.6属性编写顺序 
+
+推荐的样式编写顺序
+1、显示属性
+display/list-style/position/float/clear
+2、自身属性（盒模型）
+width/height/margin/padding/border
+3、背景
+background
+4、行高
+line-height
+5、文本属性
+color/font/text-decoration/text-align/
+text-indent/vertical-align/white-space/content
+6、其他
+cursor/z-index/zoom
+7、CSS3属性
+transform/transition/animation/box-shadow/border-radius
+8、链接的样式请严格按照如下顺序添加：
+a:link -> a:visited -> a:hover-> a:active（LoVeHAte）
+ 
+1.7 辅助图片用背影图处理 
+这里的“辅助图片”是指那些不是作为页面要表达的内容的一部分，而仅仅用于修饰、间隔、提醒的图片。将其做背影图处理，可以在不改动页面的情况下通过CSS样式来进行改动，如：
+.logo {
+  background:url(images/logo.jpg) #FEFEFE no-repeat right bottom;
+}
+1.8结构与样式分离
+
+在页面里只写入文档的结构，样式写于css文件中，通过外部调用CSS实现结构与样式分离。
+1.9 文档的结构化
+
+书写页面CSS文档都应采用结构化的书写方式，逻辑清晰易于阅读。如：   
+首页
+介绍
+服务
+/*主导航 S*/
+.main-nav  {
+  width:100%;
+  height:30px;
+  background:url(images/mainMenu_bg.jpg) repeat-x;
+}
+.main-nav  ul li {
+  float:left;
+  line-height:30px;
+  margin-right:1px;
+  cursor:pointer;
+}
+/*主导航 E*/
+1.10 鼠标手势
+
+在XHTML标准中，hand只被IE识别，当需要将鼠标手势转换为“手形”时，则将“hand”换为“pointer”，即 cursor:pointer;
+1.11 注释书写规范
+
+整段注释。分别在开始及结束地方加入注释，如1.6中所示；
+协助注释。非作者维护时所加入的表示修改时间、修改人等标识信息。在区域注释或单行注释的基础上加上修改人和修改时间等信息。如：
+区域注释
+/* ** S 注释内容[修改人和修改时间] */
+.class{...}
+.class{...}
+/* ** E*/
+单行注释
+.class{/* 注释内容[修改人和修改时间] */
+}
+1.12 样式属性代码缩写
+
+对于两个不同的类，但是其中有部分相同甚至是全部相同的属性及属性值时，应对其加以合并缩写，特别是当有多个不同的类而有相同的属性及属性值时，合并缩写可以减少代码
+并易于控制。如：
+.main-nav  {
+  background:url(../images/bg.gif);
+  border:1px solid #333;
+  width:100%;
+  height:30px;
+  overflow:hidden;
+}
+.sub-nav {
+  background:url(../images/bg.gif);
+  border:1px solid #333;
+  width:100%; 
+  height:20px;
+  overflow:hidden;
+}
+两个不同类的属性值有重复之处，刚可以缩写为：
+.main-nav , .sub-nav {
+  background:url(../images/bg.gif);
+  border:1px solid #333;
+  width:100%;
+  overflow:hidden;
+}
+.main-nav {
+  height:30px;
+}
+.sub-nav {
+  height:20px;
+}
+同一属性的缩写
+同一属性根据它的属性值也可以进行简写，如：
+.search {
+  background-color:#333;
+  background-image:url(../images/icon.gif);
+  background-repeat: no-repeat;
+  background-position:50% 50%;
+}
+.search {
+  background:#333 url(../images/icon.gif) no-repeat 50% 50%;
+}
+内外侧边框的缩写
+在CSS中关于内外侧边框的距离是按照[上右下左]的顺序来排列的，当这四个属性值不同时，
+也可直接缩写，如：
+.btn {
+  margin-top:10px;
+  margin-right:8px;
+  margin-bottom:12px;
+  margin-left:5px;
+  padding-top:10px;
+  padding-right:8px;
+  padding-bottom:12px;
+  padding-left:8px;
+}
+则可缩写为：
+.btn {
+  margin:10px 8px 12px 5px;
+  padding:10px 8px 12px 5px;
+}
+而如果当上边与下边、左边与右边的边框属性值相同时，则属性值可直接缩写为两个，如：
+.btn {
+  margin-top:10px;
+  margin-right:5px;
+  margin-bottom:10px;
+  margin-left:5px;
+}
+缩写为：
+.btn {
+  margin:10px 5px;
+}
+而当上下左右四个边框的属性值都相同时，则可以直接缩写成一个，如：
+.btn {
+  margin-top:10px;
+  margin-right:10px;
+  margin-bottom:10px;
+  margin-left:10px;
+}
+缩写为：
+.btn{
+  margin:10px;
+}
+颜色值的缩写
+当RGB三个颜色值数值相同时，可缩写颜色值代码。如：
+.menu {
+  color:#ff3333;
+}
+可缩写为：
+.menu {
+  color:#f33;
+}
+1.13 hack书写规范
+
+因为不同浏览器对W3C标准的支持不一样，各个浏览器对于页面的解释呈视也不尽相同，如IE在很多情况下就与FF存在3px的差距，对于这些差异性，就需要利用css的hack来进行调整，当然在没有必要的情况下，最好不要写hack来进行调整，避免因为hack而导致页面出现问题。
+IE6、IE7、Firefox之间的兼容写法
+[写法一]
+IE都能识别*；
+标准浏览器(如FF)不能识别*；
+IE6能识别*，但不能识别 !important,IE7能识别*，也能识别!important;
+FF不能识别*，但能识别!important;
+根据上述表达，同一类/ID下的CSS的hack可写为：
+.search-input {
+  background-color:#333; /* 三者皆可 */
+  *background-color:#666!important; /* 仅IE7 */
+  *background-color:#999; /* 仅IE6及IE6以下 */
+}
+一般三者的书写顺序为：FF、IE7、IE6。
+[写法二]
+IE6可识别“_”，而IE7及FF皆不能识别，所以当只针对IE6与IE7及FF之间的区别时，可写为：
+.search-input {
+  background-color:#333; /* 通用 */
+  _background-color:#666; /* 仅IE6可识别 */
+}
+[写法三]
+*+html 与 *html 是IE特有的标签, Firefox 暂不支持。
+.search-input {
+  background-color:#333;
+}
+*html .search-input {
+  background-color:#666;
+} /* 仅IE6 */
+*+html .search-input {
+  background-color:#555;
+} /* 仅IE7 */
+屏蔽IE浏览器
+select是选择符，根据情况更换。第二句是MAC上safari浏览器独有的。
+*:lang(zh) select {
+  font:12px !important;
+} /* FF的专用 */
+select:empty {
+  font:12px !important;
+} /* safari可见 */
+IE6可识别
+通过CSS注释分开一个属性与值，注释在冒号前。如：
+select {
+  display /* IE6不识别 */:none;
+}
+IE的if条件hack写法
+所有IE识别 Only IE 
+仅IE5识别 Only IE 5.0
+IE5及IE5.5都识别 Only IE 5.0+ 
+仅IE6识别 Only IE 6- 
+IE5.x ~ IE6识别 Only IE 6/+ 
+仅IE7识别 Only IE 7/-
+1.14 清除浮动
+
+在Firefox中，当子级都为浮动时，那么父级的高度就无法完全的包住整个子级，此时，用
+这个清除浮动的hack来对父级做一次定义，可以解决该问题。如：
+select:after {
+  content:".";
+  display:block;
+  height:0;
+  clear:both;
+  visibility:hidden;
+}
+2 性能优化
+
+1.      选择器应该在满足功能的基础上尽量简短，减少选择器嵌套，查询消耗。但是一定要避免覆盖全局样式设置。
+2.      注意选择器的性能，不要使用低性能的选择器，例如：
+div > * {}
+ul > li > a {}
+body.profile ul.tabs.nav li a {}
+3.      禁止在css中使用*选择符
+4.      除非必须，否则，一般有class或id的，不需要再写上元素对应的tag，例如：
+div#test { width: 100px; }
+5.      0后面不需要单位，比如0px可以省略成0，0.8px可以省略成.8px
+6.      如果是16进制表示颜色，则颜色取值应该大写。
+7.      如果可以，颜色尽量用三位字符表示，例如#AABBCC写成#ABC
+8.      如果没有边框时，不要写成border:0，应该写成border:none
+9.      尽量避免使用AlphaImageLoader
+10.    在保持代码解耦的前提下，尽量合并重复的样式
+11.    background、font等可以缩写的属性，尽量使用缩写形式
+ 
+3 常见兼容问题
+
+DOCTYPE 影响 CSS 处理
+FF：div设置 margin-left, margin-right为 auto时已经居中, IE不行
+FF：body设置text-align，div需设置margin: auto(主要是margin-left,margin-right) 
+方可居中
+FF：设置padding后, div会增加 height 和 width, 但IE不会, 故需要用!important多设一个 height 和 width
+FF：支持 !important, IE 则忽略, 可用 !important 为 FF 特别设置样式
+div 垂直居中:vertical-align:middle;将行距增加到和整个DIV同高line-height:200px; 
+然后插入文字。缺点是要控制内容不要换行
+cursor: pointer 可以同时在 IE FF 中显示游标手指状， hand 仅 IE 可以
+FF: 链接加边框和背景色，需设置 display: block, 同时设置 float: left 保证不换行。
+参照 menubar, 给 a 和 menubar 设置高度是为了避免底边显示错位, 若不设height，可在menubar 中插入一个空格。
+在mozilla firefox和IE中的BOX模型解释不一致导致相差2px。解决方法：
+div{
+  margin:30px !important;
+  margin:28px;
+}
+注意这两个margin的顺序一定不能写反，所以不可以只写margin:**px !important; 
+ul标签在Mozilla中默认是有padding值的,而在IE中只有margin有值所以先定义程序代码
+ul{
+  margin:0;padding:0;
+}
+4  其他说明
+
+1.1检查CSS
+
+检查一下有无拼写错误、是否忘记结尾的 } 等。可以利用CleanCSS来检查 CSS的拼写错误。CleanCSS本是为CSS减肥的工具，但也能检查出拼写错误。
+1.2确定错误发生位置
+
+如果错误影响了整体布局，则可逐个删除div块，直到删除某个div块后显示正常，即可确定错误发生的位置。利用border属性确定出错元素的布局特性，使用float属性布局易出错。这时为元素添加border属性确定元素边界，错误原因即水落石出
+1.3 float元素务必指定width属性 
+
+很多浏览器在显示未指定width的float元素时会有bug。所以不管float元素内容如何，一定要为其指定width属性。另外指定属性值时尽量使用em而不是px做单位。
+1.4 float元素不能指定margin和padding等属性
+
+IE在显示指定了margin和padding的float元素时有bug。因此不要对float元素指定margin和padding属性（可以在float元素内部嵌套一个div来设置margin和padding）。也可以使用hack方法为IE指定特别的值。
+1.5 float元素的宽度之和要小于100%
+
+如果float元素宽度之和为100%，某些老浏览器不能正常显示。因此保证宽度之和小于99%。
+1.6 是否重设了默认的样式
+
+某些属性如margin、padding等，不同浏览器会有不同的解释。因此在开发前首先将全体的
+margin、padding设置为0、列表样式设置为none等。
+1.7 关于高度的问题
+
+如果是动态地添加内容，高度最好不要定义。浏览器可以自动伸缩，而如果是静态的内容，高度最好定好。
+5 相关经验
+
+1、字体名称请映射成对应的英文名，例如：黑体(SimHei) 宋体(SimSun) 微软雅黑 (Microsoft Yahei)，如果字体名称中有空格，则必须加单引号。
+2、背景图片请合理使用csssprites，按照模块、业务、页面来划分均可
+3、css背景图片的文件类型，请按照以下原则来保存：
+3.1 如果背景图片有动画，则保存成gif
+3.2 如果没有动画，也没有半透明效果，则保存成png-8
+3.3 如果有半透明效果，则保存成png-24
+4、不要在html中加入标签来清理浮动，通过在浮动元素的父元素上添加.clearfix来清除浮动
+5、为了SEO和页面可用性，请使用text-indent来隐藏文本内容。
+6、制作csssprites时，尽量把颜色相近的图标放在一起，存储为png8格式，存储完以后还能用一些压缩工具进行无损压缩。
+7、避免过小的背景图片平铺。
+8、尽量少用!important
+9、避免使用非一次性expression
+ 
+
+</body>
+</html>

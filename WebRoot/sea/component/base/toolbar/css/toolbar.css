@@ -1,0 +1,41 @@
+@CHARSET "UTF-8";
+.sea_toolbar{
+	position:relative;
+	height:35px;
+	line-height:35px;
+	border:1px solid #ccc;
+	background:linear-gradient(top,#EAEAEA,#f0f0f0,#EAEAEA);
+	background:-moz-linear-gradient(top,#EAEAEA,#f0f0f0,#EAEAEA);
+	background:-webkit-linear-gradient(top,#EAEAEA,#f0f0f0,#EAEAEA);
+}
+.sea_toolbar ul{
+	margin:0;
+	padding:0;
+}
+.sea_toolbar li{
+	margin:0;
+	padding:0;
+	list-style-type:none;
+}
+.sea_toolbar a{ 
+	padding:8px 20px;
+	color: #555;
+	font-weight:bold;
+	cursor: pointer;
+	text-decoration: none;
+	border-right:1px solid #aaa;
+}
+
+.sea_toolbar a:hover {
+	color:#08c;
+	text-decoration: none;
+}
+.sea_toolbar a:link {
+	text-decoration: none;
+}
+.sea_toolbar a:visited {
+	text-decoration: none;
+}
+.sea_toolbar a:active {
+	text-decoration: none;
+}

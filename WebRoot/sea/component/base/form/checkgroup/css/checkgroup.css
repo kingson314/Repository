@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+.sea_checkgroup{
+	text-align:center;	
+}
+.sea_buttongrou ul{
+}
+.sea_checkgroup li{
+	display: inline;
+	list-style-type:none;
+	margin:20px;
+}
+.sea_checkgroup input{ 
+	border-radius: 4px;
+	color: #fff;
+	cursor: pointer;
+	vertical-align:middle;
+}
+
+.sea_checkgroup label{
+	vertical-align:middle;
+}
+ 

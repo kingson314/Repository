@@ -1,0 +1,40 @@
+@CHARSET "UTF-8"; 
+.sea_bread{
+	margin:0;
+	padding:0;
+	background:-ms-linear-gradient(left,#EAEAEA,#F0F0F0,#FFFFFF);
+	background:-moz-linear-gradient(left,#EAEAEA,#F0F0F0,#FFFFFF);
+	background:-webkit-linear-gradient(left,#EAEAEA,#F0F0F0,#FFFFFF);
+	text-align:left; 
+} 
+ 
+.sea_bread ul{
+	margin:0;
+	padding-left:5px;
+}
+.sea_bread li{
+	display: inline;
+	list-style-type:none;
+	line-height:30px;
+	height:30px;
+	margin-right:3px;
+}
+.sea_bread a{  
+	color: #000;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.sea_bread a:hover { 
+	text-decoration: none;
+}
+.sea_bread a:link {
+	text-decoration: none;
+}
+.sea_bread a:visited {
+	text-decoration: none;
+}
+
+.sea_bread a:active {
+	text-decoration: none;
+}
