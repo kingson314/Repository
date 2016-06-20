@@ -30,7 +30,7 @@ define(function(require, exports, module) {
 			$.each(me.configs.items,function(index,item){
 				var li;
 				if(item.icon){
-					li=$("<li></li>").append("<a href='#'><span  class='"+item.icon+"'></span>"+item.value+"</a>").appendTo(ul);
+					li=$("<li></li>").append("<a href='#'><i  class='"+item.icon+"'></i>&nbsp;"+item.value+"</a>").appendTo(ul);
 				}else{
 					li=$("<li></li>").append("<a href='#'>"+item.value+"</a>").appendTo(ul);
 				}

@@ -12,6 +12,8 @@ define(function(require, exports, module) {
 		cls:"",
 		css:{},
 		attr:{disabled:false,maxLen:0},
+		url:null,//返回[{value:"",text:""},{...}]
+		params:{},//url时生效
 		options:[],
 		events:{
 			click:null,
@@ -27,11 +29,29 @@ define(function(require, exports, module) {
 		//初始化
 		this.select=this._input= $("<select></select>");
 		this.select.append("<option value=''>"+this._lang["please.select"]+"</option>");
-		var len=this.configs.options.length;
-		for(var i=0;i<len;i++){
-			var item=this.configs.options[i];
-			this.select.append("<option value='"+item.value+"'>"+item.text+"</option>");
-		};
+		if(this.configs.url){
+			Ajax=require("Ajax");
+			$.ajax({
+				type:"get",
+				url:Ajax.getUrl(this.configs.url),
+				data:this.configs.params,
+				cache:false,
+				dataType:"json",
+				success:function(result,status,xhr){
+					var len=result.length;
+					for(var i=0;i<len;i++){
+						var item=result[i];
+						this.select.append("<option value='"+item.value+"'>"+item.text+"</option>");
+					};
+				}
+			}); 
+		}else{
+			var len=this.configs.options.length;
+			for(var i=0;i<len;i++){
+				var item=this.configs.options[i];
+				this.select.append("<option value='"+item.value+"'>"+item.text+"</option>");
+			};
+		}
 		this.init();
 	};
 	//类公共方法

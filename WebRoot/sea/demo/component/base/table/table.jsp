@@ -16,7 +16,6 @@
 					var cfgTable = {
 							id: "test",
 							url: "user/list",
-							cardview: true,
 							columns: [{
 								field: 'id',
 								title: 'ID',

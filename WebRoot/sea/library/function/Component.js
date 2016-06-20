@@ -228,4 +228,17 @@ define(function(require, exports, module) {
 	exports.enabled=function(jq){
 		return jq.attr("disabled","");
 	}
+	
+	exports.getSize=function(val){
+		if((val+"").indexOf('%')>0){
+			return val;
+		}else {
+			try{
+				val=parseFloat(val);
+			}catch(e){
+				return val;
+			}
+			return val+'px'
+		}
+	}
 });

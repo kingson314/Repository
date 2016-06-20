@@ -14,7 +14,7 @@
 					function(Grid){
 					$("body").Grid({
 						columns:[
-						      	{align:"left",name:"name",label:"用户名" },
+						      	{align:"left",name:"name",label:"用户名"},
 					           	{align:"left",name:"userAlias",label:"用户别名" },
 					           	{align:"left",name:"sex",label:"性别" ,format:{type:"json",content:{"0":"男","1":"女"}} },
 					           	{align:"left",name:"postId",label:"邮政地址" },

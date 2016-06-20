@@ -1,21 +1,24 @@
 @CHARSET "UTF-8";
-body {
-	margin: 0 auto;
-	padding: 0;
-}
 input,textarea,select{
 	margin: 0;
 	padding: 0;
 	background-color: #FFFFFF;
 	box-sizing: border-box;
 }
-input[type=text],input[type=password] {
+input[type=text],input[type=password],select{
 	padding: 0 3px;
 	width: 100%;
 	height: 24px;
 	line-height: 24px;
 	color: #333333;
 	border: 1px solid #CCCCCC;
+}
+input[type=radio],input[type=checkbox]{
+	padding: 0 3px;
+	width: 20px;
+	height: 24px;
+	line-height: 24px;
+	color: #333333;
 }
 input[type=button] {
 	padding: 8px;
@@ -31,38 +34,42 @@ input[type=button] {
 	border: 1px solid #DDDDDD;
 	cursor: pointer;
 }
-input[type=button]:hover,input[type=text]:hover,input[type=password]:hover {
+select:hover,input[type=button]:hover,input[type=text]:hover,input[type=password]:hover,input[type=radio]:hover,input[type=checkbox]:hover{
 	outline: none;
 	border: 1px solid #51A7E8;
 	box-shadow: inset 0 3px 3px rgba(0, 0, 0, 0.075), 0 0 5px rgba(81, 167, 232, 0.5);
 }
-input[type=button]:focus,input[type=text]:focus,input[type=password]:focus {
+select:focus,input[type=button]:focus,input[type=text]:focus,input[type=password]:focus,input[type=radio]:focus,input[type=checkbox]:focus{
 	outline: none;
 	border: 1px solid #51A7E8;
-	box-shadow: inset 0 3px 3px rgba(0, 0, 0, 0.075), 0 0 5px rgba(81, 167, 232, 0.5);
 }
 .sea_formLayout{
-	background-color:#ffffff;/*#F8F8F8;*/
+	background-color:#ffffff;
+	border:1px solid #d5d5d5; 
+	 border-radius: 4px 4px 0 0;
+	 line-height:200%;
 }
 .sea_formLayout_title {
-	padding:0 5px;
-	height: 30px;
-	color: #fff;/*#4C4C4C;*/ 
-	text-align: left;
-	line-height: 30px;
-	font-weight: bold;
-	font-size: 16px;
-	border-left:1px solid #D2D2D2;
-	border-top: 1px solid #D2D2D2;
-	border_right:1px solid #D2D2D2 ;
-	background-color:#0B74BF;/* #E1E1E3;*/
-   border-radius: 4px 4px 0 0;
+	text-align:left;
+    background-color: #F6F6F6;
+	background-image: -webkit-gradient(linear, 0 0%, 0 100%, from(#F9F9F9), to(#EDEDED));
+	background-image: -webkit-linear-gradient(top, #F9F9F9 0%, #EDEDED 100%);
+    background-image: -moz-linear-gradient(top, #F9F9F9 0%, #EDEDED 100%);
+    background-image: -ms-linear-gradient(top, #F9F9F9 0%, #EDEDED 100%);
+    background-image: -o-linear-gradient(top, #F9F9F9 0%, #EDEDED 100%);
+    background-image: linear-gradient(top, #F9F9F9 0%, #EDEDED 100%);
+  
+	border-bottom:1px solid #d5d5d5; 
+    box-shadow: 0 1px 0 0 #FFFFFF inset, 0 1px 0 rgba(255,255,255,0.4);
+    height: 35px;
+    line-height: 35px;
+    padding: 0 10px;
 } 
 .sea_formLayout_table {
 	background-color: transparent;
-	border:1px solid #D9D9D9;
 }
 .sea_formLayout_tr {
+	margin-top:5px;
 	padding: 6px 10px;
 	text-align: left;
 	background-color: transparent;
@@ -85,7 +92,6 @@ input[type=button]:focus,input[type=text]:focus,input[type=password]:focus {
 .sea_formLayout_label label {
 	word-wrap: break-word;
 	background-color: transparent;
-	font:normal normal 14px/20px arial,sans-serif;
 	padding-right:5px;
 }
 .sea_formLayout_field {
@@ -93,6 +99,7 @@ input[type=button]:focus,input[type=text]:focus,input[type=password]:focus {
 }
 .sea_checkLabel,.sea_radioLabel{
 	cursor: pointer;
+	vertical-algin:middle;
 }
 .sea_checkGroup{
 	background-color: transparent;

@@ -15,10 +15,16 @@
 				var centerCenterIframe=Iframe.create({id : "centerIframe"}).iframe;
 				var Border=BorderLayout.create({
 					north:{
-						height:130,
+						height:115,
 						north:{
 							height:80,
-							item:"<div style='text-align:center;height:80px;line-height:80px;width:100%;font-weight:bold;font-size:26px;color:#fff;background-color:#999;'>基于SeaJS模块组件架构</div>"
+							//item:"<div style='background:url(<%=basePath%>sea/core/css/images/bg.jpg) no-repeat left 0% bottom 50%;text-align:left;padding:0 50px;height:80px;line-height:80px;width:100%;font-weight:bold;font-size:26px;color:#222;border:1px solid #ddd;background-color:#f8f8f8;'>"
+							//	+"<img  style='margin-right:10px;width:40px' src='<%=basePath%>sea/core/css/images/logo.png'/>基于SeaJS模块组件架构</div>"
+							item:"<div style='	background-color: #F5F5F5;"
+								+"background:-ms-linear-gradient(left,#FFFFFF,#EEEEFF,#F5F5F5);"
+								+"background:-moz-linear-gradient(left,#FFFFFF,#EEEEFF,#F5F5F5);"
+								+"background:-webkit-linear-gradient(left,#FFFFFF,#EEEEFF,#F5F5F5);text-align:left;padding:0 50px;height:80px;line-height:80px;width:100%;font-weight:bold;font-size:26px;color:#222;border:1px solid #ddd;'>"
+								+"<img  style='margin-right:10px;width:40px' src='<%=basePath%>sea/core/css/images/logo.png'/>基于SeaJS模块组件架构</div>"
 						},
 						center:{
 							item:northNav
@@ -88,9 +94,9 @@
 					}else{
 						Border.getWest().append($("."+$(this).attr("link")).Menu().show());
 					}
-					Border.getWest().css({"overflow-y":"auto"});
+					Border.getWest().css({"overflow-y":"auto","overflow-x":"hidden"});
 				});
-				$(".sea_menu").height(Border.getWest().height()-50);
+				//$(".sea_menu").height(Border.getWest().height()-50);
 			});
 		});
 	</script>

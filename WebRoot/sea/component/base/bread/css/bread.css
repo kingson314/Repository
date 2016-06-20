@@ -2,6 +2,7 @@
 .sea_bread{
 	margin:0;
 	padding:0;
+	background-color: #F6F6F6;
 	background:-ms-linear-gradient(left,#EAEAEA,#F0F0F0,#FFFFFF);
 	background:-moz-linear-gradient(left,#EAEAEA,#F0F0F0,#FFFFFF);
 	background:-webkit-linear-gradient(left,#EAEAEA,#F0F0F0,#FFFFFF);

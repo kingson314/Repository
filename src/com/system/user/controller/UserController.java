@@ -1,9 +1,6 @@
 package com.system.user.controller;
 
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -14,10 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.system.user.entity.User;
 import com.system.user.service.IUserService;
-
 import common.util.UtilGuid;
 import common.util.conver.UtilConver;
-import common.util.json.UtilJackSon;
 import common.util.log.UtilLog;
 
 import framework.base.controller.BaseContorller;
@@ -41,10 +36,12 @@ public class UserController extends BaseContorller<User> {
 			UtilLog.logDebug(entry.getKey() + " = " + entry.getValue());
 		}
 		Result result = this.userService.list(this.pageParams.get("curPage"), this.pageParams.get("limit"), "from User", this.mapParams);
+		//Result result = this.userService.list(this.pageParams.get("offset"), this.pageParams.get("limit"), "from User",null);
 		this.print(result);
 	}
 	@RequestMapping("get")
-	public void get() {
+	
+public void get(){
 		for (Map.Entry<String, Object> entry : this.mapParams.entrySet()) {
 			UtilLog.logDebug(entry.getKey() + " = " + entry.getValue());
 		}
@@ -52,6 +49,7 @@ public class UserController extends BaseContorller<User> {
 		User user = this.userService.get(id);
 		this.print(new Result(user));
 	}
+	
 	@RequestMapping("add")
 	public void insertUser() {
 		for (Entry<String, Object> entry : this.mapParams.entrySet()) {
@@ -103,7 +101,6 @@ public class UserController extends BaseContorller<User> {
 		mapParam.put("success","FGQ");
 		return this.forward("com/system/user/reset", mapParam) ;
 	}
-	
 
 	@RequestMapping("forget")
 	public String forget(User user) throws Exception {
@@ -120,7 +117,6 @@ public class UserController extends BaseContorller<User> {
 		mapParam.put("success","FGQ");
 		this.print(new Result(true));
 	}
-	
 	
 	@RequestMapping("register")
 	public String register(User user) throws Exception {

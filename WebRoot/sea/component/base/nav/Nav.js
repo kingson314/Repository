@@ -4,9 +4,8 @@ define(function(require, exports, module) {
 	; (function($, window, document, undefined) {
 		var pluginName = 'Nav',
 		defaults = {
-			height: '50px',
+			height: '35px',
 			subHeight: '20px',
-			fontSize: '16px',
 			subWidth: '180px',
 			floating: 'left',
 			transform: true,
@@ -16,12 +15,12 @@ define(function(require, exports, module) {
 			iconColor: '#ffffff',
 			iconSize: '20px',
 			mobileMainColor: '#323231',
-			mainColor: '#323231',
+			mainColor: '#0b74bf',
 			secondColor: '#FFB40C',
 			fontColor: '#ffffff',
 			activeFontColor: '#ffffff',
-			borderLightColor: '#444444',
-			borderDarkColor: '#222222',
+			borderLightColor: '#0b74bf',
+			borderDarkColor: '#0b74bf',
 			dropBorderLightColor: '#444444',
 			dropBorderDarkColor: '#222222'
 		};

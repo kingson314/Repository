@@ -7,7 +7,7 @@
 .sea_checkgroup li{
 	display: inline;
 	list-style-type:none;
-	margin:20px;
+	margin:0 20px;
 }
 .sea_checkgroup input{ 
 	border-radius: 4px;

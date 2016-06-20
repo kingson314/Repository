@@ -1,4 +1,4 @@
-<%@page language="java" contentType="text/html; charset=gbk"%>
+<%@page language="java" contentType="text/html; charset=GBK"%>
 <meta name="viewport" content=" initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <%
 	String basePath=request.getScheme() + "://"+ request.getServerName() + ":" + request.getServerPort()+ request.getContextPath() + "/";
@@ -10,10 +10,11 @@
 <script src="<%=basePath%>sea/core/jquery/jquery.js"></script>
 <script src="<%=basePath%>sea/core/sea/sea.js"></script>
 <script src="<%=basePath%>sea/core/sea/sea.css.js"></script>
-<link href="<%=basePath %>sea/core/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-<%--<link href="<%=basePath%>sea/core/css/css.css" rel="stylesheet" type="text/css"/>
+<%--<link href="<%=basePath %>sea/core/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
 <link href="<%=basePath%>sea/core/css/icon.css" rel="stylesheet" type="text/css"/>
---%><script>
+--%>
+<link href="<%=basePath%>sea/core/css/normalize.css" rel="stylesheet" type="text/css"/>
+<script>
 		var Cookie={
 				//theme: "-touch"
 				theme: ""
@@ -139,7 +140,8 @@
 				BorderLayout: "<%=basePath%>sea/component/base/layout/borderlayout/BorderLayout",
 				FormLayout  : "<%=basePath%>sea/component/base/layout/formlayout/FormLayout",
 				TabLayout   : "<%=basePath%>sea/component/base/layout/tablayout/TabLayout",
-				GridLayout : "<%=basePath%>sea/component/base/layout/tablelayout/GridLayout"
+				GridLayout : "<%=basePath%>sea/component/base/layout/tablelayout/GridLayout",
+				ViewLayout : "<%=basePath%>sea/component/base/layout/viewlayout/ViewLayout"
 			},
 			charset: 'utf-8'
 		});

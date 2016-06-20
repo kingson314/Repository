@@ -20,7 +20,7 @@
 							    icon: "icon-flag",
 							    value: "simple dialogBox",
 							    click: function() {
-							      Dialog.create({
+							     	Dialog.alert({
 							        content: 'dialog content text,image,html file'
 							      });
 							    }
@@ -29,7 +29,7 @@
 							    icon: "icon-flag",
 							    value: "stantard dialogBox",
 							    click: function() {
-							      Dialog.create({
+							      Dialog.confirm({
 							        title: 'title text',
 							        hasClose: true,
 							        content: 'dialog content text,image,html file'
@@ -40,9 +40,9 @@
 							    icon: "icon-flag",
 							    value: "custom size dialogBox",
 							    click: function() {
-							      Dialog.create({
+							      Dialog.confirm({
 							        width: 500,
-							        height: 600,
+							        height: 300,
 							        //title: 'title text',
 							        hasClose: true,
 							        hasMask: true,
@@ -55,7 +55,7 @@
 							    icon: "icon-flag",
 							    value: "auto close dialogBox",
 							    click: function() {
-							      Dialog.create({
+							      Dialog.confirm({
 							        autoHide: true,
 							        time: 3000,
 							        title: 'title text',
@@ -67,7 +67,7 @@
 							    icon: "icon-flag",
 							    value: "mask dialogBox",
 							    click: function() {
-							      Dialog.create({
+							      Dialog.confirm({
 							        hasClose: true,
 							        hasMask: true,
 							        title: 'title text',
@@ -79,7 +79,7 @@
 							    icon: "icon-flag",
 							    value: "btn dialogBox",
 							    click: function() {
-							      Dialog.create({
+							      Dialog.confirm({
 							        hasClose: true,
 							        hasBtn: true,
 							        confirmValue: 'I am sure',
@@ -96,7 +96,7 @@
 							    icon: "icon-flag",
 							    value: "effect dialogBox",
 							    click: function() {
-							      Dialog.create({
+							      Dialog.confirm({
 							        width: 500,
 							        height: 260,
 							        autoHide: true,
@@ -111,7 +111,7 @@
 							    icon: "icon-flag",
 							    value: " type dialogBox",
 							    click: function() {
-							      Dialog.create({
+							      Dialog.confirm({
 							        type: 'correct' ,//three type:'normal'(default),'correct','error'
 							        width: 300,
 							        height: 200,
