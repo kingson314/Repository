@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<script type="text/javascript" src="../jquery/jquery.js"></script>
+	<script type="text/javascript" src="jquery.dragsort-0.4.min.js"></script>
+</head>
+<body>
+	<table border="1">
+  <thead>
+    <tr>
+      <td>
+        编号
+      </td>
+      <td>
+        字段名称
+      </td>
+      <td>
+        字段类型
+      </td>
+      <td>
+        字段长度
+      </td>
+    </tr>
+  </thead>
+  <tbody id="tableFieldsBody">
+    <tr>
+      <td>
+        0
+      </td>
+      <td>
+        <input type="text" value="id">
+      </td>
+      <td>
+        <input type="text" value="int">
+      </td>
+      <td>
+        <input type="text" value="null">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        1
+      </td>
+      <td>
+        <input type="text" value="version">
+      </td>
+      <td>
+        <input type="text" value="int">
+      </td>
+      <td>
+        <input type="text" value="null">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        2
+      </td>
+      <td>
+        <input type="text" value="auth_code">
+      </td>
+      <td>
+        <input type="text" value="longtext">
+      </td>
+      <td>
+        <input type="text" value="4294967295">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        3
+      </td>
+      <td>
+        <input type="text" value="client_refresh_auth_code_interval">
+      </td>
+      <td>
+        <input type="text" value="int">
+      </td>
+      <td>
+        <input type="text" value="null">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        4
+      </td>
+      <td>
+        <input type="text" value="create_time">
+      </td>
+      <td>
+        <input type="text" value="int">
+      </td>
+      <td>
+        <input type="text" value="null">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        5
+      </td>
+      <td>
+        <input type="text" value="description">
+      </td>
+      <td>
+        <input type="text" value="longtext">
+      </td>
+      <td>
+        <input type="text" value="4294967295">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        6
+      </td>
+      <td>
+        <input type="text" value="host_address">
+      </td>
+      <td>
+        <input type="text" value="longtext">
+      </td>
+      <td>
+        <input type="text" value="4294967295">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        7
+      </td>
+      <td>
+        <input type="text" value="manager_id">
+      </td>
+      <td>
+        <input type="text" value="int">
+      </td>
+      <td>
+        <input type="text" value="null">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        8
+      </td>
+      <td>
+        <input type="text" value="modify_time">
+      </td>
+      <td>
+        <input type="text" value="int">
+      </td>
+      <td>
+        <input type="text" value="null">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        9
+      </td>
+      <td>
+        <input type="text" value="name">
+      </td>
+      <td>
+        <input type="text" value="longtext">
+      </td>
+      <td>
+        <input type="text" value="4294967295">
+      </td>
+    </tr>
+  </tbody>
+</table>
+	<br/>
+	<!--<textarea name="listhaoSortOrder" id="listhaoSortOrder" rows=10 cols=100></textarea>
+	--><script type="text/javascript">
+		$(document).ready(function(){
+			$("#tableFieldsBody").dragsort({ itemSelector: "tr", dragSelector: "tr", dragBetween: true,dragEnd: function(){}, placeHolderTemplate: "<tr></tr>" });
+		});
+	//	function saveOrder1() {
+		//	var data = $("[name='biaozhi']").map(function() { return $(this).html(); }).get();
+		//	$("#listhaoSortOrder").val(data.join("|"));
+	//	};
+	</script>
+</body>
+</html>

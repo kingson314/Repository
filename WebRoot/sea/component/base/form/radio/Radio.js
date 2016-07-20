@@ -35,6 +35,10 @@ define(function(require, exports, module) {
 			}else{ 
 				return this._input.attr("checked");
 			}
+		},
+		//清空函数
+		clear:function(){
+			this._input.removeAttr("checked");
 		}
 	});
 	/** * 输出类对象 ** */

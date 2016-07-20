@@ -1,0 +1,34 @@
+@CHARSET "UTF-8";
+.sea_thumbnail {
+	position: absolute;
+	top: 0;
+	right: 0;
+	vertical-align: middle;
+	margin:0 auto;
+}
+.sea_thumbnail_img {
+	float: left;
+	border: 3px solid #FFFFFF;
+	margin-right: 5px;
+	box-shadow: inset 3px 3px 3px rgba(0, 0, 0, 0.075), 0 0 5px rgba(0, 0, 0, 0.8);
+}
+.sea_thumbnail_caption {
+	margin-top:2px;
+	line-height: 24px;	
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+.sea_thumbnail_title {
+	font-size: 14px;
+	color: #666;
+	font-weight: 900;
+}
+.sea_thumbnail_content {
+	font-size: 12px;
+	color: #777;
+	line-height: 18px;
+	font-weight: normal;
+	white-space:normal;
+	word-wrap:break-word;
+}

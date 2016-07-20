@@ -10,10 +10,9 @@
 <script src="<%=basePath%>sea/core/jquery/jquery.js"></script>
 <script src="<%=basePath%>sea/core/sea/sea.js"></script>
 <script src="<%=basePath%>sea/core/sea/sea.css.js"></script>
-<%--<link href="<%=basePath %>sea/core/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-<link href="<%=basePath%>sea/core/css/icon.css" rel="stylesheet" type="text/css"/>
---%>
 <link href="<%=basePath%>sea/core/css/normalize.css" rel="stylesheet" type="text/css"/>
+<script src="<%=basePath%>sea/component/base/form/datetime/jedate/jedate.js"></script>
+<link href="<%=basePath%>sea/component/base/form/datetime/jedate/skin/jedate.css" rel="stylesheet" type="text/css" />
 <script>
 		var Cookie={
 				//theme: "-touch"
@@ -94,6 +93,7 @@
 				ComponentLang  :"<%=basePath%>sea/component/Component.lang",
 				/***插件库——基础插件***/
 				Bread       : "<%=basePath%>sea/component/base/bread/Bread",
+				Choice       : "<%=basePath%>sea/component/base/choice/Choice",
 				Dialog       : "<%=basePath%>sea/component/base/dialog/Dialog",
 				Table        : "<%=basePath%>sea/component/base/table/Table",
 				Grid        : "<%=basePath%>sea/component/base/grid/Grid",
@@ -105,6 +105,7 @@
 				Pager       : "<%=basePath%>sea/component/base/pager/Pager",
 				Tip         : "<%=basePath%>sea/component/base/tip/Tip",
 				Toolbar       : "<%=basePath%>sea/component/base/toolbar/Toolbar",
+				Thumbnail       : "<%=basePath%>sea/component/base/thumbnail/Thumbnail",
 				Tree        : "<%=basePath%>sea/component/base/tree/Tree",
 				/***插件库——基础插件库——图表插件***/
 				Bar         : "<%=basePath%>sea/component/base/chart/bar/Bar",

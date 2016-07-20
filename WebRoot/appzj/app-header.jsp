@@ -39,7 +39,7 @@
 	<div class="row">
 		<div class="col-md-6 text-center">
 			<h1>
-				<img class="logo" src="../sea/core/css/images/demo/login_logo.png"/>
+				<img class="logo" src="../sea/core/css/images/logo.png"/>
 				<strong class=" text-primary">横琴知识产权交易中心</strong>
 			</h1>
 		</div>

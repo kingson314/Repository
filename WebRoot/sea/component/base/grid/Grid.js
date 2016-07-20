@@ -89,6 +89,9 @@ define(function(require,exports,module){
 				if(col.width){
 					styles.push("width:"+col.width+"px") ;
 				}
+				if(col["border"]){
+					styles.push("border:"+col["border"]) ;
+				}
 				//该行确定列宽
 				$("<th class='sea_grid_th' style='"+styles.join(";")+";height:0px;border-bottom:none;border-top:none;'></th>").appendTo( $("."+container+" table thead tr[idx='_colwidth_']",target)) ;
 				if( this.group ){
@@ -167,8 +170,9 @@ define(function(require,exports,module){
 			var _val = "" ;
 			if(format){
 				if($.isFunction(format)){
-					_val = format(val , record,col) ;
+					_val = format((val||"") , record,col) ;
 				}else if(format.type){
+					col.cls=col.cls+" td_"+format.type;
 					var _ = $.Grid.format[format.type] ;
 					if( _ && _.body ){
 						_val = _.body(val,record,col ) ;
@@ -177,14 +181,19 @@ define(function(require,exports,module){
 			}else{
 				_val = val ;
 			}
+			if(_val==null || _val=="null"){
+				_val="&nbsp;";
+			}
 			var title = (_val+"").replace(/<[^>]*>/g, "") ;
-			_val=_val||"&nbsp;";
 			var styles=[];
 			if(col.align){
 				styles.push("text-align:"+col.align) ;
 			}
 			if(col.width){
 				styles.push("width:"+col.width+"px") ;
+			}
+			if(col["border"]){
+				styles.push("border:"+col["border"]) ;
 			}
 			return "<td name='"+col.name+"' title='"+title+"' style='"+styles.join(";")+"' class='"+(col.cls||"")+"'>"+_val+"</td>";
 		}
@@ -256,15 +265,15 @@ define(function(require,exports,module){
 		var options = target.data("options") ;
 		var records = null ;
 		var totalRecord = 0 ;
-		var start = parseInt(params.limit)*( parseInt(params.curPage) - 1) ;
-		var end = parseInt(start) + parseInt(params.limit) ;
+		var start = parseInt(params.pageSize)*( parseInt(params.pageIndex) - 1) ;
+		var end = parseInt(start) + parseInt(params.pageSize) ;
 		//构造参数
 		params = $.extend({},params,{start:start,end:end}) ;
 		var cacheDs = target.data("cacheDs") ;
 		loadMask(target,true) ;
 		if(cacheDs){
-			records = cacheDs.records.slice( params.start - cacheDs.params.start ,(params.start - cacheDs.params.start)+ parseInt(params.limit)  ) ;
-			if( records.length < params.limit ){
+			records = cacheDs.records.slice( params.start - cacheDs.params.start ,(params.start - cacheDs.params.start)+ parseInt(params.pageSize)  ) ;
+			if( records.length < params.pageSize ){
 				cacheDs = null ;//重新请求数据
 			}else{
 				renderPage(records , cacheDs.totalRecord , params) ;
@@ -274,21 +283,21 @@ define(function(require,exports,module){
 		var ds= options.ds;
 		var handle = $.Grid.dsHandle[ds.type ] ;
 		handle( ds , params , options , function(records , totalRecord){
-			if( !cacheDs ){
+			//if( !cacheDs ){
 				target.data("cacheDs" , { records:records , totalRecord:totalRecord , params:params} ) ;
-			}
+			//}
 			renderPage(records , totalRecord , params) ;
 		} ) ;
 		function renderPage(records , totalRecord , params){
 			var options = target.data("options") ;
-			createBody(target,records.slice(0,params.limit)  , params) ;
+			createBody(target,records.slice(0,params.pageSize)  , params) ;
 			$(".sea_grid_pager",target).Pager({
 				totalRecord:totalRecord,
-				curPage:params.curPage,
+				pageIndex:params.pageIndex,
 				pageSizes:options.pageSizes,
-				limit:params.limit,
-				selectPage:function(curPage , limit ){
-					reload(target,{curPage:curPage,limit:limit }) ;
+				pageSize:params.pageSize,
+				selectPage:function(pageIndex , pageSize ){
+					reload(target,{pageIndex:pageIndex,pageSize:pageSize }) ;
 				}
 			}) ;
 			renderAfter() ;
@@ -300,13 +309,13 @@ define(function(require,exports,module){
 					_.bindEvent(col,target) ;
 				}
 			}) ;
-			if(options.loadAfter){
-				options.loadAfter() ;
-			}
 			$(".sea_grid_th input[type=checkbox]").removeAttr("checked") ;
 			$(".sea_grid_2_body",target).scroll() ;
 			$(".sea_grid_body",target).height($(target).height()-$(".sea_grid_title",target).height()-$(".sea_grid_head",target).height()-$(".sea_grid_pager",target).height())
 			setTimeout(function(){loadMask(target,false)},200) ;
+			if(options.loadAfter){
+				options.loadAfter() ;
+			}
 		}
 	}
 	function bindEvent(target){
@@ -315,9 +324,30 @@ define(function(require,exports,module){
 			$(".sea_grid_2_head",target).scrollLeft( $(".sea_grid_2_body",target).scrollLeft() ) ;
 		});
 		$(target).delegate(".sea_grid_body table tr",'click', function(){
-			$("div.sea_grid_content .sea_grid_selected",target).removeClass("sea_grid_selected") ;
-			getRow(target,this).addClass("sea_grid_selected") ;
+			//$("div.sea_grid_content .sea_grid_selected",target).removeClass("sea_grid_selected") ;
+			var tr=$(this);
+			if(tr.hasClass("sea_grid_selected")){
+				tr.removeClass("sea_grid_selected");
+			}else{
+				tr.addClass("sea_grid_selected");
+			}
+			//getRow(target,this).addClass("sea_grid_selected");
+			var options = target.data("options") ;
+			if(options.rowClick){
+				options.rowClick(this) ;
+			}
 		} ) ;
+		$(target).delegate(".sea_grid_body table tr td:not(.td_checkbox)",'click', function(){
+			$(this).parent().find(".td_checkbox").find("input[type=checkbox]").click() ;
+			return false;
+		} ) ;
+		if(target.data("options").rowDblClick){
+			$(target).delegate(".sea_grid_body table tr",'dblclick', function(){
+				var index=this.rowIndex ;
+				var records=target.data("cacheDs")["records"];
+				target.data("options").rowDblClick(records[index]);
+			}) ;
+		}
 	}
 	function reload(target , ps,isAdd){
 		var qs = isAdd?target.data("rquerys"):target.data("params") ;
@@ -343,7 +373,7 @@ define(function(require,exports,module){
 			return ;
 		}
 		options = $.extend(true,{},$.Grid.defaults,options) ;
-		var params = $.extend({},options.params,{limit:options.limit,curPage:1}) ;
+		var params = $.extend({},options.params,{pageSize:options.pageSize,pageIndex:1}) ;
 		formatColumns(me,options) ;
 		me.data("options",options) .data("params",params).data("rquerys",params) .data("events",{});
 		createTemplate(me , options) ;
@@ -362,7 +392,7 @@ define(function(require,exports,module){
 			pager: false,
 			indexColumn: true,
 			indexColumnWidth:30,
-			limit: 20,
+			pageSize: 20,
 			ds:{
 				type: "url",
 				url:""
@@ -373,7 +403,7 @@ define(function(require,exports,module){
 //			loadError: function(){},
 //			rowClick: function(rowIndex, rowData){},
 //			cellClick: function(rowIndex, rowData){},
-//			rowDblClick: function(sort, order){},
+//			,rowDblClick: function(sort, order){}
 //			cellDblClick: function(rowIndex, rowData){},
 		},
 		format:{
@@ -414,6 +444,11 @@ define(function(require,exports,module){
 								vals.push( $(this).val() ) ;
 							}) ;
 							return vals ;
+						}
+					},{
+						eventName:"del",
+						func:function(name){
+							grid.find(".sea_grid_selected").remove()
 						}
 					})
 				}
@@ -456,14 +491,14 @@ define(function(require,exports,module){
 			}
 		}
 	} ;
-	$.fn.Pager = function(settings){//pageSizes,curPage,totalRecord,limit,selectPage
+	$.fn.Pager = function(settings){//pageSizes,pageIndex,totalRecord,pageSize,selectPage
 		var me = $(this) ;
 		settings = settings||{} ;
 		var pageSizes = settings.pageSizes ;
-		var curPage   = settings.curPage||0;
+		var pageIndex   = settings.pageIndex||0;
 		var totalRecord = settings.totalRecord||0 ;
-		var limit    = settings.limit ;
-		var totalPage = totalRecord % limit == 0? (totalRecord / limit): (Math.floor(totalRecord / limit) + 1);
+		var pageSize    = settings.pageSize ;
+		var totalPage = totalRecord % pageSize == 0? (totalRecord / pageSize): (Math.floor(totalRecord / pageSize) + 1);
 		var selectPage = settings.selectPage ;
 		template() ;
 		render()   ;
@@ -471,16 +506,16 @@ define(function(require,exports,module){
 		function render(){
 			me.find(".sea_totalpage").html(totalPage) ;
 			me.find(".sea_totalnumber").html(totalRecord) ;
-			me.find(".sea_jumpinput").val(curPage) ;
+			me.find(".sea_jumpinput").val(pageIndex) ;
 			me.find(".sea_limitselect").html("").change(function(){
-				selectPageHandler(curPage ,$(this).val() ) ;
+				selectPageHandler(pageIndex ,$(this).val() ) ;
 			}) ;
 			$(pageSizes).each(function(){
-				me.find(".sea_limitselect").append("<option value='"+this+"' "+(this==limit?"selected":"")+">"+this+"</option>") ;
+				me.find(".sea_limitselect").append("<option value='"+this+"' "+(this==pageSize?"selected":"")+">"+this+"</option>") ;
 			}) ;
 			var split = 5;
 			var jg = Math.floor(split / 2);
-			var start = curPage - jg < 1 ? 1 : (curPage - jg);
+			var start = pageIndex - jg < 1 ? 1 : (pageIndex - jg);
 			var end = Number(start) + Number(split - 1) > totalPage? totalPage: (Number(start) + Number(split - 1));
 			if (end - start < split && start > 0) {
 				start = end - split + 1;
@@ -488,7 +523,7 @@ define(function(require,exports,module){
 			var html = [] ;
 			for (var i = start; i <= end; i++) {
 				if (i <= 0) continue;
-				var active = (i==curPage)?"sea_state_active":"sea_state_default" ;
+				var active = (i==pageIndex)?"sea_state_active":"sea_state_default" ;
 				html.push('<a href="#" class="sea_grid_pager_btn sea_numpage '+active+'" pn="'+i+'"><span>'+i+'</span></a>');
 			}
 			me.find(".sea_grid_navig").html(html.join("")) ;
@@ -499,8 +534,8 @@ define(function(require,exports,module){
 				var pn = $(this).attr("pn");
 				var to = pn ;
 				switch(pn){
-					case "pre"	: to = Math.max(curPage - 1,1) ;break ;
-					case "next"	: to = Math.min(curPage + 1,totalPage) ; break ;
+					case "pre"	: to = Math.max(pageIndex - 1,1) ;break ;
+					case "next"	: to = Math.min(pageIndex + 1,totalPage) ; break ;
 					case "last"	: to = totalPage ; break ;
 					case "first": to = 1 ; break ;
 					case "input": return ; break;
@@ -518,17 +553,17 @@ define(function(require,exports,module){
 					selectPageHandler($(this).val() ,me.find(".sea_limitselect").val() ) ;
 				}
 			}) ;
-			if(curPage <= 1){
+			if(pageIndex <= 1){
 				me.find(".sea_firstpage,.sea_prepage").addClass("sea_state_disabled") ;
 			}
-			if(curPage >= totalPage ){
+			if(pageIndex >= totalPage ){
 				me.find(".sea_nextpage,.sea_lastpage").addClass("sea_state_disabled") ;
 			}
 		}
-		function selectPageHandler(curPage , limit ){
-			var totalPage = totalRecord % limit == 0? (totalRecord / limit): (Math.floor(totalRecord / limit) + 1);
-			curPage = Math.min( curPage , totalPage);
-			selectPage(curPage , limit) ;
+		function selectPageHandler(pageIndex , pageSize ){
+			var totalPage = totalRecord % pageSize == 0? (totalRecord / pageSize): (Math.floor(totalRecord / pageSize) + 1);
+			pageIndex = Math.min( pageIndex , totalPage);
+			selectPage(pageIndex , pageSize) ;
 		}
 		function template(){
 			var html = [] ;

@@ -77,9 +77,6 @@
 		});
 		</script>
 	</head>
-	<%--
-	<body style="background-color:#F9F9F9;">
-	--%>
-	<body style="background-color: #EEEEEE;">
+	<body>
 	</body>
 </html>

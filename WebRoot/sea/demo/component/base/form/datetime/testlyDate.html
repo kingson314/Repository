@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <script src="../../../../../../sea/core/jquery/jquery.js"></script>
+ <script src="../../../../../../sea/component/base/form/datetime/jedate/jedate.js"></script>
+<link href="../../../../../../sea/component/base/form/datetime/jedate/skin/jedate.css"  rel="stylesheet" type="text/css"/>
+<script type="text/javascript">
+$(function() {
+	$("body").append($('<input id="indate" type="text" />').attr("placeholder","请选择").attr("readonly","readonly"));
+	jeDate({
+		dateCell:"#indate",  
+		format:"YYYY年MM月DD日",
+		isinitVal:false,
+		isTime:true, 
+		festival: true
+	});
+});
+</script>
+　
+</head>
+<body>
+
+</body>
+</html>
+

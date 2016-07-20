@@ -10,6 +10,7 @@ define(function(require, exports, module) {
 		labelAttr:{},
 		value:"",
 		isNull:true,
+		subtype:"text",
 		cls:"",
 		css:{},
 		attr:{disabled:false,maxLen:0},
@@ -25,7 +26,7 @@ define(function(require, exports, module) {
 		this._lang=require("./Textfield.lang.js");
 		this._className="sea_textfield";
 		//初始化
-		this.textfield=this._input= $("<input type='text'/>");
+		this.textfield=this._input= $("<input type='"+this.configs.subtype+"'/>");
 		this.init();
 	};
 	//类公共方法

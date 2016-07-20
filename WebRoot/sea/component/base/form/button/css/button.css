@@ -2,10 +2,11 @@
 
 .sea_button { 
 	text-align: center;
+	padding:0 20px;
 	height: 36px;
 	line-height: 36px;
 	border-radius: 4px;
-	background-color: #0B74BF;
+	background-color: #3366FF;
 	display:inline-block;
 	cursor: pointer;
 }
@@ -17,6 +18,7 @@
 }
 
 .sea_button:hover {
+	background-color: #3399FF;
 	text-decoration: none;
 }
 .sea_button:link {

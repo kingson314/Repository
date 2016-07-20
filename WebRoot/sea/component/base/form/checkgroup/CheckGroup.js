@@ -69,7 +69,9 @@ define(function(require, exports, module) {
 	CheckGroup.prototype = {
 		 val:function(){
 		},
-		clear:function(){}
+		clear:function(){
+			this.checkGroup.find("input[type=checkbox]").removeAttr("checked");
+		}
 	};
 	/** * 输出类对象 ** */
 	exports.create = function(configs) {

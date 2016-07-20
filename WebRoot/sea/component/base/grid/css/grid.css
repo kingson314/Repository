@@ -36,6 +36,7 @@
 }
 .sea_grid .sea_grid_tr td{
 	height: 35px;
+	line-height:35px;
 	padding: 0 2px 0 2px;
 	border-left:none;
 	border-top:none;
@@ -62,7 +63,9 @@
 }
 .sea_grid_head tr{
 	height:23px;
+	line-height:23px;
 }
+
 .sea_grid_1_head{
 	overflow: hidden;
 }

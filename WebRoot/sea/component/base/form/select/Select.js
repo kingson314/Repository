@@ -1,5 +1,6 @@
 define(function(require, exports, module) {
 	/*** 模块外部依赖 ***/
+	var Json=require("Json");
 	/** * 模块私有数据 ** */
 	//默认配置
 	var defaults = {
@@ -11,7 +12,7 @@ define(function(require, exports, module) {
 		isNull:true,
 		cls:"",
 		css:{},
-		attr:{disabled:false,maxLen:0},
+		attr:{},
 		url:null,//返回[{value:"",text:""},{...}]
 		params:{},//url时生效
 		options:[],
@@ -27,24 +28,19 @@ define(function(require, exports, module) {
 		this._lang=require("./Select.lang.js");
 		this._className="sea_select";
 		//初始化
-		this.select=this._input= $("<select></select>");
+		this.select=this._input= $("<select>");
+		this.init();
 		this.select.append("<option value=''>"+this._lang["please.select"]+"</option>");
 		if(this.configs.url){
 			Ajax=require("Ajax");
-			$.ajax({
-				type:"get",
-				url:Ajax.getUrl(this.configs.url),
-				data:this.configs.params,
-				cache:false,
-				dataType:"json",
-				success:function(result,status,xhr){
-					var len=result.length;
+			var me=this;
+			Ajax.post(me.configs.url, me.configs.params, function(result){
+					var len=result.data.length;
 					for(var i=0;i<len;i++){
-						var item=result[i];
-						this.select.append("<option value='"+item.value+"'>"+item.text+"</option>");
+						var item=result.data[i];
+						me.select.append("<option value='"+item.value+"'>"+item.text+"</option>");
 					};
-				}
-			}); 
+				},false);
 		}else{
 			var len=this.configs.options.length;
 			for(var i=0;i<len;i++){
@@ -52,7 +48,6 @@ define(function(require, exports, module) {
 				this.select.append("<option value='"+item.value+"'>"+item.text+"</option>");
 			};
 		}
-		this.init();
 	};
 	//类公共方法
 	Select.prototype= $.extend({},require("Input").create(),{

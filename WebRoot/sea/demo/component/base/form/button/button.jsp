@@ -23,9 +23,8 @@
 						var button1=Button.create(cfgButton1);
 						var cfgButton2={
 								id:"button2",
-								value:"button2",
-								format:"",
-								css:{"background-color":"green"}
+								value:"ÇëµÇÂ¼.......",
+								css:{"border-radius":"100px"}
 							};
 						var button2=Button.create(cfgButton2);
 						$("body").append(button1.button).append("<br><br>")

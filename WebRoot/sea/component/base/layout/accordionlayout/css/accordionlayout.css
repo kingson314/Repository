@@ -1,7 +1,6 @@
 @CHARSET "UTF-8";
 .sea_accordionLayout li {
 	width: 100%;
-	list-style-type:none;
 	border-bottom: solid 1px #ddd;
 }
 .sea_accordionLayout_title{

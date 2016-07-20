@@ -32,8 +32,12 @@ define(function(require, exports, module) {
 			if(data){
 				this._input.attr("checked",data);
 			}else{ 
-				return this._input.attr("checked");
+				return this._input.is(':checked');
 			}
+		},
+		//清空函数
+		clear:function(){
+			this._input.removeAttr("checked");
 		}
 	});
 	/** * 输出类对象 ** */

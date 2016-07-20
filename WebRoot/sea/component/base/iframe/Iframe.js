@@ -7,7 +7,7 @@ define(function(require, exports, module) {
 		id : "",
 		cls : "",
 		css : {"width":"100%","height":"100%","border":0},
-		attr : {	frameborder:0},
+		attr : {	frameborder:0,scrolling :"no"},
 		events : {
 		}
 	};

@@ -35,7 +35,7 @@ define(function(require, exports, module) {
 			type : 'POST',
 			url : getUrl(url),
 			data : data||{},
-			async : async||true,
+			async : async,
 			dataType : "json",
 			success : function(result) {
 				if(callback){

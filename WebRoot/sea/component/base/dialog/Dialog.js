@@ -6,9 +6,10 @@ define(function(require, exports, module) {
 	/** * 模块私有数据 ** */
 	var  defaults = {
 			id:"",
- 			width: "400", //弹出层宽度
- 			height: "200",  //弹出层高度
- 			confirm: function(){}, //点击确定后回调函数
+			hasButtonGroup:true,
+ 			width: "400", 
+ 			height: "200",
+ 			confirm: function(){return true;}, //点击确定后回调函数
  			cancel: function(){},  //点击取消后回调函数，默认关闭弹出框
  			title: '提示',  //标题内容，如果不设置，则连同关闭按钮（不论设置显示与否）都不显示标题
  			content: ''  //正文内容，可以为纯字符串，html标签字符串，以及URL地址，当content为URL地址时，将内嵌目标页面的iframe（未实现）。
@@ -27,28 +28,28 @@ define(function(require, exports, module) {
 	 			me.hide();
 	 		});
 	 		me.content=$("<div></div>").addClass(me._className+"_content")
-	 								.append(me.configs.content)
 	 								.appendTo(me.dialog);
-			var cfgBtnGroup = {
-					 cls:me._className+"_buttonGroup",
-					  separatorWidth:0,
-					  items: [{
-					  	cls:me._className+"_buttonGroup_confirm",
-					    value: "确定",
-					    click: function() {
-					    	me.configs.confirm();
-					    	me.hide();
-					    }
-					  }, {
-					  	cls:me._className+"_buttonGroup_cancel",
-					    value: "取消",
-					    click: function() {
-					    	me.configs.cancel();
-					    	me.hide();
-					    }
-					  }]
-					};
-			me.buttonGroup=ButtonGroup.create(cfgBtnGroup).buttonGroup.appendTo(me.dialog);	 		
+	 		if(me.configs.hasButtonGroup){
+				var cfgBtnGroup = {
+						 cls:me._className+"_buttonGroup",
+						  items: [{
+						  	cls:me._className+"_buttonGroup_confirm",
+						    value: "确定",
+						    click: function() {
+						    	if(me.configs.confirm()==true)
+						    	me.hide();
+						    }
+						  }, {
+						  	cls:me._className+"_buttonGroup_cancel",
+						    value: "取消",
+						    click: function() {
+						    	me.configs.cancel();
+						    	me.hide();
+						    }
+						  }]
+						};
+				me.buttonGroup=ButtonGroup.create(cfgBtnGroup).buttonGroup.appendTo(me.dialog);	 		
+	 		}
 	 		me.mask=$("<div></div>").addClass(me._className+"_mask");
 	 		$("body").append(me.dialog).append(me.mask);
 	 		$(document).keyup(function(event){
@@ -62,8 +63,13 @@ define(function(require, exports, module) {
 				  "margin-top":Component.getSize(-Math.round(me.dialog.height()/2)),
 				  "margin-left":Component.getSize(-Math.round(me.dialog.width()/2))
 	 		});
-	 		me.content.height(me.dialog.height()-me.title.height()-me.buttonGroup.height());
-			me.content.css("line-height",Component.getSize(me.content.height()));
+	 		var contentHeight=me.dialog.height()-me.title.height();
+	 		if(me.configs.hasButtonGroup){
+	 			contentHeight=contentHeight-me.buttonGroup.height();
+	 		}
+	 		me.content.height(contentHeight);
+			me.content.css("line-height",Component.getSize(contentHeight)).append(me.configs.content);
+			
 	 	}
 	 }
 	/** * 类定义 ** */
@@ -78,18 +84,20 @@ define(function(require, exports, module) {
 	Dialog.prototype = {
 		alert:function(){
 			this.dialog.show();
-			this.dialog.find("."+this._className+"_buttonGroup_cancel").hide()
+			this.dialog.find("."+this._className+"_buttonGroup_cancel").hide();
+			this.dialog.find("."+this._className+"_buttonGroup_confirm").parent().css("margin","0");
 			this.mask.show();
-			return this.dialog;
+			return this;
 		},
 		confirm:function(){
 			this.dialog.show();
 			this.mask.show();
-			return this.dialog;
+			return this;
 		},		
 		hide:function(){
 			this.dialog.remove();
 	 		this.mask.remove();
+			return this;
 		},
 		//白盒测试函数
 		test:function(data){

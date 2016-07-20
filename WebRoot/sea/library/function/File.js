@@ -25,7 +25,7 @@ define(function(require, exports, module) {
  */
  exports.readFile=function(dir){
 	fso = new ActiveXObject("Scripting.FileSystemObject");
-	openfile = fso.OpenTextFile("c://testfile.txt", 1,true);
+	openfile = fso.OpenTextFile(dir, 1,true);
 	content = openfile.ReadLine();
 	openfile.close();
 	return content;

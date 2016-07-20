@@ -31,12 +31,119 @@ define(function(require, exports, module) {
 		},
 		//检查函数
 		check:function(configs){
+			this._input.removeClass("sea_input_warning");
 			if(this.configs.isNull==false){
 				if($.trim(this._input.val())==""){
-					Dialog.create({
-				        content: (this.configs.label||"")+this._lang.nullwarning
-				     });
+					this._input.addClass("sea_input_warning");
 					return false;
+				}
+			}
+			if(this.configs.limit){
+				if(this.configs.limit=="digits"){
+					if(Boolean.isDigits(this._input.val())==false){
+						this._input.addClass("sea_input_warning");
+						return false;
+					}
+				}else if(this.configs.limit=="money"){
+					if(Boolean.isMoney(this._input.val())==false){
+						this._input.addClass("sea_input_warning");
+						return false;
+					}
+				}else if(this.configs.limit=="email"){
+					if(Boolean.isEmail(this._input.val())==false){
+						this._input.addClass("sea_input_warning");
+						return false;
+					}
+				}else if(this.configs.limit=="number"){
+					if(Boolean.isNumber(this._input.val())==false){
+						this._input.addClass("sea_input_warning");
+						return false;
+					}
+				}else if(this.configs.limit=="phone"){
+					if(Boolean.isPhone(this._input.val())==false){
+						this._input.addClass("sea_input_warning");
+						return false;
+					}
+				}else if(this.configs.limit=="mobile"){
+					if(Boolean.isMobile(this._input.val())==false){
+						this._input.addClass("sea_input_warning");
+						return false;
+					}
+				}else if(this.configs.limit=="tel"){
+					if(Boolean.isTel(this._input.val())==false){
+						this._input.addClass("sea_input_warning");
+						return false;
+					}
+				}else if(this.configs.limit=="qq"){
+					if(Boolean.isQq(this._input.val())==false){
+						this._input.addClass("sea_input_warning");
+						return false;
+					}
+				}else if(this.configs.limit=="integer"){
+					if(Boolean.isInteger(this._input.val())==false){
+						this._input.addClass("sea_input_warning");
+						return false;
+					}
+				}else if(this.configs.limit=="double"||this.configs.limit=="float"){
+					if(Boolean.isDouble(this._input.val())==false){
+						this._input.addClass("sea_input_warning");
+						return false;
+					}
+				}else if(this.configs.limit=="post"){
+					if(Boolean.isPostCode(this._input.val())==false){
+						this._input.addClass("sea_input_warning");
+						return false;
+					}
+				}else if(this.configs.limit=="url"){
+					if(Boolean.isUrl(this._input.val())==false){
+						this._input.addClass("sea_input_warning");
+						return false;
+					}
+				}else if(this.configs.limit=="password"){
+					if(Boolean.isPwd(this._input.val())==false){
+						this._input.addClass("sea_input_warning");
+						return false;
+					}
+				}else if(this.configs.limit=="char"){
+					if(Boolean.isChar(this._input.val())==false){
+						this._input.addClass("sea_input_warning");
+						return false;
+					}
+				}else if(this.configs.limit=="en"){
+					if(Boolean.isEnglish(this._input.val())==false){
+						this._input.addClass("sea_input_warning");
+						return false;
+					}
+				}else if(this.configs.limit=="cardno"){
+					if(Boolean.isIdCardNo(this._input.val())==false){
+						this._input.addClass("sea_input_warning");
+						return false;
+					}
+				}else if(this.configs.limit=="cn"){
+					if(Boolean.isChinese(this._input.val())==false){
+						this._input.addClass("sea_input_warning");
+						return false;
+					}
+				}else if(this.configs.limit=="chinesechar"){
+					if(Boolean.isChineseChar(this._input.val())==false){
+						this._input.addClass("sea_input_warning");
+						return false;
+					}
+				}else if(this.configs.limit=="stringcheck"){
+					if(Boolean.stringCheck(this._input.val())==false){
+						this._input.addClass("sea_input_warning");
+						return false;
+					}
+				}else if(this.configs.limit=="stringfilter"){
+					if(Boolean.stringFilter(this._input.val())==false){
+						this._input.addClass("sea_input_warning");
+						return false;
+					}
+				}else if(this.configs.limit=="specialchar"){
+					if(Boolean.isContainsSpecialChar(this._input.val())==false){
+						this._input.addClass("sea_input_warning");
+						return false;
+					}
 				}
 			}
 			return true;
@@ -47,7 +154,7 @@ define(function(require, exports, module) {
 		},
 		//值获取或赋值函数
 		val:function(data){
-			if(data){
+			if(data!=null||data!=undefined){
 				this._input.val(data);
 			}else{ 
 				return this._input.val();

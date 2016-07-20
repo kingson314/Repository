@@ -83,7 +83,11 @@ define(function(require, exports, module) {
 					var tdLabel = $("<div></div>").addClass(ClassName + "_td").css("width", colWidth * me.configs.labelWidthPercent + '%').appendTo(tr);
 					self.appendLabel(tdLabel,Component.createLabel(item));
 					var tdField = $("<div></div>").addClass(ClassName + "_td").css("width", colWidth * (1 -me.configs. labelWidthPercent) + '%').appendTo(tr);
-					self.appendFields(tdField, me.configs.record[item.id]||item.val);
+					var val=me.configs.record[item.id];
+					if(val==null || val==undefined){
+						val=item.val;
+					}
+					self.appendFields(tdField,val);
 				}
 			}
 		},

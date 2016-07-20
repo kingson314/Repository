@@ -25,7 +25,7 @@ define(function(require, exports, module) {
 	            }
 	        },
 	        openSubmenu: function() {
-	        	  var me=this;
+	        	 var me=this;
 	            $(this.element).children("ul").find("li").bind("click touchstart",
 	            function(e) {
 	                e.stopPropagation();

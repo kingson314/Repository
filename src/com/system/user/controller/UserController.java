@@ -1,6 +1,7 @@
 package com.system.user.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -35,13 +36,60 @@ public class UserController extends BaseContorller<User> {
 		for (Map.Entry<String, Object> entry : this.mapParams.entrySet()) {
 			UtilLog.logDebug(entry.getKey() + " = " + entry.getValue());
 		}
-		Result result = this.userService.list(this.pageParams.get("curPage"), this.pageParams.get("limit"), "from User", this.mapParams);
-		//Result result = this.userService.list(this.pageParams.get("offset"), this.pageParams.get("limit"), "from User",null);
+		for (Map.Entry<String, Integer> entry : this.pageParams.entrySet()) {
+			UtilLog.logDebug(entry.getKey() + " = " + entry.getValue());
+		}
+		Result result = this.userService.list(this.pageParams.get("pageIndex"), this.pageParams.get("pageSize"), "from User", this.mapParams);
 		this.print(result);
 	}
-	@RequestMapping("get")
 	
-public void get(){
+	@RequestMapping("tables")
+	public void tables(){
+		System.out.println("/*** 表信息 ***/");
+		String sql="SELECT table_name text,table_name value  FROM information_schema.tables WHERE table_schema='jiaju' ORDER BY table_name asc";
+		List<Map<String, Object>>list = this.userService.listMap(sql);
+		for(Map<String ,Object>map:list){
+			for (Map.Entry<String, Object> entry : map.entrySet()) {
+				UtilLog.logDebug(entry.getKey() + " = " + entry.getValue());
+			}
+		}
+		this.print(new Result(list));
+	}
+	@RequestMapping("fields")
+	public void fields(){
+		System.out.println("/*** 字段信息 ***/");
+		String sql="SELECT COLUMN_NAME,IS_NULLABLE ISNULL,DATA_TYPE,replace(replace(replace(replace(replace(replace( replace (COLUMN_TYPE,'longtext',''),'int(',''),')',''),'varchar(',''),'datetime',''),'double',''),'text','') DATA_LEN FROM information_schema.COLUMNS  where TABLE_SCHEMA like 'jiaju' and TABLE_NAME like '"+this.mapParams.get("tablename")+"';";
+		List<Map<String, Object>> list = this.userService.listMap(sql);
+		for(Map<String ,Object>map:list){
+			System.out.println("************************");
+			for (Map.Entry<String, Object> entry : map.entrySet()) {
+				UtilLog.logDebug(entry.getKey() + " = " + entry.getValue());
+			}
+		}
+		this.print(new Result(list));
+	}
+	
+	@RequestMapping("generate")
+	public void generate() {
+		for (Map.Entry<String, Object> entry : this.mapParams.entrySet()) {
+			UtilLog.logDebug(entry.getKey() + " = " + entry.getValue());
+		}
+		this.print(new Result(true));
+	}
+	@RequestMapping("select")
+	public void select(){
+		System.out.println("/*** 表信息 ***/");
+		String sql="select id value ,name text from sys_user ";
+		List<Map<String, Object>>list = this.userService.listMap(sql);
+		for(Map<String ,Object>map:list){
+			for (Map.Entry<String, Object> entry : map.entrySet()) {
+				UtilLog.logDebug(entry.getKey() + " = " + entry.getValue());
+			}
+		}
+		this.print(new Result(list));
+	}
+	@RequestMapping("get")
+	public void get(){
 		for (Map.Entry<String, Object> entry : this.mapParams.entrySet()) {
 			UtilLog.logDebug(entry.getKey() + " = " + entry.getValue());
 		}

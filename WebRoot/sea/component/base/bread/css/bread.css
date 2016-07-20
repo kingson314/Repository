@@ -2,10 +2,8 @@
 .sea_bread{
 	margin:0;
 	padding:0;
+	color: #666;
 	background-color: #F6F6F6;
-	background:-ms-linear-gradient(left,#EAEAEA,#F0F0F0,#FFFFFF);
-	background:-moz-linear-gradient(left,#EAEAEA,#F0F0F0,#FFFFFF);
-	background:-webkit-linear-gradient(left,#EAEAEA,#F0F0F0,#FFFFFF);
 	text-align:left; 
 } 
  
@@ -15,13 +13,12 @@
 }
 .sea_bread li{
 	display: inline;
-	list-style-type:none;
 	line-height:30px;
 	height:30px;
 	margin-right:3px;
 }
 .sea_bread a{  
-	color: #000;
+	color: #222;
 	cursor: pointer;
 	text-decoration: none;
 }

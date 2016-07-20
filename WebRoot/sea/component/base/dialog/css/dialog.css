@@ -5,6 +5,7 @@
 	left: 50%;
 	z-index: 99999;
 	display: none;
+	border:1px solid  #CDCDCD;
 }
 .sea_dialog_title{
 	position:absolute;
@@ -18,7 +19,7 @@
 	vertical-align:middle;
 	color:#777777;
     background-color: #efefef;
-  	border:1px solid  #CDCDCD;
+  	border-bottom:1px solid  #CDCDCD;
 }
 .sea_dialog_title_icon{
 	height: 35px;
@@ -45,6 +46,7 @@
 	text-align:center;
 	vertical-aling:middle;
 	overflow:auto;
+	border:0;
 }
 .sea_dialog_buttonGroup{
 	position:absolute;
@@ -54,7 +56,7 @@
 	line-height:50px;
 	width:100%;
     background-color: #efefef;
-  	border:1px solid  #CDCDCD;
+  	border-top:1px solid  #CDCDCD;
 	text-align: center;
 } 
 .sea_dialog_mask{

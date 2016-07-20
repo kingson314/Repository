@@ -25,7 +25,7 @@ define(function(require, exports, module) {
 		init : function(me) {
 			me.bread=$("<div></div>").addClass(me._className);
 			var ul=$("<ul></ul>").appendTo(me.bread);
-			me.image=$("<li></li>").append("<span  class='icon-forward'></span>").appendTo(ul);
+			me.image=$("<li></li>").append("<span  class='glyphicon glyphicon-forward'></span>").appendTo(ul);
 			var len=me.configs.items.length;
 			$.each(me.configs.items,function(index,item){
 				var	li=$("<li></li>").append("<a href='#'>"+item.label+"</a>").appendTo(ul); 				 

@@ -21,7 +21,7 @@ define(function(require, exports, module) {
 		this._className="sea_button";
 		//初始化
 		this._input =$("<div></div>");
-		var a=$("<a href='#'>"+this.configs.value+"</a>").appendTo(this._input);
+		a=$("<a href='#'>"+this.configs.value+"</a>").appendTo(this._input);
 		if(this.configs.icon){
 			a.prepend("<span  class='"+this.configs.icon+"'></span>");
 		}

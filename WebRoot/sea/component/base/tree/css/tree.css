@@ -22,7 +22,6 @@ website:    http://code.google.com/p/jquerytree/
 .ztree li {
 	padding: 0;
 	margin: 0;
-	list-style: none;
 	line-height: 21px;
 	text-align: left;
 	white-space: nowrap;

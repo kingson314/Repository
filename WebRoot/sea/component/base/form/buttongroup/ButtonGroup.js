@@ -36,9 +36,9 @@ define(function(require, exports, module) {
 				}
 				if(me.configs.align=="0"||me.configs.align=="horizontal"){
 					li.css("display","inline");
+				}
+				if(index<(me.configs.items.length-1)){
 					li.css("margin-right",me.configs.separatorWidth);
-				}else{
-					li.css("margin-bottom",me.configs.separatorWidth);
 				}
 				// 控件类名设置
 				Component.addClass(li.find("a"), item);
