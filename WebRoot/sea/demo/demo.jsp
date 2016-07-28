@@ -9,7 +9,7 @@
 		<style>
 </style>
 		<script>
-	var Tree;var iframe;
+	var Tree;var iframe,treeObj;
 	$(document).ready(function() {
 		Session.setBusiType("");
 		seajs.use(["BorderLayout","Iframe","Tree","Navbar"],
@@ -50,7 +50,11 @@
 							img:null,//Img.js:Img.img
 							css:{width:"120px"},
 							active:true,
-							click:null
+							click:function(){
+								$.each(treeObj.getCheckedNodes(true),function(index,item){
+									alert(item.id)							
+								})
+							}
 						},{
 							label:"ÎÄµµËµÃ÷",
 							url:"#",
@@ -89,7 +93,7 @@
 					}
 				}
 			};
-			Tree.getTree();
+			treeObj=Tree.getTree();
 			var border = Border.create(cfgBorder);
 		});
 	});

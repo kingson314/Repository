@@ -11,8 +11,9 @@ define(function(require, exports, module) {
 			css : {},
 			attr : {	},
 			items:[{
-				id : "",
+				//id : "",
 				value : "",
+				checked:false,
 				cls : "",
 				css : {},
 				attr : {	},
@@ -25,6 +26,7 @@ define(function(require, exports, module) {
 	var self = {
 		init : function(me) {
 		me.radioGroup=$("<div></div>").addClass(me._className);
+		me.radios=[];
 		var ul=$("<ul></ul>").appendTo(me.radioGroup);
 		$.each(me.configs.items,function(index,item){
 			var li=$("<li></li>").appendTo(ul);
@@ -32,7 +34,12 @@ define(function(require, exports, module) {
 				li.css("display","inline");
 			}
 			item.labelCls="sea_radioLabel";
-			var radio=$("<input type='radio'  name='"+(me.configs.name||me.configs.id)+"'/>").appendTo(li);
+			item.id=me.configs.id+Session.getSeq();
+			var radio=$("<input id='"+item.id+"' type='radio' name='"+(me.configs.name||me.configs.id)+"' value='"+item.value+"'/>").appendTo(li);
+			if(item.checked){
+				radio.attr("checked",item.checked);
+			}
+			me.radios.push(radio);
 			li.append("&nbsp;");
 			var label=Component.createLabel(item).appendTo(li);
 			// 控件类名设置
@@ -67,7 +74,23 @@ define(function(require, exports, module) {
 	};
 	// 类公共方法
 	RadioGroup.prototype = {
-		 val:function(){
+		val:function(data){
+			if(data){
+				$.each(this.radios,function(index,item){
+					item.removeAttr("checked");
+					if(item.val()==data){
+						item.click();
+						item.attr("checked",true);
+					}
+				});
+			}else{
+				for(var i=0;i<this.radios.length;i++){
+					if(this.radios[i].is(':checked')){
+						return this.radios[i].val();
+					}
+				}
+				return "";
+			}
 		},
 		clear:function(){
 			this.radioGroup.find("input[type=radio]").removeAttr("checked");

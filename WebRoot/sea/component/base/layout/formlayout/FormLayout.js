@@ -228,6 +228,19 @@ define(function(require, exports, module) {
 
 	// 类公共方法
 	FormLayout.prototype = {
+		get:function(id){
+			var rowCount=this.configs.items.length;
+			for (var rowIndex = 0; rowIndex < rowCount; rowIndex++) {
+				var rowItems = this.configs.items[rowIndex];
+				var colCount= rowItems.length;
+				for (var colIndex = 0; colIndex <colCount; colIndex++) {
+					var item = rowItems[colIndex];
+					if(item.id==id){
+						return item._Component;
+					}
+				}
+			}
+		},
 		//检查函数
 		check:function(){
 			var rowCount=this.configs.items.length;
