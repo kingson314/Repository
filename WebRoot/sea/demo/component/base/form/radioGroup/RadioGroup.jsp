@@ -17,47 +17,35 @@
 							  name:"radiogroup1",
 							  //align:"0",
 							  items: [{
-								    id: "radio1",
 							    label: "radio1",
+							    value:"1",
 							    click: function() {
 							      alert("radio1  click");
 							    }
 							  },
 							  {
-								    id: "radio2",
 							    label: "radio1",
+							    value:"2",
 							    click: function() {
-							      alert("radio1  click");
-							    }
-							  },
-							  {
-								    id: "radio3",
-							    label: "radio1",
-							    click: function() {
-							      alert("radio1  click");
+							      alert("radio2  click");
 							    }
 							  }]
 							};
 						var radiogroup1=RadioGroup.create(cfgRadioGroup1);
 						var cfgRadioGroup2= {
-								  id: "radiogroup1",
+								  id: "radiogroup2",
 								  align:"1",
-								  items: [{
-								    label: "radio1",
-								    click: function() {
-								      alert("radio1  click");
-								    }
-								  },
+								  items: [
 								  {
 								    label: "radio1",
 								    click: function() {
-								      alert("radio1  click");
+									  radiogroup1.val(1);
 								    }
 								  },
 								  {
-								    label: "radio1",
+								    label: "radio2",
 								    click: function() {
-								      alert("radio1  click");
+									  alert(radiogroup1.val());
 								    }
 								  }]
 								};

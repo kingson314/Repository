@@ -11,8 +11,8 @@ define(function(require, exports, module) {
 			css : {},
 			attr : {	},
 			items:[{
-				id : "",
 				value : "",
+				checked:false,
 				cls : "",
 				css : {},
 				attr : {	},
@@ -25,6 +25,7 @@ define(function(require, exports, module) {
 	var self = {
 		init : function(me) {
 			me.checkGroup=$("<div></div>").addClass(me._className);
+			me.checkboxs=[];
 			var ul=$("<ul></ul>").appendTo(me.checkGroup);
 			$.each(me.configs.items,function(index,item){
 				var li=$("<li></li>").appendTo(ul);
@@ -32,7 +33,12 @@ define(function(require, exports, module) {
 					li.css("display","inline");
 				}
 				item.labelCls="sea_checkLabel";
-				var checkbox=$("<input type='checkbox'/>").appendTo(li);
+				item.id=me.configs.id+Session.getSeq();
+				var checkbox=$("<input  id='"+item.id+"' type='checkbox'/>").appendTo(li);
+				if(item.checked){
+					checkbox.attr("checked",item.checked);
+				}
+				me.checkboxs.append(checkbox);
 				li.append("&nbsp;");
 				var label=Component.createLabel(item).appendTo(li);
 				// 控件类名设置
@@ -68,6 +74,20 @@ define(function(require, exports, module) {
 	// 类公共方法
 	CheckGroup.prototype = {
 		 val:function(){
+			if(data){
+				$.each(this.checkboxs,function(index,item){
+					if(item.val()==data){
+						item.attr("checked",true);
+					}
+				});
+			}else{
+				for(var i=0;i<this.checkboxs.length;i++){
+					if(this.checkboxs[i].is(':checked')){
+						return this.checkboxs[i].val();
+					}
+				}
+				return "";
+			}
 		},
 		clear:function(){
 			this.checkGroup.find("input[type=checkbox]").removeAttr("checked");

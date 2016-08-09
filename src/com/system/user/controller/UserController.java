@@ -46,7 +46,7 @@ public class UserController extends BaseContorller<User> {
 	@RequestMapping("tables")
 	public void tables(){
 		System.out.println("/*** 表信息 ***/");
-		String sql="SELECT table_name text,table_name value  FROM information_schema.tables WHERE table_schema='jiaju' ORDER BY table_name asc";
+		String sql="SELECT table_name text,table_name value  FROM information_schema.tables WHERE table_schema='test' ORDER BY table_name asc";
 		List<Map<String, Object>>list = this.userService.listMap(sql);
 		for(Map<String ,Object>map:list){
 			for (Map.Entry<String, Object> entry : map.entrySet()) {
@@ -58,7 +58,7 @@ public class UserController extends BaseContorller<User> {
 	@RequestMapping("fields")
 	public void fields(){
 		System.out.println("/*** 字段信息 ***/");
-		String sql="SELECT COLUMN_NAME,IS_NULLABLE ISNULL,DATA_TYPE,replace(replace(replace(replace(replace(replace( replace (COLUMN_TYPE,'longtext',''),'int(',''),')',''),'varchar(',''),'datetime',''),'double',''),'text','') DATA_LEN FROM information_schema.COLUMNS  where TABLE_SCHEMA like 'jiaju' and TABLE_NAME like '"+this.mapParams.get("tablename")+"';";
+		String sql="SELECT COLUMN_NAME,IS_NULLABLE ISNULL,DATA_TYPE,replace(replace(replace(replace(replace(replace( replace (COLUMN_TYPE,'longtext',''),'int(',''),')',''),'varchar(',''),'datetime',''),'double',''),'text','') DATA_LEN FROM information_schema.COLUMNS  where TABLE_SCHEMA like 'test' and TABLE_NAME like '"+this.mapParams.get("tablename")+"';";
 		List<Map<String, Object>> list = this.userService.listMap(sql);
 		for(Map<String ,Object>map:list){
 			System.out.println("************************");

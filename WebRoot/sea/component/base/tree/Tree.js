@@ -10,6 +10,7 @@ define(function(require, exports, module) {
 			css : "",
 			treeId: "",
 			treeObj: null,
+			nodeData:null,//静态数据
 			async: {
 				autoParam: [],
 				//contentType: "application...",
@@ -19,7 +20,7 @@ define(function(require, exports, module) {
 				otherParam: [],
 				type: "post",
 				url: ""
-			},
+			},			
 			callback: {
 				beforeAsync: null,
 				beforeCheck: null,
@@ -60,7 +61,7 @@ define(function(require, exports, module) {
 					"N": "ps"
 				},
 				chkStyle: "checkbox",
-				enable: false,
+				enable: true,
 				nocheckInherit: false,
 				chkDisabledInherit: false,
 				radioType: "level"
@@ -126,7 +127,12 @@ define(function(require, exports, module) {
 	var self = {
 		init : function(me) {
 			me.tree=$("<ul id='"+me.configs.id+"' class='ztree'></ul>");
-			$.fn.zTree.init(me.tree, me.configs);
+			if(me.configs.nodeData){
+				delete me.configs.async;
+				$.fn.zTree.init(me.tree, me.configs,me.configs.nodeData);
+			}else{
+				$.fn.zTree.init(me.tree, me.configs);
+			}
 		}
 	};
 	/** * 类定义 ** */
@@ -138,9 +144,9 @@ define(function(require, exports, module) {
 	};
 	// 类公共方法
 	Tree.prototype = {
-			getTree:function(){
-		 		return $.fn.zTree.getZTreeObj(this.configs.id);
-			}
+		getTree:function(){
+	 		return $.fn.zTree.getZTreeObj(this.configs.id);
+		}
 	};
 	/** * 输出类对象 ** */
 	exports.create = function(configs) {

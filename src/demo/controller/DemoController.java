@@ -25,7 +25,7 @@ public class DemoController extends BaseContorller<User> {
 	@RequestMapping("getTree")
 	public void tree() throws JsonGenerationException, JsonMappingException,
 			IOException {
-		String path="E:\\Gitlib\\Repository\\WebRoot\\sea\\demo\\";
+		String path="D:\\GitHub\\Repository\\WebRoot\\sea\\demo\\";
 		String[]pathArr=UtilFile.getAllFilePathByFilter(path, "");
 		this.print(UtilTree.toTreeJson(pathArr,path));
 		System.out.println(UtilTree.toTreeJson(pathArr,path));
