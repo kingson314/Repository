@@ -127,7 +127,6 @@ define(function(require, exports, module) {
 					case "datetime":
 						break;				
 					case "hidden":
-						var hidden = $("<input type='hidden' />").append(me.formLayout);
 						item._Component=require("Hidden").create(item).hidden;
 						me.formLayout.append(item._Component);
 						break;

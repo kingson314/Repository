@@ -114,6 +114,9 @@ define(function(require, exports, module) {
 		 if(!String.isBlank(configs.src)){
 		 	 jq.attr("src",configs.src);
 		 }
+		if (!String.isBlank(configs.autocomplete)) {
+			jq.attr("autocomplete", configs.autocomplete);
+		}
 		 return jq;
 	};
 	exports.attr=attr;

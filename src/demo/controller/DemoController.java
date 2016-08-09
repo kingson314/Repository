@@ -28,7 +28,7 @@ public class DemoController extends BaseContorller<User> {
 		String path="E:\\Gitlib\\Repository\\WebRoot\\sea\\demo\\";
 		String[]pathArr=UtilFile.getAllFilePathByFilter(path, "");
 		this.print(UtilTree.toTreeJson(pathArr,path));
-		//System.out.println(UtilTree.toTreeJson(pathArr,path));
+		System.out.println(UtilTree.toTreeJson(pathArr,path));
 	}
 	
 }

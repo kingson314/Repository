@@ -10,7 +10,9 @@ define(function(require, exports, module) {
 		var params="";
 		if(data){
 			$.each(data,function(key,val){
-				if(params==""){
+				if(actionName.indexOf("?")>=0){
+					params+="&"
+				}else	if(params==""){
 					params="?"
 				}else{
 					params+="&"

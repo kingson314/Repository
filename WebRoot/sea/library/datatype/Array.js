@@ -27,7 +27,7 @@ define(function(require, exports, module) {
 	 * @ return int @date
 	 * 2015-12-31 @author:kfzx-fenggq
 	 */
-	exports.getIndex(arr, item)
+	exports.getIndex=function(arr, item)
 	{
 		var rs = -1;
 		if (!arr || arr.length <= 0) {

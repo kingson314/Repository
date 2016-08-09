@@ -9,7 +9,9 @@ define(function(require, exports, module) {
 			hasButtonGroup:true,
  			width: "400", 
  			height: "200",
+ 			confirmValue: "确定",
  			confirm: function(){return true;}, //点击确定后回调函数
+ 			cancelValue:"取消",
  			cancel: function(){},  //点击取消后回调函数，默认关闭弹出框
  			title: '提示',  //标题内容，如果不设置，则连同关闭按钮（不论设置显示与否）都不显示标题
  			content: ''  //正文内容，可以为纯字符串，html标签字符串，以及URL地址，当content为URL地址时，将内嵌目标页面的iframe（未实现）。
@@ -34,14 +36,14 @@ define(function(require, exports, module) {
 						 cls:me._className+"_buttonGroup",
 						  items: [{
 						  	cls:me._className+"_buttonGroup_confirm",
-						    value: "确定",
+						    value: me.configs.confirmValue,
 						    click: function() {
 						    	if(me.configs.confirm()==true)
 						    	me.hide();
 						    }
 						  }, {
 						  	cls:me._className+"_buttonGroup_cancel",
-						    value: "取消",
+						    value: me.configs.cancelValue,
 						    click: function() {
 						    	me.configs.cancel();
 						    	me.hide();
