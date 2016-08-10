@@ -122,7 +122,10 @@ define(function(require,exports,module){
 			}else{
 				_val = col.label ;
 			}
-			return _val||"&nbsp;" ;
+			if(_val==undefined||_val==null||_val==''){
+				return "&nbsp;";
+			}
+			return _val
 		}
 	}
 	function adjustWidth(target){
@@ -365,6 +368,7 @@ define(function(require,exports,module){
 			}
 			switch(options){
 				case "reload":
+					debugger;
 					reload(me,params) ;
 					break ;
 				case "addEvent":
