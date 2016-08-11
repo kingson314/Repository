@@ -30,5 +30,12 @@ public class DemoController extends BaseContorller<User> {
 		this.print(UtilTree.toTreeJson(pathArr,path));
 		System.out.println(UtilTree.toTreeJson(pathArr,path));
 	}
-	
+	@RequestMapping("upload")
+	public void upload() throws JsonGenerationException, JsonMappingException,
+			IOException {
+		String path="D:\\GitHub\\Repository\\WebRoot\\sea\\demo\\";
+//		String[]pathArr=UtilFile.getAllFilePathByFilter(path, "");
+//		this.print(UtilTree.toTreeJson(pathArr,path));
+//		System.out.println(UtilTree.toTreeJson(pathArr,path));
+	}
 }
