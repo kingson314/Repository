@@ -1,4 +1,5 @@
 <%@page language="java" contentType="text/html; charset=GBK"%>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content=" initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <%
 	String basePath=request.getScheme() + "://"+ request.getServerName() + ":" + request.getServerPort()+ request.getContextPath() + "/";
@@ -10,9 +11,19 @@
 <script src="<%=basePath%>sea/core/jquery/jquery.js"></script>
 <script src="<%=basePath%>sea/core/sea/sea.js"></script>
 <script src="<%=basePath%>sea/core/sea/sea.css.js"></script>
-<link href="<%=basePath%>sea/core/css/normalize.css" rel="stylesheet" type="text/css"/>
-<script src="<%=basePath%>sea/component/base/form/datetime/jedate/jedate.js"></script>
+<%--<link href="<%=basePath%>sea/core/css/normalize.css" rel="stylesheet" type="text/css"/>
+--%><script src="<%=basePath%>sea/component/base/form/datetime/jedate/jedate.js"></script>
 <link href="<%=basePath%>sea/component/base/form/datetime/jedate/skin/jedate.css" rel="stylesheet" type="text/css" />
+<script src="<%=basePath%>sea/core/bootstrap/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="<%=basePath%>sea/core/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet"
+	href="<%=basePath%>sea/core/css/main.css" />
+<!--[if lt IE 9]>
+       <script src="<%=basePath%>sea/core/bootstrap/html5shiv.js"></script>
+      <![endif]-->
+<%--<link href="<%=basePath%>sea/core/css/normalize.css" rel="stylesheet" type="text/css"/>
+--%>
 <script>
 		var Cookie={
 				//theme: "-touch"

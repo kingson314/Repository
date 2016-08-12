@@ -1,14 +1,4 @@
------------------------------------------------------
--- Export file for user SHJ                        --
--- Created by Administrator on 2015/5/19, 23:01:49 --
------------------------------------------------------
-
-spool base.log
-
-prompt
-prompt Creating table BASEENTITY
-prompt =========================
-prompt
+ 
 create table BASEENTITY
 (
   ID           VARCHAR2(32) default sys_guid() not null,
@@ -21,15 +11,7 @@ create table BASEENTITY
   STATE        NUMBER(1) default 0,
   ORD          NUMBER default 0,
   MEMO         VARCHAR2(1000)
-)
-tablespace SHE_DATA
-  pctfree 10
-  initrans 1
-  maxtrans 255
-  storage
-  (
-    initial 16K
-  );
+) ;
 comment on table BASEENTITY
   is '基础实体类';
 comment on column BASEENTITY.ID
@@ -52,11 +34,7 @@ comment on column BASEENTITY.ORD
   is '排序';
 comment on column BASEENTITY.MEMO
   is '备注说明';
-
-prompt
-prompt Creating table SUPERENTITY
-prompt ==========================
-prompt
+ 
 create table SUPERENTITY
 (
   ID           VARCHAR2(32) default sys_guid() not null,
@@ -66,15 +44,7 @@ create table SUPERENTITY
   MODIFYUSERID VARCHAR2(100),
   VERSION      VARCHAR2(10) default '1.0.0',
   ORD          NUMBER default 0
-)
-tablespace SHE_DATA
-  pctfree 10
-  initrans 1
-  maxtrans 255
-  storage
-  (
-    initial 16K
-  );
+) ;
 comment on table SUPERENTITY
   is '实体顶层类';
 comment on column SUPERENTITY.ID
@@ -91,6 +61,4 @@ comment on column SUPERENTITY.VERSION
   is '版本号';
 comment on column SUPERENTITY.ORD
   is '排序';
-
-
-spool off
+ 

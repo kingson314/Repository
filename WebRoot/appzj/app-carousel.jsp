@@ -12,15 +12,15 @@
 				  <!-- Wrapper for slides -->
 				  <div class="carousel-inner" role="listbox">
 				    <div class="item active">
-				      <img  src="../sea/core/bootstrap/css/images/media1.png" alt="First slide">
+				      <img  src="sea/core/bootstrap/css/images/media1.png" alt="First slide">
 				      <div class="carousel-caption">first </div>
 				    </div>
 				    <div class="item">
-				      <img  src="../sea/core/bootstrap/css/images/media6.png" alt="Second slide">
+				      <img  src="sea/core/bootstrap/css/images/media6.png" alt="Second slide">
 				      <div class="carousel-caption">second </div>
 				    </div>
 				    <div class="item">
-				      <img src="../sea/core/bootstrap/css/images/media7.png" alt="Third slide">
+				      <img src="sea/core/bootstrap/css/images/media7.png" alt="Third slide">
 				      <div class="carousel-caption">third</div>
 				    </div>
 				  </div>

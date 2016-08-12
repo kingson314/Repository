@@ -1,0 +1,96 @@
+@CHARSET "UTF-8";
+
+.sea_mask {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background: #aaa;
+	opacity: .35;
+	filter: Alpha(Opacity =   35)
+}
+
+.sea_msg{
+	cursor: not-allowed;
+	background: url(images/loaders/loader6.gif) no-repeat;
+	background-position:center center;
+}
+
+.header-tool,.header-tool .nav a {
+	height: 30px;
+	line-height: 30px;
+	min-height: 30px;
+	padding: 0 5px;
+	margin: 0 3px;
+}
+
+.header-tool .nav .navbar-text {
+	height: 30px;
+	line-height: 30px;
+	min-height: 30px;
+	padding: 0;
+	margin: 0;
+}
+
+.header-tool .navbar-brand {
+	width: 15%;
+}
+
+.header {
+	margin-top: 30px;
+}
+
+.header .logo {
+	height: 50px;
+	widht: 50px;
+	line-height: 50px;
+	margin-right: 5px;
+}
+
+.header .telphone {
+	color: red;
+	font-weight: bold;
+	height: 30px;
+	line-height: 90px;
+}
+
+#sea_search input {
+	height: 25px;
+	vertical-align: middle;
+	line-height: 25px;
+	min-height: 25px;
+	margin: 5px 20px;
+	padding: 5px;
+}
+
+#carousel-example-generic img {
+	height: 250px;
+	width: 100%;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.row {
+	padding: 5px 0;
+}
+
+.sea-footer {
+	border-top: 3px solid #00c2e3;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.result_warning {
+	color: red;
+}
+
+.result_success {
+	color: Green;
+}
+
+hr {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border-top: 1px solid #E2E2E2;
+}

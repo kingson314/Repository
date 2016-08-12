@@ -196,6 +196,10 @@ define(function(require, exports, module) {
 							$("<div></div>").append(item._Component.navbar).addClass(ClassName + "_td").css("width", colWidth + '%').css(item.tdCss||{}).appendTo(tr);
 						}
 						break;
+					case "ueditor":
+						item._Component=$("<div></div>").attr("id",item.id);
+						$("<div></div>").append(item._Component).addClass(ClassName + "_td").css("width", colWidth + '%').css(item.tdCss||{}).appendTo(tr);
+						break;
 					default:
 						continue;
 					}

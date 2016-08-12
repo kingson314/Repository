@@ -11,22 +11,43 @@
     </div>
     <div class="collapse navbar-collapse" id="navbar-header">
       <ul class="nav navbar-nav">
-        <%--<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>--%>
-        <li class="active"><a href="#">首页</a></li>
-        <li><a href="#">公司简介</a></li>
-        <li><a href="#">新闻动态</a></li>
+        <%--<li class="active"><a href="#" onclick="javascript:navClick(this);">Link <span class="sr-only">(current)</span></a></li>--%>
+        <li class="active"><a href="#" onclick="javascript:navClick(this);">Monitor</a></li>
+        <li><a href="#" onclick="javascript:navClick(this);">中国(CN)</a></li>
+        <li><a href="#" onclick="javascript:navClick(this);">WIPO</a></li>
+        <li><a href="#" onclick="javascript:navClick(this);">美国(US)</a></li>
+        <li><a href="#" onclick="javascript:navClick(this);">欧盟(EP)</a></li>
+        <li><a href="#" onclick="javascript:navClick(this);">英国(GP)</a></li>
+        <li><a href="#" onclick="javascript:navClick(this);">日本(JP)</a></li>
+        <li><a href="#" onclick="javascript:navClick(this);">韩国(KR)</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">电商交易  <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">二级数据  <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">资产交易</a></li>
-            <li class="divider"></li>
-            <li><a href="#">服务交易</a></li>
+            <li><a href="#" onclick="javascript:navSubClick(this);">加拿大(CA)</a></li>
+	        <li><a href="#" onclick="javascript:navSubClick(this);">墨西哥(MX)</a></li>
+	        <li><a href="#" onclick="javascript:navSubClick(this);">联邦(RU)</a></li>
+	        <li><a href="#" onclick="javascript:navSubClick(this);">新加坡(SG)</a></li>
+	        <li><a href="#" onclick="javascript:navSubClick(this);">以色列(IL)</a></li>
+	        <li><a href="#" onclick="javascript:navSubClick(this);">日本(JP)</a></li>
+	        <li><a href="#" onclick="javascript:navSubClick(this);">韩国(KR)</a></li>
+	        <li><a href="#" onclick="javascript:navSubClick(this);">加拿大(CA)</a></li>
+	        <li><a href="#" onclick="javascript:navSubClick(this);">印度(IN)</a></li>
+	        <li><a href="#" onclick="javascript:navSubClick(this);">南非(ZA)</a></li>     
+			<li><a href="#" onclick="javascript:navSubClick(this);">新西兰(NZ) </a></li>     
+			<li><a href="#" onclick="javascript:navSubClick(this);">德国(DE)</a></li>     
+			<li><a href="#" onclick="javascript:navSubClick(this);">法国(FR)</a></li>     
+			<li><a href="#" onclick="javascript:navSubClick(this);">英国(GB)</a></li>     
+			<li><a href="#" onclick="javascript:navSubClick(this);">中国台湾(TW)</a></li>     
+			<li><a href="#" onclick="javascript:navSubClick(this);">瑞士(SE)</a></li>     
+			<li><a href="#" onclick="javascript:navSubClick(this);">西班牙(ES)</a></li>     
+			<li><a href="#" onclick="javascript:navSubClick(this);">意大利(IT)</a></li>     
+			<li><a href="#" onclick="javascript:navSubClick(this);">挪威(NO)</a></li>     
+			<li><a href="#" onclick="javascript:navSubClick(this);">瑞典(SE)</a></li>     
+			<li><a href="#" onclick="javascript:navSubClick(this);">荷兰(NL)</a></li>     
+			<li><a href="#" onclick="javascript:navSubClick(this);">芬兰(FI)</a></li>     
           </ul>
-         </li>
-	      <li><a href="#">社交中心</a></li>
-	      <li><a href="#">金融频道</a></li>
-	      <li><a href="#">常用工具</a></li>
-	      <li><a href="#">在线留言</a></li>
+        </li>
+      
       </ul>
       <form class="navbar-form navbar-right" role="search">
         <div class="form-group">

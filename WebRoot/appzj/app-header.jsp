@@ -19,16 +19,11 @@
             </ul>
         </li>
       </ul>
-      
       <div class="nav navbar-nav navbar-right" href="#">&nbsp;</div>
       <ul class="nav navbar-nav navbar-right">
         	<li ><p class="navbar-text" > <a href="#" class="navbar-link">请登录</a></p></li>
-        	<li ><p class="navbar-text" > <a href="#" class="navbar-link">会员中心</a></p></li>
-        	<li ><p class="navbar-text" > <a href="#" class="navbar-link">我的关注</a></p></li>
-        	<li ><p class="navbar-text" > <a href="#" class="navbar-link">我的消息</a></p></li>
         	<li ><p class="navbar-text" > <a href="#" class="navbar-link">免费注册</a></p></li>
         	<li ><p class="navbar-text" > <a href="#" class="navbar-link">联系我们</a></p></li>
-        	<li ><p class="navbar-text" > <a href="#" class="navbar-link">关注本站</a></p></li>
         </ul>
     </div>
   </div>
@@ -37,15 +32,13 @@
 
 <div class="container header">  
 	<div class="row">
-		<div class="col-md-6 text-center">
-			<h1>
-				<img class="logo" src="../sea/core/css/images/logo.png"/>
+		<div class="col-md-12 text-left" >
+			<h2 style="display: inline-block;">
+				<img class="logo" src="sea/core/css/images/logo.png"/>
 				<strong class=" text-primary">横琴知识产权交易中心</strong>
-			</h1>
-		</div>
-		<div class="col-md-2"></div>
-		<div class="col-md-4">
-			<h4><p class="telphone">热线电话:1234567</p></h4>
+			</h2>
+			<h3 style="display: inline-block;"><strong class=" text-info">——</strong></h3>
+			<h3 style="display: inline-block;"><strong class=" text-danger">专利信息检索平台</strong></h3>
 		</div>
 	</div>
 </div>
