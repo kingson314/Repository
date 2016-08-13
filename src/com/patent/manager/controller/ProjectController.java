@@ -68,34 +68,26 @@ public class ProjectController extends BaseContorller<Wipo> {
 		String relative= UtilString.isNil(this.mapParams.get("relative"));
 		String memo= UtilString.isNil(this.mapParams.get("memo"));
 		String ord= UtilString.isNil(this.mapParams.get("ord"));
-		String files= UtilString.isNil(this.mapParams.get("files"));
 		String detailurl= UtilString.isNil(this.mapParams.get("detailurl"));
 		String id= UtilString.isNil(this.mapParams.get("id"));
+		String detailcontent=UtilString.isNil(this.mapParams.get("detailcontent"));
 		String sql = "select * from project where id='"+id+"'  ";
 		List<Map<String, Object>> list = this.managerService.listMap(sql, new  HashMap<String, Object>());
 		if(list.size()==0){
 			if("".equals(id)){
 			 id= UtilGuid.getGuid();
 			}
-			sql = "insert into project(id,name,level,relative,memo,ord,state,files,detailurl)values('"
-				+id+"','"+name+"','"+level+"','"+relative+"','"+memo+"','"+ord+"',0,'"+files+"','"+detailurl+"')";
+			sql = "insert into project(id,name,level,relative,memo,ord,state,detailcontent,detailurl)values('"
+				+id+"','"+name+"','"+level+"','"+relative+"','"+memo+"','"+ord+"',0,'"+detailcontent+"','"+detailurl+"')";
 		}else{ 
-			sql = "update project set name='"+name+"',level='"+level+"',relative='"+relative+"',memo='"+memo+"',files='"+files+"',detailurl='"+detailurl+"',ord='"+ord+"' where id='"+id+"'";
+			sql = "update project set name='"+name+"',level='"+level+"',relative='"+relative+"',memo='"+memo+"',detailcontent='"+detailcontent+"',detailurl='"+detailurl+"',ord='"+ord+"' where id='"+id+"'";
 		}
 		System.out.println(sql);
 		this.managerService.executeSql(sql);
 		//生成明细页面
 		String realPath=this.request.getSession().getServletContext().getRealPath("");
 		String content=UtilFile.readFile(realPath+"/patent/ProjectDetailTpl.jsp");
-		StringBuilder sbHtml=new StringBuilder();
-		String[] fileArr=files.split(",");
-		String basePath=request.getScheme() + "://"+ request.getServerName() + ":" + request.getServerPort()+ request.getContextPath() + "/upload/";
-		for(String sfile:fileArr){
-			sbHtml.append("<div class='row'><div class='col-md-12'>");
-			sbHtml.append("<img src='"+basePath+sfile+"'/ style='width:100%'>");
-			sbHtml.append("</div></div>");
-		}
-		UtilFile.writeFile(realPath+"/"+id+".jsp", content.replace("<%-- dyn html --%>",sbHtml.toString()).replace("<%-- dyn name --%>",name)); 
+		UtilFile.writeFile(realPath+"/"+id+".jsp", content.replace("<%-- dyn html --%>",detailcontent));
 		//
 		this.print(new Result(true,id));
 	}

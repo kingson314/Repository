@@ -8,8 +8,6 @@
 	<classpathentry kind="lib" path="/CommonWeb/lib/hibernate/hibernate-core-4.1.6.Final.jar"/>
 	<classpathentry kind="lib" path="/CommonWeb/lib/hibernate/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
 	<classpathentry kind="lib" path="/CommonWeb/lib/json/jackson-all-1.9.0.jar"/>
-	<classpathentry kind="lib" path="/CommonWeb/lib/spring/com.springsource.org.apache.commons.fileupload-1.2.0.jar"/>
-	<classpathentry kind="lib" path="/CommonWeb/lib/spring/com.springsource.org.apache.commons.io-1.4.0.jar"/>
 	<classpathentry kind="lib" path="/CommonWeb/lib/spring/jstl.jar"/>
 	<classpathentry kind="lib" path="/CommonWeb/lib/spring/spring-aop-4.0.0.M2.jar"/>
 	<classpathentry kind="lib" path="/CommonWeb/lib/spring/spring-aspects-4.0.0.M2.jar"/>
@@ -34,7 +32,6 @@
 	<classpathentry kind="lib" path="/CommonWeb/lib/spring/standard-1.1.2.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/CommonWeb"/>
 	<classpathentry kind="lib" path="/CommonWeb/lib/servlet-api.jar"/>
-	<classpathentry kind="lib" path="/CommonWeb/lib/commons-logging.jar"/>
 	<classpathentry kind="lib" path="/CommonWeb/lib/jboss-logging-3.1.0.GA.jar"/>
 	<classpathentry kind="lib" path="/CommonWeb/lib/log4j-1.2.14.jar"/>
 	<classpathentry kind="lib" path="/CommonWeb/lib/ojdbc14.jar"/>
@@ -45,9 +42,9 @@
 	<classpathentry kind="lib" path="/CommonWeb/lib/dom4j-1.6.1.jar"/>
 	<classpathentry kind="lib" path="lib/jsoup/jsoup-1.9.2.jar"/>
 	<classpathentry kind="lib" path="lib/ueditor/commons-codec-1.9.jar"/>
-	<classpathentry kind="lib" path="lib/ueditor/commons-fileupload-1.3.1.jar"/>
-	<classpathentry kind="lib" path="lib/ueditor/commons-io-2.4.jar"/>
 	<classpathentry kind="lib" path="lib/ueditor/json.jar"/>
-	<classpathentry kind="lib" path="lib/ueditor/ueditor-1.1.2.jar"/>
+	<classpathentry kind="lib" path="/CommonWeb/lib/commons-logging.jar"/>
+	<classpathentry kind="lib" path="/CommonWeb/lib/spring/commons-fileupload-1.3.1.jar"/>
+	<classpathentry kind="lib" path="/CommonWeb/lib/spring/commons-io-2.4.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>

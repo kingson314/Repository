@@ -3,9 +3,8 @@
 <html>
 <head>
 	<%@ include file="../../../sea/Session.jsp"%>
-	<!--<script src="<%=basePath%>sea/core/jquery/jquery-form.js"></script> -->
 	<script src="<%=basePath%>sea/core/ueditor/ueditor.config.js"></script>
-	<script src="<%=basePath%>sea/core/ueditor/ueditor.all.min.js"></script>
+	<script src="<%=basePath%>sea/core/ueditor/ueditor.all.js"></script>
 	<script src="<%=basePath%>sea/core/ueditor/lang/zh-cn/zh-cn.js"></script>
 		<style>
 			input[type=file],input[type=submit],input[type=button]{
@@ -20,6 +19,7 @@
 		</style>
 		<script>
 			var Title="重点项目销售";
+			var ueditor=null;
 			$(document).ready(function() {
 				seajs.use(["BorderLayout", "FormLayout", "ViewLayout", "Dialog", "Grid", "Toolbar", "Ajax"],
 					function(BorderLayout, FormLayout, ViewLayout, Dialog, Grid, Toolbar, Ajax) {
@@ -36,7 +36,7 @@
 								id:"btnAdd",icon: "glyphicon glyphicon-plus",
 								value: "新增",
 								click: function() {
-									formEdit({type:"add"});
+									formEdit();
 									return false;
 								}
 							}, {
@@ -52,7 +52,6 @@
 									} else {
 										Ajax.post("project/getProject", {id:selected[0]},
 											function(rs) {
-												rs.data.type="mod";
 												formEdit(rs.data);
 											});
 									}
@@ -116,8 +115,7 @@
 									[{id:"name",label:"项目名称",type:"textfield",len:"",isNull:true},{id:"level",label:"项目成熟度",type:"textfield",len:"",isNull:true}],
 									[{id:"relative",label:"相关专利",type:"textarea",css:{"width":"100%"},len:"",isNull:true},{id:"memo",label:"项目简介",type:"textarea",css:{"width":"100%"},len:"",isNull:true}],
 									[{id:"ord",label:"排序号",type:"textfield",value:"0",len:"",isNull:true}],
-									[{id:"detailcontent",type:"ueditor"}],
-									[{id:"files",label:"文件列表",type:"hidden",len:"",isNull:true}],
+									[{id:"detailcontent",type:"ueditor",colspan:2}],
 									[{id:"detailurl",label:"详情url",type:"hidden",len:"",isNull:true}],
 									[{id:"id",type:"hidden"},{id:"type",type:"hidden"}],	
 								 	[{id:"detailcontent",type:"hidden"}]	
@@ -128,8 +126,8 @@
 								form.val(formVal);	
 							}
 							Dialog.confirm({
-								width: "1000px",
-								height: "500px",
+								width: "1600px",
+								height: "600px",
 								title: Title,
 								cancelValue:"关闭",
 								confirmValue:"预览",
@@ -138,6 +136,7 @@
 										return false;
 									}
 									var vals = form.val();
+									vals.detailcontent=UE.getEditor('detailcontent').getContent();
 									Ajax.post("project/svaeProject", vals,
 										function(rs) {
 										$("#formEdit #id").val(rs.msg);
@@ -148,7 +147,15 @@
 								},
 								content: form.formLayout
 							});
-							var ue = UE.getEditor('detailcontent');
+							try{
+								UE.getEditor('detailcontent').destroy();
+							}catch(e){}
+							UE.getEditor('detailcontent');
+							setTimeout(function(){
+								if(formVal){
+									UE.getEditor('detailcontent').setContent(formVal.detailcontent, false);
+								}
+							},200);
 						};
 						/*** 页面布局 ***/
 						var Border = BorderLayout.create({
@@ -179,7 +186,6 @@
 							{name:"level",label:"项目成熟度",width:120,align:"center"},
 							{name:"relative",label:"相关专利",width:150,align:"center"},
 							{name:"memo",label:"项目简介",width:100,align:"center"},
-							{name:"files",label:"文件列表",width:200,align:"left"},
 							{name:"detailurl",label:"详情链接",width:200,align:"left"},
 							{name:"ord",label:"排序号",width:50,align:"center"},
 							],
@@ -192,7 +198,6 @@
 						});
 					});
 			});
-			
 		</script>
 </head>
 <body>

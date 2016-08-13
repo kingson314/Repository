@@ -8,7 +8,7 @@
 		<meta name="viewport"
 			content=" initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<title><%-- dyn Title --%></title>
-		<%@ include file="../../../sea/Session.jsp"%>
+		<link rel="stylesheet" href="sea/core/bootstrap/css/bootstrap.css" />
 		<style>
 			th{
 				text-align:center;
@@ -65,7 +65,7 @@
                     </p>
                 </div>
                 <div class="col-xs-6 col-md-3">
-			      <img  style="height:138px;width:140px;"src="<%=basePath%>patent/images/code.jpg"" alt="...">
+			      <img  style="height:138px;width:140px;"src="patent/images/code.jpg"" alt="...">
 		  		</div>
             </div>
 		</div>

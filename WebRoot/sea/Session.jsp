@@ -15,10 +15,8 @@
 --%><script src="<%=basePath%>sea/component/base/form/datetime/jedate/jedate.js"></script>
 <link href="<%=basePath%>sea/component/base/form/datetime/jedate/skin/jedate.css" rel="stylesheet" type="text/css" />
 <script src="<%=basePath%>sea/core/bootstrap/bootstrap.min.js"></script>
-<link rel="stylesheet"
-	href="<%=basePath%>sea/core/bootstrap/css/bootstrap.css" />
-<link rel="stylesheet"
-	href="<%=basePath%>sea/core/css/main.css" />
+<link rel="stylesheet" href="<%=basePath%>sea/core/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" href="<%=basePath%>sea/core/css/main.css" />
 <!--[if lt IE 9]>
        <script src="<%=basePath%>sea/core/bootstrap/html5shiv.js"></script>
       <![endif]-->

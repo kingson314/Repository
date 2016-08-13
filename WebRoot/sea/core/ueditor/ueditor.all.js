@@ -7338,21 +7338,17 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
          */
         setContent: function (html, isAppendTo, notFireSelectionchange) {
             var me = this;
-
             me.fireEvent('beforesetcontent', html);
             var root = UE.htmlparser(html);
             me.filterInputRule(root);
             html = root.toHtml();
-
+            debugger;
             me.body.innerHTML = (isAppendTo ? me.body.innerHTML : '') + html;
-
-
             function isCdataDiv(node){
                 return  node.tagName == 'DIV' && node.getAttribute('cdata_tag');
             }
             //给文本或者inline节点套p标签
             if (me.options.enterTag == 'p') {
-
                 var child = this.body.firstChild, tmpNode;
                 if (!child || child.nodeType == 1 &&
                     (dtd.$cdata[child.tagName] || isCdataDiv(child) ||
@@ -24469,7 +24465,7 @@ UE.plugin.register('simpleupload', function (){
             h = containerBtn.offsetHeight || 20,
             btnIframe = document.createElement('iframe'),
             btnStyle = 'display:block;width:' + w + 'px;height:' + h + 'px;overflow:hidden;border:0;margin:0;padding:0;position:absolute;top:0;left:0;filter:alpha(opacity=0);-moz-opacity:0;-khtml-opacity: 0;opacity: 0;cursor:pointer;';
-
+        
         domUtils.on(btnIframe, 'load', function(){
 
             var timestrap = (+new Date()).toString(36),
@@ -24520,7 +24516,9 @@ UE.plugin.register('simpleupload', function (){
                         var link, json, loader,
                             body = (iframe.contentDocument || iframe.contentWindow.document).body,
                             result = body.innerText || body.textContent || '';
-                        json = (new Function("return " + result))();
+                        console.debug(result)
+                        debugger;
+                        json =$.parseJSON(result)
                         link = me.options.imageUrlPrefix + json.url;
                         if(json.state == 'SUCCESS' && json.url) {
                             loader = me.document.getElementById(loadingId);
