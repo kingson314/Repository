@@ -139,9 +139,15 @@
 								content: form.formLayout
 							});
 						};
+						var wWin=$(window).width();
+						if(wWin>=768){
+							wWin="70%";
+						}else{
+							wWin="100%";
+						}
 						/*** 页面布局 ***/
 						var Border = BorderLayout.create({
-							width:"70%",
+							width:wWin,
 							horizontally:true,//水平居中
 							vertically:false,//垂直居中
 							north: {

@@ -16,6 +16,16 @@
 				font-weight:bold;
 				text-align:center;
 			}
+			@media screen and (min-width: 768px) {
+				body{
+					width:70%;
+					}
+			}
+			@media screen and (max-width: 767px) {
+				body{
+					width:100%;
+				}
+			}
 		</style>
 		<script>
 			var Title="重点项目销售";
@@ -157,9 +167,15 @@
 								}
 							},200);
 						};
+						var wWin=$(window).width();
+						if(wWin>=768){
+							wWin="70%";
+						}else{
+							wWin="100%";
+						}
 						/*** 页面布局 ***/
 						var Border = BorderLayout.create({
-							width:"70%",
+							width:wWin,
 							horizontally:true,//水平居中
 							vertically:false,//垂直居中
 							north: {

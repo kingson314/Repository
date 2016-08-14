@@ -6,7 +6,8 @@
 	version="3.0">
 	<display-name></display-name>
 	<welcome-file-list>
-		<welcome-file>appzj/app-main.jsp</welcome-file>
+		<!--<welcome-file>appzj/app-main.jsp</welcome-file>-->
+		<welcome-file>patent/app-main.jsp</welcome-file>
 	</welcome-file-list>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>

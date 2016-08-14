@@ -60,9 +60,9 @@ public class ProjectController extends BaseContorller<Wipo> {
 	}
 	@RequestMapping("svaeProject")
 	public void svaeProject() {
-		for (Map.Entry<String, Object> entry : this.mapParams.entrySet()) {
-			UtilLog.logDebug(entry.getKey() + " = " + entry.getValue());
-		}
+//		for (Map.Entry<String, Object> entry : this.mapParams.entrySet()) {
+//			UtilLog.logDebug(entry.getKey() + " = " + entry.getValue());
+//		}
 		String name= UtilString.isNil(this.mapParams.get("name"));
 		String level= UtilString.isNil(this.mapParams.get("level"));
 		String relative= UtilString.isNil(this.mapParams.get("relative"));
@@ -82,7 +82,7 @@ public class ProjectController extends BaseContorller<Wipo> {
 		}else{ 
 			sql = "update project set name='"+name+"',level='"+level+"',relative='"+relative+"',memo='"+memo+"',detailcontent='"+detailcontent+"',detailurl='"+detailurl+"',ord='"+ord+"' where id='"+id+"'";
 		}
-		System.out.println(sql);
+//		System.out.println(sql);
 		this.managerService.executeSql(sql);
 		//生成明细页面
 		String realPath=this.request.getSession().getServletContext().getRealPath("");
