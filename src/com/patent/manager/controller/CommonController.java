@@ -110,13 +110,19 @@ public class CommonController extends BaseContorller<Wipo> {
 		for(Map<String, Object> map:list){
 			sbHtml.append("<tr><td width='15%'>"+UtilString.isNil(map.get("domain"))+"</td><td width='15%'>"+UtilString.isNil(map.get("num"))
 			+"</td><td width='25%'>"+UtilString.isNil(map.get("name"))+"</td><td width='15%'>"+UtilString.isNil(map.get("type"))
-			+"</td><td width='15%'>"+UtilString.isNil(map.get("status"))
-			+"</td><td width='15%'>"+UtilString.isNil(map.get("pdate"))
-			+"</td></tr>");
+			+"</td><td width='15%'>"+UtilString.isNil(map.get("status")));
+			if("1".equals(recType)){
+				sbHtml.append("</td><td width='15%'>"+UtilString.isNil(map.get("pdate")));
+			}
+			sbHtml.append("</td></tr>");
 		}
 		String realPath=this.request.getSession().getServletContext().getRealPath("");
 		String content=UtilFile.readFile(realPath+"/patent/CommonTpl.jsp");
-		UtilFile.writeFile(realPath+"/Common"+recType+".jsp", content.replace("<%-- dyn html --%>",sbHtml.toString()).replace("<%-- dyn pdateTitle --%>", pdateTitle).replace("<%-- dyn Title --%>", title)); 
+		content= content.replace("<%-- dyn html --%>",sbHtml.toString()).replace("<%-- dyn Title --%>", title);
+		if("1".equals(recType)){
+			content=content.replace("<%-- dyn pdateTitle --%>", "<th>"+pdateTitle+"</th>");
+		}
+		UtilFile.writeFile(realPath+"/Common"+recType+".jsp",content);
 		this.print(new Result(true,basePath+ "Common"+recType+".jsp"));
 	}
 }

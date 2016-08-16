@@ -106,9 +106,9 @@ public class ProjectController extends BaseContorller<Wipo> {
 	}
 	@RequestMapping("createPage")
 	public void createPage() {
-		for (Map.Entry<String, Object> entry : this.mapParams.entrySet()) {
-			UtilLog.logDebug(entry.getKey() + " = " + entry.getValue());
-		}
+//		for (Map.Entry<String, Object> entry : this.mapParams.entrySet()) {
+//			UtilLog.logDebug(entry.getKey() + " = " + entry.getValue());
+//		}
 		String sql = "select * from project where state=0 order by ord ";
 		List<Map<String, Object>> list = this.managerService.listMap(sql, new  HashMap<String, Object>());
 		StringBuilder sbHtml=new StringBuilder();
@@ -117,6 +117,11 @@ public class ProjectController extends BaseContorller<Wipo> {
 			sbHtml.append("<tr><td width='15%'><a href='"+basePath+map.get("id")+".jsp'>"+UtilString.isNil(map.get("name"))+"</a></td><td width='15%'>"+UtilString.isNil(map.get("level"))
 			+"</td><td width='25%'>"+UtilString.isNil(map.get("relavite"))+"</td><td width='15%'>"+UtilString.isNil(map.get("memo"))
 			+"</td></tr>");
+			
+			//生成明细页面
+			String realPath=this.request.getSession().getServletContext().getRealPath("");
+			String content=UtilFile.readFile(realPath+"/patent/ProjectDetailTpl.jsp");
+			UtilFile.writeFile(realPath+"/"+map.get("id")+".jsp", content.replace("<%-- dyn html --%>",UtilString.isNil(map.get("detailcontent"))));
 		}
 		String realPath=this.request.getSession().getServletContext().getRealPath("");
 		String content=UtilFile.readFile(realPath+"/patent/ProjectTpl.jsp");

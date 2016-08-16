@@ -42,7 +42,7 @@
 			          <th>专利名称</th>
 			          <th>专利类型</th>
 			          <th>法律状态</th>
-			          <th><%-- dyn pdateTitle --%></th>
+			          <%-- dyn pdateTitle --%>
 			        </tr>
 			      </thead>
 			      <tbody>

@@ -109,13 +109,13 @@
 									[{id:"name",label:"专利名称",type:"textfield",len:"",isNull:true}],
 									[{id:"type",label:"专利类型",type:"textfield",len:"",isNull:true}],
 									[{id:"status",label:"法律状态",type:"textfield",len:"",isNull:true}],
-									[{id:"pdate",label:"授权公告日",type:"textfield",isNull:true}],
+									[{id:"pdate",label:"办登截止日",type:"textfield"}],
 									[{id:"ord",label:"排序号",type:"textfield",value:"0",len:"",isNull:true}],
-									[{id:"recType",label:"记录类型",type:"textfield",value:recType,len:"",isNull:true}]
+									[{id:"recType",label:"记录类型",type:"hidden",value:recType,len:"",isNull:true}]
 								]
 							};
-							if(recType==1){
-								cfgForm.items[6].label="办登截止日";
+							if(recType==0){
+								cfgForm.items[6][0].type="hidden";
 							}
 							form = FormLayout.create(cfgForm);
 							if(formVal){
@@ -175,7 +175,7 @@
 											{name:"name",label:"专利名称",width:250,align:"center"},
 											{name:"type",label:"专利类型",width:120,align:"center"},
 											{name:"status",label:"法律状态",width:120,align:"center"},
-											{name:"pdate",label:"授权公告日",width:120,align:"center"},
+											{name:"pdate",label:"办登截止日",width:120,align:"center"},
 											{name:"ord",label:"排序号",width:50,align:"center"},
 										],
 										ds: {
@@ -186,8 +186,8 @@
 										},	
 										pageSizes: [10, 20, 30, 40,50]
 									};										
-						if(recType==1){
-							cfgGrid.columns[6].label="办登截止日";
+						if(recType==0){
+							cfgGrid.columns[6].width="0";
 						}
 						$(".grid").Grid(cfgGrid);
 					});
