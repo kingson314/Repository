@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>drop</title>
+<script src="../../../../sea/core/jquery/jquery.js"></script>
+<script src="drop.js"></script>
+<link href="drop.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+</style>
+<script type="text/javascript">
+	$(function() {
+	/* 	$("body").append(
+				'<div class="c droper" id="d"><div class="dropitem">1111</div><div class="dropitem">1111</div>	</div>'); */
+		$(".droper").drop({
+			onStart:function(jq){
+				/* alert(jq.attr("id")) */
+			},
+			onEnd:function(jq){
+				/* alert(jq.parent().attr("id")) */
+			}
+		});
+		$("#btn").click(
+				function() {
+					/* alert($(".droper").data("start") + "/"
+							+ $(".droper").data("end")); */
+				});
+		$(".hhh").height(300)
+	});
+	
+	
+</script>
+</head>
+<body>
+	<div class="a droper" id='a'>
+		<div class="dropitem" >1111</div>
+		<div class="dropitem dropitem1">2222</div>
+		<div class="dropitem">3333</div>
+		<div class="dropitem">4444</div>
+	</div>
+	<div class="b droper" id='b'>
+		<div class="dropitem">aaa</div> 
+		<div class="dropitem">bbb</div> 
+	</div>
+	 
+	<input type="button" value="get" id='btn' />
+</body>
+</html>
