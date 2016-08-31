@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -55,7 +56,7 @@ public class CaseStatusController extends BaseContorller<Wipo> {
 		int curTime = 0;
 		try {
 			String surl = url + sqh;
-			System.out.print(surl);
+			System.out.println(surl);
 			Elements elements = null;
 			while (curTime < tryTimes) {
 				elements = getElements(surl);
@@ -64,6 +65,11 @@ public class CaseStatusController extends BaseContorller<Wipo> {
 				}
 				curTime++;
 			}
+			System.out.println("----------------------------");
+			for(Element el:elements){
+				System.out.println(el.html());
+			}
+			System.out.println("----------------------------");
 			System.out.println("       "+curTime);
 			// n次之后还是没查出来
 			if (elements.size() < 3) {

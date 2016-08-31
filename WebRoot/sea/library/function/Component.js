@@ -10,11 +10,13 @@ define(function(require, exports, module) {
 		if(jq.attr("type").indexOf("select")>=0){
 			jq.focus();
 		}else{
-			var obj=jq.get(0);
-			var txt=obj.createTextRange();
-			txt.moveStart('character',obj.value.length);
-			txt.collapse(true);
-			txt.select();
+			try{
+				var obj = jq.get(0);
+				var txt = obj.createTextRange();
+				txt.moveStart('character', obj.value.length);
+				txt.collapse(true);
+				txt.select();
+			}catch(e){}
 		}
 		return jq;
 	};

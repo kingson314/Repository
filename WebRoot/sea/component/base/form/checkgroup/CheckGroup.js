@@ -89,8 +89,26 @@ define(function(require, exports, module) {
 				return "";
 			}
 		},
+		check:function(){
+			if(this.configs.isNull==false){
+				this.checkGroup.parent().removeClass("sea_input_warning");
+				for(var i=0;i<this.radios.length;i++){
+					if($(this.checks[i]).is(':checked')){
+						return true;
+					}
+				}
+				this.checkGroup.parent().addClass("sea_input_warning");
+				this.checkGroup.parent().attr("title","该字段不能为空").tip({}).trigger("show");
+				return false;
+			}
+			return true;
+		},
 		clear:function(){
 			this.checkGroup.find("input[type=checkbox]").removeAttr("checked");
+		},
+		//设置焦点
+		focus:function(){
+			return Component.focus($(this.checks[0]));
 		}
 	};
 	/** * 输出类对象 ** */

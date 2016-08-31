@@ -8,6 +8,7 @@ define(function(require, exports, module) {
 			name:"",//必须有name
 			align:"0",//横排：horizontal  或 0; 竖排：vertical 或 1
 			cls : "",
+			isNull:true,
 			css : {},
 			attr : {	},
 			items:[{
@@ -92,8 +93,26 @@ define(function(require, exports, module) {
 				return "";
 			}
 		},
+		check:function(){
+			if(this.configs.isNull==false){
+				this.radioGroup.parent().removeClass("sea_input_warning");
+				for(var i=0;i<this.radios.length;i++){
+					if($(this.radios[i]).is(':checked')){
+						return true;
+					}
+				}
+				this.radioGroup.parent().addClass("sea_input_warning");
+				this.radioGroup.parent().attr("title","该字段不能为空").tip({}).trigger("show");
+				return false;
+			}
+			return true;
+		},
 		clear:function(){
 			this.radioGroup.find("input[type=radio]").removeAttr("checked");
+		},
+		//设置焦点
+		focus:function(){
+			return Component.focus($(this.radios[0]));
 		}
 	};
 	/** * 输出类对象 ** */

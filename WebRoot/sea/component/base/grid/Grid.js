@@ -413,7 +413,7 @@ define(function(require,exports,module){
 		format:{
 			"json":{
 				body:function(val,record ,col){
-					return col.format.content[val]||val  ;
+					return col.format.content[val] ;
 				}
 			},
 			"checkbox":{
