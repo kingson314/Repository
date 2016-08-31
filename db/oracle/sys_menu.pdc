@@ -1,0 +1,22 @@
+prompt PL/SQL Developer import file
+prompt Created on 2014年2月19日 by Administrator
+set feedback off
+set define off
+prompt Loading SYS_MENU...
+insert into SYS_MENU (ID, NAME, CREATEDATE, MODIFYDATE, CREATEUSERID, MODIFYUSERID, VERSION, STATE, ORD, MEMO, PARENTID, ICON, COUNTURL, URL)
+values ('0', '系统管理', to_timestamp('18-02-2014 15:05:14.000000', 'dd-mm-yyyy hh24:mi:ss.ff'), null, null, null, null, 0, 100, null, '-1', null, null, null);
+insert into SYS_MENU (ID, NAME, CREATEDATE, MODIFYDATE, CREATEUSERID, MODIFYUSERID, VERSION, STATE, ORD, MEMO, PARENTID, ICON, COUNTURL, URL)
+values ('1', '用户管理', null, to_timestamp('18-02-2014 18:11:58.265000', 'dd-mm-yyyy hh24:mi:ss.ff'), null, null, null, 0, 0, '22222', '0', null, null, 'extjs.system.user.User');
+insert into SYS_MENU (ID, NAME, CREATEDATE, MODIFYDATE, CREATEUSERID, MODIFYUSERID, VERSION, STATE, ORD, MEMO, PARENTID, ICON, COUNTURL, URL)
+values ('2', '菜单管理', to_timestamp('18-02-2014 15:05:14.000000', 'dd-mm-yyyy hh24:mi:ss.ff'), null, null, null, null, 0, 0, null, '0', null, null, 'extjs.system.menu.Menu');
+insert into SYS_MENU (ID, NAME, CREATEDATE, MODIFYDATE, CREATEUSERID, MODIFYUSERID, VERSION, STATE, ORD, MEMO, PARENTID, ICON, COUNTURL, URL)
+values ('3947F4DF688E49889395DB6F1D503776', '资源管理', null, to_timestamp('19-02-2014 12:43:04.885000', 'dd-mm-yyyy hh24:mi:ss.ff'), null, null, null, 0, 2, null, '0', null, null, 'extjs.system.input.Input');
+insert into SYS_MENU (ID, NAME, CREATEDATE, MODIFYDATE, CREATEUSERID, MODIFYUSERID, VERSION, STATE, ORD, MEMO, PARENTID, ICON, COUNTURL, URL)
+values ('5', '用户登录', to_timestamp('19-02-2014 16:56:14.000000', 'dd-mm-yyyy hh24:mi:ss.ff'), null, null, null, null, 0, 0, null, '1', null, null, null);
+insert into SYS_MENU (ID, NAME, CREATEDATE, MODIFYDATE, CREATEUSERID, MODIFYUSERID, VERSION, STATE, ORD, MEMO, PARENTID, ICON, COUNTURL, URL)
+values ('474F2A19C39840E8AA0A7BB72F89801C', '11', to_timestamp('19-02-2014 22:58:11.000000', 'dd-mm-yyyy hh24:mi:ss.ff'), null, null, null, '1.0.0', 0, 0, null, null, null, null, null);
+commit;
+prompt 6 records loaded
+set feedback on
+set define on
+prompt Done.
