@@ -7,18 +7,23 @@
 	border: 1px solid #CDCDCD;
 }
 
-.droper {
+.sea_droper {
 	width: 300px; 
 	padding: 10px;
 	float: left;
+	height:600px;
 }
-
-.dropitem {
+.sea_drager{
+	width: 300px; 
+	padding: 10px;
+	float: left;
+	height:600px;
+}
+.sea_dropitem {
 	height: 35px;
 	line-height: 35px;
 	width: 200px; 
 	margin-bottom: 10px;
-	padding: 0 30px;
 	border-radius: 4px;
 	background-color: #39F;
 	color: #fff;
@@ -28,10 +33,11 @@
 	cursor: move;
 	text-decoration: none;
 }
-.dropitem input,.dropitem textarea{
+
+.sea_dropitem input,.sea_dropitem textarea{
 	cursor: move;
 }
-.drop_title {
+.sea_drop_title {
 	padding: 0 3px;
 	flaot: left;
 	text-align: left;

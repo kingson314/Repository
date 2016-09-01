@@ -1,3 +1,9 @@
+/**
+ * sea_drop_layout 拖放布局器类，可支持布局器本身的拖放以及布局器内部sea_drop_holder承载投放对象
+ * sea_drager 只支持拖拽，不支持投放，方式为：克隆
+ * sea_droper 既支持拖拽也支持拖放，方式为：移动
+ * 
+ */
 $.fn.drop = function(configs) {
 	var defaults={
 		offset:{
@@ -13,10 +19,10 @@ $.fn.drop = function(configs) {
     var container = this;
     //初始化投放区域
     for(var i=0;i<$(this).length;i++){
-    	$($(this)[i]).append($("<div></div>").css({"height":3}));
+    	$($(this)[i]).append($("<div></div>").css({width:"100%",height:10,float:"left","border":"1px solid blue"}));
     }
     var startJq;
-	$(container).delegate(".dropitem","mousedown",{},function(e) {
+	$(container).delegate(".sea_dropitem","mousedown",{},function(e) {
         if(e.which != 1 || window.SEA_DROP_ONLY) return; // 排除非左击和表单元素
         e.preventDefault(); // 阻止选中文本
         window.SEA_DROP_ONLY = true;
@@ -25,8 +31,11 @@ $.fn.drop = function(configs) {
     		options.onStart($(this));
     	}
         var me= $(this);
+        // 添加虚线框
+        // 保持原来的宽高
+        me.css({opacity: 0.8, "z-index": 999});
         var sea_drop_holder = $("<div id='sea_drop_holder'></div>")
-        if(me.parent().hasClass("drager")){
+        if(me.parent().hasClass("sea_drager")){
         	me= me.clone().appendTo($("body")).css({"position":"absolute","left":startJq.offset().left,"top":startJq.offset().top});
         }else{
         	sea_drop_holder.insertBefore(me).append(me);
@@ -37,10 +46,7 @@ $.fn.drop = function(configs) {
         var height = me.height();
         var left = me.offset().left;
         var top = me.offset().top;
-        // 添加虚线框
-        // 保持原来的宽高
-        me.css({"width":width, "height":height, opacity: 0.8, "z-index": 999});
-        sea_drop_holder.css({"border":"1px dashed #222", "height":me.outerHeight(true),"width":me.outerWidth(true)});
+        sea_drop_holder.css({"border":"1px dashed #222", "height":me.height(),"width":me.width()});
         // 绑定mousemove事件
         $(document).mousemove(function(e){
             e.preventDefault();
@@ -54,7 +60,7 @@ $.fn.drop = function(configs) {
             // 遍历所有块的坐标
             $(container).children().not(me).not(sea_drop_holder).each(function(i){
                 var obj = $(this);
-                if(obj.parent().hasClass("drager"))return;
+                if(obj.parent().hasClass("sea_drager"))return;
                 var offset = obj.offset();
                 var left1 = offset.left;
                 var left2 = offset.left + obj.width();
@@ -62,10 +68,33 @@ $.fn.drop = function(configs) {
                 var top2 = offset.top + obj.height();
                 // 移动虚线框
                 if(left1 < ml && ml < left2 && top1 < mt && mt < top2){
-                    if(!obj.next("#sea_drop_holder")) {
-                        sea_drop_holder.insertAfter(this);
-                    }else{
+                	if(obj.hasClass("sea_drop_holder")&& obj.find(".sea_dropitem").length==0){//支持首层子元素为sea_drop_holder
+                		 sea_drop_holder.appendTo(obj);
+                	}else if(obj.find(".sea_drop_holder").length>0){//支持多层子元素为sea_drop_holder
+                		var allHasDropItem=true;
+                		obj.find(".sea_drop_holder").each(function(i){
+                			var objItem= $(this);
+                			if(objItem.find(".sea_dropitem").length==0){
+                				allHasDropItem=false;
+	                			var offset = objItem.offset();
+	                            var left1 = offset.left;
+	                            var left2 = offset.left + objItem.width();
+	                            var top1 = offset.top;
+	                            var top2 = offset.top + objItem.height();
+	                            if(left1 < ml && ml < left2 && top1 < mt && mt < top2){
+	                            	sea_drop_holder.appendTo(objItem);
+	                            }
+                			}
+                			if(allHasDropItem==true){
+                				if(obj.next(".sea_drop_layout")) {
+                                    sea_drop_holder.insertBefore(obj);
+                				}
+                			}
+                		});
+                	}else if(obj.next("#sea_drop_holder")) {
                         sea_drop_holder.insertBefore(this);
+                    }else{
+                        sea_drop_holder.insertAfter(this);
                     }
                     return;
                 }
@@ -79,7 +108,7 @@ $.fn.drop = function(configs) {
         	}
             // 拖拽回位，并删除虚线框
             var offset = sea_drop_holder.offset();
-            if(offset.top==0){
+            if(offset.top==0){//只点击没拖动时
             	me.remove();
             	sea_drop_holder.remove();
                 window.SEA_DROP_ONLY = null;
@@ -87,8 +116,10 @@ $.fn.drop = function(configs) {
             }
             me.animate({"left":offset.left, "top":offset.top}, 100, function(){
             	me.removeAttr("style");
-                sea_drop_holder.replaceWith(me);
-                sea_drop_holder.height(me.height());
+            	sea_drop_holder.replaceWith(me);
+                if(me.parent().hasClass("sea_drop_holder")){
+                	me.css({width:me.parent().width(),"max-width":me.parent().width(),height:me.parent().height()});
+                }
                 window.SEA_DROP_ONLY = null;
             });
         });

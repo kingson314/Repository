@@ -6,10 +6,21 @@
 <script src="drop.js"></script>
 <link href="drop.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
+	.sea_drop_holder{
+		height:50px;
+		width:80px;
+		border:1px solid black;
+		float:left;
+	}
+	.sea_drop_layout{
+		height:50px;
+		border:1px solid red;
+		margin-bottom:10px;
+	}
 </style>
 <script type="text/javascript">
 	$(function() {
-		$(".droper").drop({
+		$(".sea_droper,.sea_drager").drop({
 			onStart:function(jq){
 				/* alert(jq.attr("id")) */
 			},
@@ -24,24 +35,36 @@
 </head>
 <body>
 <div class="sea_dropmain">
-	<div class="drop_title">drop test</div>
-	<div class="droper drager">
-		<div class="dropitem" >1111</div>
-		<div class="dropitem">2222</div>
-		<div class="dropitem">3333</div>
-		<div class="dropitem">4444</div>
+	<div class="sea_drop_title">drop test</div>
+	<div class="sea_drager">
+		<div class="sea_dropitem" >1111</div>
+		<div class="sea_dropitem">2222</div>
+		<div class="sea_dropitem">3333</div>
+		<div class="sea_dropitem">4444</div>
+		<div class="sea_drop_layout sea_dropitem" >
+			<div class="sea_drop_holder" ></div>
+			<div class="sea_drop_holder" ></div>
+		</div>
 	</div>
 </div>
 <div class="sea_dropmain">
- 	<div class="drop_title">drop test</div>
-	<div class="droper">
-		<div class="dropitem" >1111</div>
+ 	<div class="sea_drop_title">drop test</div>
+	<div class="sea_droper">
+		<div class="sea_dropitem" >1111</div>
+		<div class="sea_dropitem">2222</div>
+		<div class="sea_dropitem">3333</div>
+		<div class="sea_dropitem">4444</div>
 	</div>
 </div>
  
 <div class="sea_dropmain" style="width:700px;">
- 	<div class="drop_title">drop test</div>
-	<div class="droper">
+ 	<div class="sea_drop_title">drop test</div>
+	<div class="sea_droper">
+		<div class="sea_dropitem">4444</div>
+		<div class="sea_drop_layout sea_dropitem" >
+			<div class="sea_drop_holder" ></div>
+			<div class="sea_drop_holder" ></div>
+		</div>
 	</div>
 </div>
 </body>
