@@ -8,8 +8,8 @@
 }
 
 .droper {
-	width: 300px; float : left;
-	padding: 10px 10px 0 10px;
+	width: 300px; 
+	padding: 10px;
 	float: left;
 }
 
@@ -25,13 +25,11 @@
 	vertical-align:middle;
 	font-weight: 700;
 	font-size: 14px;
-	cursor: pointer;
+	cursor: move;
 	text-decoration: none;
-	display:block;
 }
-.dropitem1{
-	height: 100px;
-	line-height: 100px;
+.dropitem input,.dropitem textarea{
+	cursor: move;
 }
 .drop_title {
 	padding: 0 3px;

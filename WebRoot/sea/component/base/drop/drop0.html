@@ -9,8 +9,6 @@
 </style>
 <script type="text/javascript">
 	$(function() {
-	/* 	$("body").append(
-				'<div class="c droper" id="d"><div class="dropitem">1111</div><div class="dropitem">1111</div>	</div>'); */
 		$(".droper").drop({
 			onStart:function(jq){
 				/* alert(jq.attr("id")) */
@@ -19,29 +17,32 @@
 				/* alert(jq.parent().attr("id")) */
 			}
 		});
-		$("#btn").click(
-				function() {
-					/* alert($(".droper").data("start") + "/"
-							+ $(".droper").data("end")); */
-				});
-		$(".hhh").height(300)
 	});
 	
 	
 </script>
 </head>
 <body>
-	<div class="a droper" id='a'>
+<div class="sea_dropmain">
+	<div class="drop_title">drop test</div>
+	<div class="droper drager">
 		<div class="dropitem" >1111</div>
-		<div class="dropitem dropitem1">2222</div>
+		<div class="dropitem">2222</div>
 		<div class="dropitem">3333</div>
 		<div class="dropitem">4444</div>
 	</div>
-	<div class="b droper" id='b'>
-		<div class="dropitem">aaa</div> 
-		<div class="dropitem">bbb</div> 
+</div>
+<div class="sea_dropmain">
+ 	<div class="drop_title">drop test</div>
+	<div class="droper">
+		<div class="dropitem" >1111</div>
 	</div>
-	 
-	<input type="button" value="get" id='btn' />
+</div>
+ 
+<div class="sea_dropmain" style="width:700px;">
+ 	<div class="drop_title">drop test</div>
+	<div class="droper">
+	</div>
+</div>
 </body>
 </html>
