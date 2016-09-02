@@ -37,10 +37,7 @@ public class DbController extends BaseContorller<Db> {
 		for (Map.Entry<String, Object> entry : this.mapParams.entrySet()) {
 			UtilLog.logDebug(entry.getKey() + " = " + entry.getValue());
 		}
-		for (Map.Entry<String, Integer> entry : this.pageParams.entrySet()) {
-			UtilLog.logDebug(entry.getKey() + " = " + entry.getValue());
-		}
-		Result result = this.userService.list(this.pageParams.get("pageIndex"), this.pageParams.get("pageSize"), "from User", this.mapParams);
+		Result result = this.userService.list(this.pager.getPageIndex(), this.pager.getPageSize(), "from User", this.mapParams);
 		this.print(result);
 	}
 	
