@@ -6,6 +6,8 @@
  */
 $.fn.drop = function(configs) {
 	var defaults={
+		height:"100%",
+		width:"100%",
 		offset:{
 			left:0,
 			top:0
@@ -15,14 +17,21 @@ $.fn.drop = function(configs) {
 		onEnd:function(startJq,endJq){
 		}
 	}
+	
 	var options=$.extend(true,{},defaults,configs); 
-    var container = this;
+	console.debug(options)
+    var container = $(this);
+	container.css({
+		width:options.width,
+		height:options.height
+	});
+	var droper=container.find(".sea_droper,.sea_drager");
     //初始化投放区域
-    for(var i=0;i<$(this).length;i++){
-    	$($(this)[i]).append($("<div></div>").css({width:"100%",height:10,float:"left","border":"1px solid blue"}));
+    for(var i=0;i<droper.length;i++){
+    	$(droper[i]).append($("<div></div>").css({width:"100%",height:10,float:"left","border":"1px solid blue"}));
     }
     var startJq;
-	$(container).delegate(".sea_dropitem","mousedown",{},function(e) {
+    droper.delegate(".sea_dropitem","mousedown",{},function(e) {
         if(e.which != 1 || window.SEA_DROP_ONLY) return; // 排除非左击和表单元素
         e.preventDefault(); // 阻止选中文本
         window.SEA_DROP_ONLY = true;
@@ -55,10 +64,11 @@ $.fn.drop = function(configs) {
             var t = top + e.pageY - pageY;
             me.css({ "position":"absolute","left":l-options.offset.left, "top":t-options.offset.top});
             // 选中块的中心坐标
-            var ml = l+width/2;
-            var mt = t+height/2;
+            var pointer=getMousePos(e);
+            var ml =pointer.x;// l+width/2;
+            var mt =pointer.y;// t+height/2;
             // 遍历所有块的坐标
-            $(container).children().not(me).not(sea_drop_holder).each(function(i){
+            droper.children().not(me).not(sea_drop_holder).each(function(i){
                 var obj = $(this);
                 if(obj.parent().hasClass("sea_drager"))return;
                 var offset = obj.offset();
@@ -124,4 +134,17 @@ $.fn.drop = function(configs) {
             });
         });
     });
+	
+	//Firefox支持属性pageX,与pageY属性，这两个属性已经把页面滚动计算在内了, 
+	//在Chrome可以通过document.body.scrollLeft，document.body.scrollTop计算出页面滚动位移， 
+	//而在IE下可以通过document.documentElement.scrollLeft ，document.documentElement.scrollTop 
+	function getMousePos(event) { 
+      var e = event || window.event; 
+      var scrollX = document.documentElement.scrollLeft || document.body.scrollLeft; 
+      var scrollY = document.documentElement.scrollTop || document.body.scrollTop; 
+      var x = e.pageX || e.clientX + scrollX; 
+      var y = e.pageY || e.clientY + scrollY; 
+      //alert('x: ' + x + '\ny: ' + y); 
+      return { 'x': x, 'y': y }; 
+    } 
 }

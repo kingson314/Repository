@@ -38,7 +38,7 @@ define(function(require, exports, module) {
 				if(item.checked){
 					checkbox.attr("checked",item.checked);
 				}
-				me.checkboxs.append(checkbox);
+				me.checkboxs.push(checkbox);
 				li.append("&nbsp;");
 				var label=Component.createLabel(item).appendTo(li);
 				// 控件类名设置
@@ -73,7 +73,7 @@ define(function(require, exports, module) {
 	};
 	// 类公共方法
 	CheckGroup.prototype = {
-		 val:function(){
+		 val:function(data){
 			if(data){
 				$.each(this.checkboxs,function(index,item){
 					if(item.val()==data){

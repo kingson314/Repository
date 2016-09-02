@@ -1,5 +1,4 @@
 @CHARSET "UTF-8";
-
 .sea_dropmain {
 	float: left;
 	margin: 0 20px 20px 0;;
@@ -7,17 +6,24 @@
 	border: 1px solid #CDCDCD;
 }
 
-.sea_droper {
-	width: 300px; 
-	padding: 10px;
-	float: left;
-	height:600px;
+.sea_drop_title {
+	padding: 0 3px;
+	flaot: left;
+	text-align: left;
+	height: 35px;
+	line-height: 35px;
+	padding: 0 15px;
+	font-weight: 700;
+	vertical-align: middle;
+	color: #777;
+	background-color: #eeeeee;
+	border-bottom: 1px solid #cdcdcd
 }
-.sea_drager{
-	width: 300px; 
+
+.sea_droper,.sea_drager {
 	padding: 10px;
 	float: left;
-	height:600px;
+	height:100%;
 }
 .sea_dropitem {
 	height: 35px;
@@ -36,17 +42,4 @@
 
 .sea_dropitem input,.sea_dropitem textarea{
 	cursor: move;
-}
-.sea_drop_title {
-	padding: 0 3px;
-	flaot: left;
-	text-align: left;
-	height: 35px;
-	line-height: 35px;
-	padding: 0 15px;
-	font-weight: 700;
-	vertical-align: middle;
-	color: #777;
-	background-color: #eeeeee;
-	border-bottom: 1px solid #cdcdcd
 }

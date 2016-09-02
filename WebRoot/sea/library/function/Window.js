@@ -58,4 +58,17 @@ define(function(require, exports, module) {
 		link.type = 'text/css';
 		head.appendChild(link);
 	};
+	
+	//Firefox支持属性pageX,与pageY属性，这两个属性已经把页面滚动计算在内了, 
+	//在Chrome可以通过document.body.scrollLeft，document.body.scrollTop计算出页面滚动位移， 
+	//而在IE下可以通过document.documentElement.scrollLeft ，document.documentElement.scrollTop 
+	exports.getMousePos=function(event) { 
+	      var e = event || window.event; 
+	      var scrollX = document.documentElement.scrollLeft || document.body.scrollLeft; 
+	      var scrollY = document.documentElement.scrollTop || document.body.scrollTop; 
+	      var x = e.pageX || e.clientX + scrollX; 
+	      var y = e.pageY || e.clientY + scrollY; 
+	      //alert('x: ' + x + '\ny: ' + y); 
+	      return { 'x': x, 'y': y }; 
+	    } 
 });

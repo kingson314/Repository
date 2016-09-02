@@ -368,7 +368,6 @@ define(function(require,exports,module){
 			}
 			switch(options){
 				case "reload":
-					debugger;
 					reload(me,params) ;
 					break ;
 				case "addEvent":
