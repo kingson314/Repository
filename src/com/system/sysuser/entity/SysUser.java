@@ -1,14 +1,22 @@
-package com.system.sysuser.entity;                     
-	                                                               
+package com.system.sysuser.entity;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Entity;                                
-import javax.persistence.Table;                                 
-import framework.base.entity.BaseEntity;                    
-	                                                               
-@Entity                                                         
-@Table(name = "sys_user", catalog = "", schema = "") 
-public class SysUser extends BaseEntity {                          
-	private static final long serialVersionUID = 1L;     
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import com.system.sysdepartment.entity.SysDepartment;
+
+import framework.base.entity.BaseEntity;
+
+@Entity
+@Table(name = "sys_user", catalog = "", schema = "")
+public class SysUser extends BaseEntity {
+	private static final long serialVersionUID = 1L;
 
 	// 密码
 	@Column(name = "password", nullable = true, unique = false, length = 100, insertable = true, updatable = true)
@@ -17,10 +25,10 @@ public class SysUser extends BaseEntity {
 	@Column(length = 100)
 	private String userAlias;
 	// 部门ID(Sys_Department.id)
-	@Column(length = 40)
+	@Column(length = 40,insertable=false ,updatable =false)
 	private String departmentId;
 	// 性别(0表示男，1表示女)
-	@Column(columnDefinition="INT default 0")
+	@Column(columnDefinition = "INT default 0")
 	private int sex;
 	// 出生日期
 	@Column(length = 20)
@@ -40,6 +48,18 @@ public class SysUser extends BaseEntity {
 	// 个人照片url
 	@Column(length = 100)
 	private String photoUrl;
+	
+	@ManyToOne  
+	@JoinColumn(name="departmentId")  
+	private SysDepartment sysDepartment;
+	 
+	public SysDepartment getSysDepartment() {
+		return sysDepartment;
+	}
+
+	public void setSysDepartment(SysDepartment sysDepartment) {
+		this.sysDepartment = sysDepartment;
+	}
 
 	public String getPassword() {
 		return password;
@@ -120,4 +140,4 @@ public class SysUser extends BaseEntity {
 	public void setPhotoUrl(String photoUrl) {
 		this.photoUrl = photoUrl;
 	}
-}                                                               
+}

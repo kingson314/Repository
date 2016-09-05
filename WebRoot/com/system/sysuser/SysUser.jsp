@@ -96,10 +96,7 @@
 										});
 										return false;
 									} else {
-										var params = {
-											id: selected[0]
-										};
-										Ajax.post("sysuser/get", params,
+										Ajax.post("sysuser/get", {"id": selected},
 											function(rs) {
 												if(rs.success == true) {
 													var val = rs.data;
@@ -120,10 +117,7 @@
 										});
 										return false;
 									} else {
-										var params = {
-											id: selected[0]
-										};
-										Ajax.post("sysuser/get", params,
+										Ajax.post("sysuser/get", {"id": selected},
 											function(rs) {
 												if(rs.success == true) {
 													var val = rs.data;
@@ -148,10 +142,7 @@
 											content: 'ÊÇ·ñÉ¾³ý?',
 											confirmValue: "È·¶¨",
 											confirm: function() {
-												var params = {
-													"id": selected
-												};
-												Ajax.post("sysuser/delete", params,
+												Ajax.post("sysuser/delete", {"id": selected},
 													function(rs) {
 														if(rs.success == true) {
 															Dialog.alert({
@@ -191,7 +182,7 @@
 								css: {},
 								click: function() {
 									var params = {};
-									Ajax.post("sysuser/db", params,
+									Ajax.post("sysuser/test", params,
 										function(rs) {
 											if(rs.success == true) {}
 										});

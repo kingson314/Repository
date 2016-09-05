@@ -60,20 +60,31 @@ public class CaseStatusController extends BaseContorller<Wipo> {
 	};
 	
 	private int tryTimes = 5;
+	
 
+	/**
+	 * 根据申请号获取法律状态
+	 * @param appNo
+	 * @return
+	 */
 	@RequestMapping("get")
-	public void get() {
-		String sqh = this.mapParams.get("sqh").toString();
-		this.print(new Result(getPatentRusult(sqh)));
+	public void getByApplicationNo() {
+		String appNo = this.mapParams.get("appNo").toString();
+		this.print(new Result(getPatentRusult(appNo)));
 	}
 
-	private Map<String, String> getPatentRusult(String sqh) {
+	/**
+	 * 解析出当前申请号的案件状态，搜索次数，搜索时间
+	 * @param appNo
+	 * @return
+	 */
+	private Map<String, String> getPatentRusult(String appNo) {
 		long now = System.currentTimeMillis();
 		Map<String, String> map = new HashMap<String, String>();
 		String status = "";
 		int curTime = 0;
 		try {
-			String surl = url + sqh;
+			String surl = url + appNo;
 			System.out.println(surl);
 			Elements elements = null;
 			while (curTime < tryTimes) {
@@ -102,7 +113,7 @@ public class CaseStatusController extends BaseContorller<Wipo> {
 				status = elements.get(2).text();
 				status = status.substring(6);
 				status = removerepeatedchar(status);
-				status = getSatus(getStausName(status));
+				status = getBySatusName(getStausName(status));
 
 				map.put("success", "true");
 				map.put("status", status);
@@ -120,6 +131,12 @@ public class CaseStatusController extends BaseContorller<Wipo> {
 		}
 	}
 
+	/**
+	 * 获取当前URL的文档内容
+	 * @param surl
+	 * @return
+	 * @throws Exception
+	 */
 	private Elements getElements(String surl) throws Exception {
 		Document doc = Jsoup
 				.connect(surl)
@@ -129,7 +146,11 @@ public class CaseStatusController extends BaseContorller<Wipo> {
 				.ignoreContentType(true).get();
 		return doc.select(".imfor_table_grid tr");
 	}
-	//去除重复字符
+	/**
+	 * 字符去重
+	 * @param str
+	 * @return
+	 */
 	public String removerepeatedchar(String str) {
 		if (str == null)
 			return str;
@@ -146,7 +167,11 @@ public class CaseStatusController extends BaseContorller<Wipo> {
 		}
 		return rs;
 	}
-
+	/**
+	 * 根据从网站获取的状态混码解析出正确的法律状态
+	 * @param status
+	 * @return
+	 */
 	private String getStausName(String status) {
 		String rs = status;
 		for (String item : StatusList) {
@@ -172,8 +197,12 @@ public class CaseStatusController extends BaseContorller<Wipo> {
 		}
 		return "<未识别状态>" + rs;
 	}
-	
-	private String getSatus(String status){
+	/**
+	 * 根据案件状态判断，有效，无效，审中状态
+	 * @param status
+	 * @return
+	 */
+	public String getBySatusName(String status){
 		for(String sta:validStatus){
 			if(sta.equals(status)){
 				return "有效";
