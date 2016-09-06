@@ -1,4 +1,4 @@
-package com.system.sysrole.entity;                     
+package com.system.SysRole.entity;                     
 	                                                               
 import javax.persistence.Entity;                                
 import javax.persistence.Table;                                 

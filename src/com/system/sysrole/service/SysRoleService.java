@@ -1,10 +1,10 @@
-package com.system.sysrole.service;                                             
+package com.system.SysRole.service;                                             
                                                                              
 import org.springframework.beans.factory.annotation.Autowired;               
 import org.springframework.stereotype.Service;                               
 import framework.base.service.BaseService;                               
-import com.system.sysrole.dao.ISysRoleDao;                                         
-import com.system.sysrole.entity.SysRole;                                          
+import com.system.SysRole.dao.ISysRoleDao;                                         
+import com.system.SysRole.entity.SysRole;                                          
                                                                              
 @Service                                                                     
 public class SysRoleService extends BaseService<SysRole> implements ISysRoleService { 

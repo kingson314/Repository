@@ -1,46 +1,51 @@
-package com.system.sysdepartment.controller;                              
+package com.system.SysDepartment.controller;                              
 
 import javax.annotation.Resource;                                            
 import org.springframework.stereotype.Controller;                            
 import org.springframework.web.bind.annotation.RequestMapping;               
 import framework.base.controller.BaseContorller;                         
 import framework.base.support.Result;                                    
-import com.system.sysdepartment.entity.SysDepartment;                              
-import com.system.sysdepartment.service.ISysDepartmentService;                     
+import com.system.SysDepartment.entity.SysDepartment;                              
+import com.system.SysDepartment.service.ISysDepartmentService;                     
                                                                                   
 /**                                                                          
  * @Description:                                                             
- * @date 2016-09-05                              
+ * @date 2016-09-06                              
  * @author:fgq                                                               
  */                                                                          
 @Controller                                                                  
-@RequestMapping("/sysdepartment/")                                             
+@RequestMapping("/SysDepartment/")                                             
 public class SysDepartmentController extends BaseContorller<SysDepartment> {                   
                                                                                   
 	@Resource                                                                
-	private ISysDepartmentService sysdepartmentService;                                        
+	private ISysDepartmentService sysDepartmentService;                                        
                                                                                   
 	@RequestMapping("list")                                               
 	public void list() {                                                     
-		Result result = this.sysdepartmentService.list(1, 10, "from SysDepartment", null);   
+		Result result = this.sysDepartmentService.list(this.baseParams.getPageIndex(), this.baseParams.getPageSize(), this.mapParams);   
 		this.print(result);                                                  
+	}                                                                        
+                                                                                  
+	@RequestMapping("get")                                               
+	public void get() {                                                     
+		this.print(new Result(this.sysDepartmentService.get(this.baseParams.getId())));                                        
 	}                                                                        
                                                                                   
 	@RequestMapping("save")                                               
 	public void save() {                                                     
-		this.sysdepartmentService.save(this.getEntity());                             
+		this.sysDepartmentService.save(this.getEntity());                             
 		this.print(new Result(true));                                        
 	}                                                                        
                                                                                   
 	@RequestMapping("update")                                             
 	public void update() {                                                   
-		this.sysdepartmentService.update(this.getEntity());                           
+		this.sysDepartmentService.update(this.getEntity());                           
 		this.print(new Result(true));                                        
 	}                                                                        
                                                                                   
 	@RequestMapping("delete")                                             
 	public void delete() {                                                   
-		this.sysdepartmentService.delete(this.getEntity());                           
+		this.sysDepartmentService.delete(this.baseParams.getId());
 		this.print(new Result(true));                                        
 	}                                                                        
 }                                                                            

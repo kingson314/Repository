@@ -1,8 +1,8 @@
-package com.system.sysrole.dao;                                      
+package com.system.SysRole.dao;                                      
                                                                               
 import org.springframework.stereotype.Component;                              
 import framework.base.dao.BaseDao;                                        
-import com.system.sysrole.entity.SysRole;                               
+import com.system.SysRole.entity.SysRole;                               
                                                                               
 @Component                                                                    
 public class SysRoleDao extends BaseDao<SysRole> implements ISysRoleDao {              

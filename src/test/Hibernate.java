@@ -4,7 +4,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 
-import com.system.sysuser.entity.SysUser;
+import com.system.SysUser.entity.SysUser;
+
 
 public class Hibernate {
 	public static void main(String[] args) {

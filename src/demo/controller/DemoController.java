@@ -20,7 +20,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.system.database.entity.Db;
+import com.system.Database.entity.Database;
+
 
 import common.util.file.UtilFile;
 import common.util.tree.UtilTree;
@@ -34,7 +35,7 @@ import framework.base.controller.BaseContorller;
  */
 @Controller
 @RequestMapping("/demo/")
-public class DemoController extends BaseContorller<Db> {
+public class DemoController extends BaseContorller<Database> {
 	private static final String FILE_PATH = "C:/uploaddir";
 
 	@RequestMapping("getTree")

@@ -1,22 +1,14 @@
-package com.system.sysdepartment.entity;
-
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import com.system.sysuser.entity.SysUser;
-import framework.base.entity.BaseEntity;
-
-@Entity
-@Table(name = "sys_department", catalog = "", schema = "")
-public class SysDepartment extends BaseEntity {
-	private static final long serialVersionUID = 1L;
-
+package com.system.SysDepartment.entity;                     
+	                                                               
+import javax.persistence.Entity;                                
+import javax.persistence.Table;                                 
+import framework.base.entity.BaseEntity;                    
+	                                                               
+@Entity                                                         
+@Table(name = "sys_department", catalog = "", schema = "") 
+public class SysDepartment extends BaseEntity {                          
+	private static final long serialVersionUID = 1L;         
+	
 //	@OneToMany  
 //	@JoinColumn(name="departmentId")  
 //	private Set<SysUser> sysUser = new HashSet<SysUser>();  
@@ -28,5 +20,4 @@ public class SysDepartment extends BaseEntity {
 //	public void setSysUser(Set<SysUser> sysUser) {
 //		this.sysUser = sysUser;
 //	}
-
-}
+}                                                               

@@ -1,18 +1,13 @@
-package com.system.sysuser.entity;
-
-import javax.persistence.CascadeType;
+package com.system.SysUser.entity;                     
+	                                                               
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.Entity;                                
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Transient;
-
-import com.system.sysdepartment.entity.SysDepartment;
-
-import framework.base.entity.BaseEntity;
-
+import javax.persistence.Table;                                 
+import com.system.SysDepartment.entity.SysDepartment;
+import framework.base.entity.BaseEntity;                    
+	                                                               
 @Entity
 @Table(name = "sys_user", catalog = "", schema = "")
 public class SysUser extends BaseEntity {

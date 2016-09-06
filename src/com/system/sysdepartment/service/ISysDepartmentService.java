@@ -1,7 +1,7 @@
-package com.system.sysdepartment.service;                             
+package com.system.SysDepartment.service;                             
                                                              
 import framework.base.service.IBaseService;              
-import com.system.sysdepartment.entity.SysDepartment;                          
+import com.system.SysDepartment.entity.SysDepartment;                          
                                                              
 public interface ISysDepartmentService extends IBaseService<SysDepartment> {   
                                                              

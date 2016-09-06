@@ -14,21 +14,7 @@ $(document).ready(function() {
 				label: "电话号码",
 				type: "textfield",
 				isNull: true
-			}], [{
-				id: "sex",
-				type: "checkgroup",
-				css: {
-					"text-align": "right"
-				},
-				items: [{
-					label: "男",
-					id: "man"
-				},
-				{
-					label: "女",
-					id: "women"
-				}]
-			},
+			}], [ 
 			{
 				id: "email",
 				label: "邮箱地址",
@@ -92,12 +78,14 @@ $(document).ready(function() {
 						});
 						return false;
 					} else {
-						Ajax.post("sysuser/get", {
+						Ajax.post("SysUser/get", {
 							"id": selected
 						},
 						function(rs) {
+							alert(JSON.stringify(rs))
 							if (rs.success == true) {
 								var val = rs.data;
+								alert(JSON.stringify(rs))
 								formEdit("update", val);
 							}
 						});
@@ -116,7 +104,7 @@ $(document).ready(function() {
 						});
 						return false;
 					} else {
-						Ajax.post("sysuser/get", {
+						Ajax.post("SysUser/get", {
 							"id": selected
 						},
 						function(rs) {
@@ -144,7 +132,7 @@ $(document).ready(function() {
 							content: '是否删除?',
 							confirmValue: "确定",
 							confirm: function() {
-								Ajax.post("sysuser/delete", {
+								Ajax.post("SysUser/delete", {
 									"id": selected
 								},
 								function(rs) {
@@ -175,7 +163,7 @@ $(document).ready(function() {
 					var params = {
 						id: selected[0]
 					};
-					Ajax.post("sysuser/export", params,
+					Ajax.post("SysUser/export", params,
 					function(rs) {
 						if (rs.success == true) {}
 					});
@@ -188,7 +176,7 @@ $(document).ready(function() {
 				css: {},
 				click: function() {
 					var params = {};
-					Ajax.post("sysuser/test", params,
+					Ajax.post("SysUser/test", params,
 					function(rs) {
 						if (rs.success == true) {}
 					});
@@ -298,7 +286,7 @@ $(document).ready(function() {
 					}
 					var url;
 					var params = form.val();
-					Ajax.post("sysuser/" + opType, params,
+					Ajax.post("SysUser/" + opType, params,
 					function(rs) {
 						if (rs.success == true) {
 							Dialog.alert({
@@ -391,7 +379,7 @@ $(document).ready(function() {
 				var params = {
 					id: val
 				};
-				Ajax.post("sysuser/get", params,
+				Ajax.post("SysUser/get", params,
 				function(rs) {
 					if (rs.success == true) {
 						var val = rs.data;
@@ -477,7 +465,7 @@ $(document).ready(function() {
 				label: "备注"
 			}],
 			ds: {
-				url: "sysuser/list"
+				url: "SysUser/list"
 			},
 			pageSizes: [1, 10, 20, 30, 40]
 		});
