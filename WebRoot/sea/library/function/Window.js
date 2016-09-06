@@ -1,16 +1,15 @@
 define(function(require, exports, module) {
 	//history
 	//cache
-	
 	//cookie
-	expprts.setCookie = function(map, expiredays) {
+	exports.setCookie = function(map, expiredays) {
 		var exdate = new Date()
 		exdate.setDate(exdate.getDate() + expiredays)
 		$.each(map, function(key, value) {
 			document.cookie = key + "=" + escape(value) + ((expiredays == null) ? "" : ";expires=" + exdate.toGMTString())
 		});
 	};
-	expprts.setCookie = function(c_name, value, expiredays) {
+	exports.setCookie = function(c_name, value, expiredays) {
 		var exdate = new Date()
 		exdate.setDate(exdate.getDate() + expiredays)
 		document.cookie = c_name + "=" + escape(value) + ((expiredays == null) ? "" : ";expires=" + exdate.toGMTString())
@@ -46,6 +45,7 @@ define(function(require, exports, module) {
 		script.src = path;
 		script.type = 'text/javascript';
 		head.appendChild(script);
+		return script;
 	};
 	exports.loadCss = function(path) {
 		if (!path || path.length === 0) {
@@ -57,7 +57,14 @@ define(function(require, exports, module) {
 		link.rel = 'stylesheet';
 		link.type = 'text/css';
 		head.appendChild(link);
+		return link;
 	};
+	/**
+	 * 删除动态生成的javascript/css
+	 */
+	exports.remove=function(src){
+		document.getElementsByTagName('head')[0].removeChild(src);
+	}
 	
 	//Firefox支持属性pageX,与pageY属性，这两个属性已经把页面滚动计算在内了, 
 	//在Chrome可以通过document.body.scrollLeft，document.body.scrollTop计算出页面滚动位移， 

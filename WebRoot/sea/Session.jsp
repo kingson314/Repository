@@ -69,16 +69,6 @@
 					},
 					charset: 'utf-8'
 				});
-			},
-			loadJs : function(path) {
-				if (!path || path.length === 0) {
-					return;
-				}
-				var head = document.getElementsByTagName('head')[0];
-				var script = document.createElement('script');
-				script.src = path;
-				script.type = 'text/javascript';
-				head.appendChild(script);
 			}
 		};
 		seajs.config({
