@@ -1,0 +1,38 @@
+@CHARSET "UTF-8"; 
+.sea_link{
+	margin:0;
+	padding:0;
+	color: #666;
+	text-align:left; 
+} 
+.sea_link ul{
+	margin:0;
+	padding-left:5px;
+	list-style:none;
+}
+.sea_link li{
+	display: inline;
+	line-height:30px;
+	height:30px;
+	margin-right:3px;
+}
+.sea_link a{  
+	color: #222;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.sea_link a:hover { 
+	color:#3366FF;
+	text-decoration: none;
+}
+.sea_link a:link {
+	text-decoration: none;
+}
+.sea_link a:visited {
+	text-decoration: none;
+}
+
+.sea_link a:active {
+	text-decoration: none;
+}

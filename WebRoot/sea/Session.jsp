@@ -9,15 +9,14 @@
 <script src="<%=basePath%>sea/core/sea/sea.css.js"></script>
 <script src="<%=basePath%>sea/component/base/form/datetime/jedate/jedate.js"></script>
 <link href="<%=basePath%>sea/component/base/form/datetime/jedate/skin/jedate.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="<%=basePath%>sea/core/bootstrap/css/bootstrap.css" />
+<%--<script src="<%=basePath%>sea/core/bootstrap/bootstrap.min.js"></script>
 <link href="<%=basePath%>sea/core/css/normalize.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="<%=basePath%>sea/core/css/main.css" />
+--%>
 <!--[if lt IE 9]>
  <script src="<%=basePath%>sea/core/bootstrap/html5shiv.js"></script>
 <![endif]-->
-
-<%--<script src="<%=basePath%>sea/core/bootstrap/bootstrap.min.js"></script>
-<link rel="stylesheet" href="<%=basePath%>sea/core/bootstrap/css/bootstrap.css" />
-<link rel="stylesheet" href="<%=basePath%>sea/core/css/main.css" />
---%>
 <script>
 	var Session={
 		theme: "",// "-touch"
@@ -138,6 +137,7 @@
 			Hidden      : "<%=basePath%>sea/component/base/form/hidden/Hidden",
 			Img      : "<%=basePath%>sea/component/base/form/img/Img",
 			Label       : "<%=basePath%>sea/component/base/form/label/Label",
+			Link       : "<%=basePath%>sea/component/base/form/link/Link",
 			Radio       : "<%=basePath%>sea/component/base/form/radio/Radio",
 			RadioGroup  : "<%=basePath%>sea/component/base/form/radiogroup/RadioGroup",
 			Select      : "<%=basePath%>sea/component/base/form/select/Select",

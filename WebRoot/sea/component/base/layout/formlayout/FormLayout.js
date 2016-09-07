@@ -134,6 +134,10 @@ define(function(require, exports, module) {
 						item._Component=require("Label").create(item);
 						$("<div></div>").append(item._Component.label).addClass(ClassName + "_td").css("width", colWidth + '%').css(item.tdCss||{}).appendTo(tr);
 						break;
+					case "link":
+						item._Component=require("Link").create(item);
+						$("<div></div>").append(item._Component.link).addClass(ClassName + "_td").css("width", colWidth + '%').css(item.tdCss||{}).appendTo(tr);
+						break;
 					case "radio":
 						item._Component=require("Radio").create(item);
 						var tdField = $("<div></div>").addClass(ClassName + "_td").css("width", colWidth * (1 -me.configs. labelWidthPercent) + '%').css(item.tdCss||{}).appendTo(tr);

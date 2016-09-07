@@ -6,7 +6,8 @@ function(BorderLayout, FormLayout,  Ajax) {
 		"height": "430px",
 		css:{
 			"box-shadow":"0 20px 50px #333",
-			"border-radius": "4px"
+			"border-radius": "4px",
+			"margin":"0"
 		},
 		items: [[{
 			id: "logo",
@@ -20,7 +21,7 @@ function(BorderLayout, FormLayout,  Ajax) {
 			attr : {}
 		}],[{
 			id: "name",
-			placeholder: "邮箱/电话/账号",
+			placeholder: "账号/邮箱/电话",
 			type: "textfield",
 			isNull: true
 		}],
@@ -32,8 +33,9 @@ function(BorderLayout, FormLayout,  Ajax) {
 			isNull: true
 		}], [{
 			id: "remember",
-			label: "记住账户",
+			label: "自动登陆",
 			type: "checkbox",
+			checked:true,
 			tdCss:{
 				"text-align":"left"
 			}
@@ -52,6 +54,34 @@ function(BorderLayout, FormLayout,  Ajax) {
 				 
 				return false;
 			}
+		}], [{
+			type: "link",
+			css:{
+				"margin-top":"10px",
+				"text-align":"right"
+			},items:[
+		         {
+						label : "忘记密码",
+						imgCls:"glyphicon glyphicon-question-sign",
+						imgAlign:"left",
+						cls : "",
+						css : {},
+						attr : {},
+						click : function(){
+							alert();
+						}
+		         },{
+						label : "注册新用户",
+						imgCls:"glyphicon glyphicon-user",
+						imgAlign:"left",
+						cls : "",
+						css : {},
+						attr : {},
+						click : function(){
+							alert();
+						}
+		         }
+			]
 		}]]
 	};
 	var form = FormLayout.create(cfgForm);
@@ -60,12 +90,16 @@ function(BorderLayout, FormLayout,  Ajax) {
 		north:{
 			height:"15%"
 		},
-		east: {
-			width: "60%",
+		east: { 
+			css:{
+			},
+			width: "40%",
 			item: form.formLayout
 		},
 		center: {
-			 
+			css:{
+			},
+			 item:"<div class='sea_title'><h1>欢迎使用集成开发平台</h1></div>"
 		},
 		south:{
 			height:35,
@@ -81,7 +115,7 @@ function(BorderLayout, FormLayout,  Ajax) {
 				"opacity":"0.7",
 				"color":"#f8f8f8"
 			},
-			item:"<div>Copyright@kingson.All Rights Reserved</div>"
+			item:"<div>Copyright@FengGuoqu.All Rights Reserved</div>"
 		}
 	});
 });
