@@ -246,4 +246,12 @@ define(function(require, exports, module) {
 			return val+'px'
 		}
 	}
+	
+	exports.getSize=function(parentSize,val){
+		if((val+"").indexOf('%')>0){
+			return 0.01*parentSize* parseFloat($.trim(val.replace("%","")));
+		}else {
+			return val
+		}
+	}
 });

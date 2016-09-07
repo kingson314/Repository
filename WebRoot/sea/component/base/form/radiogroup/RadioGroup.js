@@ -35,7 +35,7 @@ define(function(require, exports, module) {
 				li.css("display","inline");
 			}
 			item.labelCls="sea_radioLabel";
-			item.id=me.configs.id+Session.getSeq();
+			item.id=me.configs.id+Global.theme;
 			var radio=$("<input id='"+item.id+"' type='radio' name='"+(me.configs.name||me.configs.id)+"' value='"+item.value+"'/>").appendTo(li);
 			if(item.checked){
 				radio.attr("checked",item.checked);

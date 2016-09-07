@@ -20,7 +20,7 @@ define(function(require, exports, module) {
 				params+=key+"="+val;
 			});
 		}
-		return Session.basePath+actionName+params;
+		return Global.basePath+actionName+params;
 	};
 	exports.getUrl=getUrl;
 	/**

@@ -34,7 +34,7 @@
 	<div class="row">
 		<div class="col-md-12 text-left" >
 			<h2 style="display: inline-block;">
-				<img class="logo" src="<%=basePath%>sea/core/css/images/logo.png"/>
+				<img class="logo" src="../sea/core/css/images/logo.png"/>
 				<strong class=" text-primary">横琴知识产权交易中心</strong>
 			</h2>
 			<h3 style="display: inline-block;"><strong class=" text-info">——</strong></h3>

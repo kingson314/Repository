@@ -1,6 +1,6 @@
 define(function(require, exports, module) {
 	/** * 模块外部依赖 ** */
-	require.async("./css/checkgroup"+Cookie.theme+".css");
+	require.async("./css/checkgroup"+Session.theme+".css");
 	var Component = require("Component");
 	
 	/** * 模块私有数据 ** */
@@ -33,7 +33,7 @@ define(function(require, exports, module) {
 					li.css("display","inline");
 				}
 				item.labelCls="sea_checkLabel";
-				item.id=me.configs.id+Session.getSeq();
+				item.id=me.configs.id+Global.theme;
 				var checkbox=$("<input  id='"+item.id+"' type='checkbox'/>").appendTo(li);
 				if(item.checked){
 					checkbox.attr("checked",item.checked);

@@ -54,13 +54,13 @@ define(function(require, exports, module) {
 			Component.attr(parent, configs);
 			Component.css(parent,configs);
 			var parentHeight = parent.height();
-			var northHeight = configs.north && configs.north.height || 0;
-			var southHeight = configs.south && configs.south.height || 0;
+			var northHeight = configs.north && Component.getSize(parentHeight,configs.north.height);
+			var southHeight = configs.south && Component.getSize(parentHeight,configs.south.height);
 			var centerHeight = parentHeight - northHeight - southHeight;
 
 			var parentWidth = parent.width();
-			var westWidth = configs.west && configs.west.width || 0;
-			var eastWidth = configs.east && configs.east.width || 0;
+			var westWidth = configs.west && Component.getSize(parentWidth,configs.west.width);
+			var eastWidth = configs.east && Component.getSize(parentWidth,configs.east.width);
 			var centerWidth = parentWidth - westWidth - eastWidth;
 
 			var left=0;
@@ -124,7 +124,7 @@ define(function(require, exports, module) {
 					break;
 				};
 				if (block) {
-					val.id = ClassName + Session.getSeq();
+					val.id = ClassName + Global.getSeq();
 					block.attr("id", val.id).css({
 						"position": "absolute",
 						"box-sizing": "border-box",
@@ -146,13 +146,13 @@ define(function(require, exports, module) {
 		//界面布局重置
 		resize: function(parent, configs) {
 			var parentHeight = parent.height();
-			var northHeight = configs.north && configs.north.height || 0;
-			var southHeight = configs.south && configs.south.height || 0;
+			var northHeight = configs.north && Component.getSize(parentHeight,configs.north.height);
+			var southHeight = configs.south && Component.getSize(parentHeight,configs.south.height);
 			var centerHeight = parentHeight - northHeight - southHeight;
 
 			var parentWidth = parent.width();
-			var westWidth = configs.west && configs.west.width || 0;
-			var eastWidth = configs.east && configs.east.width || 0;
+			var westWidth = configs.west && Component.getSize(parentWidth,configs.west.width);
+			var eastWidth = configs.east && Component.getSize(parentWidth,configs.east.width);
 			var centerWidth = parentWidth - westWidth - eastWidth;
 			
 			var left=0;

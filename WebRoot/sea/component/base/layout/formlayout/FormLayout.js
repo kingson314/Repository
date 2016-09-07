@@ -67,10 +67,10 @@ define(function(require, exports, module) {
 		   }
 		  	//控件类名设置
 		    Component.addClass(me.formLayout,me.configs);
-		    //控件样式设置
-			Component.css(me.formLayout, me.configs);
 			// 控件属性设置
 			Component.attr(me.formLayout, me.configs);
+		    //控件样式设置
+			Component.css(me.formLayout, me.configs);
 
 			if (me.configs.title) {
 				$("<div></div>").addClass(ClassName + "_title").append(me.configs.title).appendTo(me.formLayout);
@@ -107,14 +107,9 @@ define(function(require, exports, module) {
 						break;
 					case "checkbox":
 						item._Component=require("Checkbox").create(item);
-						if(item._Component.label){
-							var tdLabel = $("<div></div>").addClass(ClassName + "_td").css("width", colWidth * me.configs.labelWidthPercent + '%').appendTo(tr);
-							//self.appendLabel(tdLabel,item._Component.label );
-						}else{
-							me.configs. labelWidthPercent=0;
-						}
-						var tdField = $("<div></div>").addClass(ClassName + "_td").css("width", colWidth * (1 -me.configs. labelWidthPercent) + '%').appendTo(tr);
-						self.appendFields(tdField,[item._Component.checkbox,,item._Component.label ]);
+						var tdField = $("<div></div>").addClass(ClassName + "_td").css("width", colWidth * (1 -me.configs. labelWidthPercent) + '%').css(item.tdCss||{}).appendTo(tr);
+						//self.appendFields(tdField,[item._Component.checkbox,item._Component.label ]);
+						tdField.append(item._Component.checkbox).append(item._Component.label);
 						break;
 					case "checkgroup":
 						item._Component=require("CheckGroup").create(item);
@@ -141,18 +136,13 @@ define(function(require, exports, module) {
 						break;
 					case "radio":
 						item._Component=require("Radio").create(item);
-						if(item._Component.label){
-							var tdLabel = $("<div></div>").addClass(ClassName + "_td").css("width", colWidth * me.configs.labelWidthPercent + '%').appendTo(tr);
-							//self.appendLabel(tdLabel,item._Component.label );
-						}else{
-							me.configs. labelWidthPercent=0;
-						}
-						var tdField = $("<div></div>").addClass(ClassName + "_td").css("width", colWidth * (1 -me.configs. labelWidthPercent) + '%').appendTo(tr);
-						self.appendFields(tdField,[item._Component.radio,,item._Component.label ]);
+						var tdField = $("<div></div>").addClass(ClassName + "_td").css("width", colWidth * (1 -me.configs. labelWidthPercent) + '%').css(item.tdCss||{}).appendTo(tr);
+						//self.appendFields(tdField,[item._Component.radio,item._Component.label ]);
+						tdField.append(item._Component.radio).append(item._Component.label);
 						break;
 					case "radiogroup":
 						item._Component=require("RadioGroup").create(item);
-						var tdField = $("<div></div>").addClass(ClassName + "_td").css("width", colWidth * (1 -me.configs. labelWidthPercent) + '%').appendTo(tr);
+						var tdField = $("<div></div>").addClass(ClassName + "_td").css("width", colWidth * (1 -me.configs. labelWidthPercent) + '%').css(item.tdCss||{}).appendTo(tr);
 						self.appendFields(tdField,item._Component.radioGroup);
 						break;
 					case "select":

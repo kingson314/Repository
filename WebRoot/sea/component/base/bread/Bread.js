@@ -1,6 +1,6 @@
 define(function(require, exports, module) {
 	/** * 模块外部依赖 ** */
-	require.async("./css/bread"+Cookie.theme+".css");
+	require.async("./css/bread"+Session.theme+".css");
 	var Component = require("Component"); 
 	/** * 模块私有数据 ** */
 	var defaults = {
